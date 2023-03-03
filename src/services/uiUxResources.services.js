@@ -8,6 +8,10 @@ const getUiUxResourcesHomePage = async () => {
   return await axios.get(`${process.env.REACT_APP_API}/homePage`);
 };
 
+const getUiUxResourcesFooter = async () => {
+  return await axios.get(`${process.env.REACT_APP_API}/footer`);
+};
+
 const getSubCategoryByName = async (name) => {
   return await axios.get(
     `${process.env.REACT_APP_API}/category?search=${name}`
@@ -50,6 +54,7 @@ const UiUxResourcesServices = {
   getUiUxResources,
   getSubCategoryByName,
   getUiUxResourcesHomePage,
+  getUiUxResourcesFooter,
   getResourcesTags,
   addResource,
   likeResource,

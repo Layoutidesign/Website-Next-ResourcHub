@@ -43,13 +43,15 @@ function Resources({
 export async function getServerSideProps({ req, res }) {
   try {
     const uiUxReq = await UiUxResourcesServices.getUiUxResourcesHomePage();
+    const uiUxFooterReq = await UiUxResourcesServices.getUiUxResourcesFooter();
     const [{ data }] = await Promise.all([uiUxReq]);
+    const  footerData = await Promise.all([uiUxFooterReq]);
     return {
       props: {
         pages: data?.data?.Pages,
         categories: data?.data?.Categories,
         headerContent: data?.data?.headerContent,
-        // footerContent: data?.data?.footerContent,
+        footerContent: footerData[0]?.data?.data,
         seoData: data?.data?.seo,
       },
     };

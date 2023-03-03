@@ -17,14 +17,6 @@ const UiUxResources = ({ children, footerContent }) => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
-  // useEffect(() => {
-  //   if (showPopup) {
-  //     document.body.style.overflow = "hidden";
-  //   } else {
-  //     document.body.style.overflow = "unset";
-  //   }
-  // }, [showPopup]);
-
   return (
     <>
 
