@@ -33,6 +33,7 @@ function SEOHead({
       <meta property="og:description" content={ogDescription} />
       <meta property="og:image" content={ogImgUrl} />
       <meta property="og:url" content={canonicalUrl} />
+      <link rel="image_src"   content={image} />
 
       {children}
     </Head>
