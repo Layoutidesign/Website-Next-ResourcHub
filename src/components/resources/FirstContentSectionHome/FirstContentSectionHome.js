@@ -20,7 +20,7 @@ const FirstContentSectionHome = ({ title, description, image, imageForMobile, su
       <Container>
         <div className={styles["secondContent"]}>
           <h1>{subTitle}</h1>
-          <p className="" >{subDescription}</p>
+          <p className="d-none d-md-block" >{subDescription}</p>
         </div>
       </Container>
     </section>

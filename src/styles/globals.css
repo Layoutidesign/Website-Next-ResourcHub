@@ -356,3 +356,10 @@ ul {
   /* padding: 0 20px !important; */
 }
 /* end container */
+
+
+@media (max-width: 600px) {
+  .container {
+    padding: 0 20px !important;
+  }
+}
