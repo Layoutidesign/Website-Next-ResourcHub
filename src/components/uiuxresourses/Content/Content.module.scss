@@ -1,10 +1,9 @@
 /** @format */
 
 @import "@/styles/helpers/_variables.scss";
-
 .firstContentSection {
   color: #fff;
-  padding: 80px 0;
+  padding: 130px 0;
   background-size: contain;
   background-position: right;
   background-repeat: no-repeat;
@@ -12,7 +11,7 @@
   .images_section {
     position: absolute;
     top: 85px;
-    right: 50px;
+    right: 110px;
     width: 50%;
     flex-wrap: nowrap;
     .img_fixed_0 {
@@ -22,12 +21,10 @@
     .img_fixed_1 {
       box-shadow: 0px 30px 50px rgba(0, 0, 0, 0.4);
       animation: up-and-down-two 2.5s ease-in-out infinite alternate;
-      animation-delay: 2.5s;
     }
     .img_fixed_2 {
       box-shadow: 0px 30px 50px rgba(0, 0, 0, 0.4);
       animation: up-and-down-three 2.5s ease-in-out infinite alternate;
-      animation-delay: 1.5s;
     }
   }
   h2 {
@@ -36,7 +33,9 @@
     line-height: 50px;
     margin-bottom: 20px;
   }
-
+  .title {
+    margin-bottom: 0;
+  }
   p {
     font-weight: 400;
 
@@ -45,9 +44,17 @@
     width: 480px;
   }
 
-  @media (max-width: 375px) {
-    padding: 30px 8px !important;
-
+  @media (max-width: 600px) {
+    padding: 30px 20px !important;
+    padding-bottom: 0px !important;
+    background-image: none !important;
+    margin-bottom: 30px;
+    .images_section {
+      display: none;
+    }
+    .pl {
+      padding-left: 0 !important;
+    }
     h2 {
       font-weight: 700;
       font-size: 32px;
@@ -57,20 +64,25 @@
 
     p {
       font-weight: 400;
-      font-size: 14px;
+      font-size: 16px;
       line-height: 23px;
+      width: 100%;
+      margin-bottom: 0;
     }
   }
-  @media (min-width: 376px) {
+  @media (min-width: 600px) {
     .pl {
-      padding-left: 0;
+      padding-left: 0 !important;
     }
   }
 }
 
 @keyframes up-and-down-one {
-  to {
+  0% {
     transform: translateY(-40px);
+  }
+  to {
+    transform: translateY(-0px);
   }
 }
 @keyframes up-and-down-two {
@@ -79,7 +91,10 @@
   }
 }
 @keyframes up-and-down-three {
+  0% {
+    transform: translateY(-40px);
+  }
   to {
-    transform: translateY(-30px);
+    transform: translateY(-0px);
   }
 }

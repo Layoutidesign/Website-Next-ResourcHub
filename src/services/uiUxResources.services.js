@@ -12,9 +12,9 @@ const getUiUxResourcesFooter = async () => {
   return await axios.get(`${process.env.REACT_APP_API}/footer`);
 };
 
-const getSubCategoryByName = async (name) => {
+const getSubCategoryByName = async (name, type) => {
   return await axios.get(
-    `${process.env.REACT_APP_API}/category?search=${name}`
+    `https://www.resourchub-laravel.layouti.com/api/frontend/resources/category?search=${name}&status=${type}`
   );
 };
 

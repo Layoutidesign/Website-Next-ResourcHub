@@ -6,7 +6,6 @@ import { Col, Container, Row } from "reactstrap";
 import styles from "./Content.module.scss";
 
 const FirstContentSection = ({ title, description, image, images }) => {
-  console.log(images);
   return (
     <div
       className={styles["firstContentSection"]}
@@ -21,6 +20,7 @@ const FirstContentSection = ({ title, description, image, images }) => {
                 src={image.image}
                 width={230}
                 height={370}
+                alt=""
               />
             </Col>
           ))}

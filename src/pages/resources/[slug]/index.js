@@ -7,9 +7,9 @@ import UiUxResourcesServices from "@/services/uiUxResources.services";
 import UiUxResources from "@/components/layouts/UiUxResources";
 import FirstContentSection from "@/components/uiuxresourses/Content/FirstContentSection";
 import Categories from "@/components/uiuxresourses/Categories/Categories";
-import WorkTogetherSection from "@/components/resources/WorkTogetherSection/WorkTogetherSection";
 
-function Slug({ data, params, seoData }) {
+function Slug({ data, params, seoData, categories }) {
+  
   return (
     <>
       <SEOHead
@@ -29,7 +29,7 @@ function Slug({ data, params, seoData }) {
               image={data?.headerContent?.vector}
               images={data?.headerContent?.Images}
             />
-            <Categories categories={data?.categories || []} params={params} />
+            <Categories categories={data?.categories || []} categoriesData={categories || []} params={params.split("-").join(" ")} />
           </>
         )}
       </UiUxResources>
@@ -40,12 +40,15 @@ function Slug({ data, params, seoData }) {
 export async function getServerSideProps(context) {
   try {
     const uiUxReq = await UiUxResourcesServices.getUiUxResources();
+    const category = await UiUxResourcesServices.getSubCategoryByName(context?.params?.slug.split("-").join(" "), "category");
+    const catData = await Promise.all([category]);
     const [{ data }] = await Promise.all([uiUxReq]);
     return {
       props: {
         data: data?.data,
         params: context?.params?.slug,
         seoData: data?.data?.seo,
+        categories: catData[0]?.data.data
       },
     };
   } catch (error) {

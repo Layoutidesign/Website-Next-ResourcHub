@@ -20,13 +20,17 @@
   .tab_left {
     width: 30% !important;
   }
-  @media (max-width: 375px) {
+  @media (max-width: 600px) {
     padding: 0 8px 40px 8px;
+    .title { 
+      margin-bottom:  0;
+    }
   }
-  @media (min-width: 376px) {
+  @media (min-width: 600px) {
     .leftSpacingForInnerCards {
       box-sizing: border-box;
       margin-left: 30px !important;
     }
   }
 }
+

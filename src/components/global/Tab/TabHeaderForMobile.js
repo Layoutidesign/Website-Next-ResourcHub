@@ -4,7 +4,7 @@ import styles from "./Tab.module.scss";
 
 const TabHeaderForMobile = ({ tabHeaderData, setActiveTab, activeTab }) => {
   const handleChange = (e, i) => {
-    setActiveTab(+e.target.value);
+    setActiveTab(e.target.value);
   };
 
   return (
@@ -14,7 +14,7 @@ const TabHeaderForMobile = ({ tabHeaderData, setActiveTab, activeTab }) => {
       value={activeTab}
     >
       {tabHeaderData.map((tabTitle, i) => (
-        <option key={i} value={i}>
+        <option key={i} value={tabTitle}>
           {tabTitle}
         </option>
       ))}

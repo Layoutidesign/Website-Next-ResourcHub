@@ -11,18 +11,18 @@ import InnerPageCard from "@/components/global/Cards/InnerPageCard/InnerPageCard
 
 import styles from "./Categories.module.scss";
 import Link from "next/link";
+import axios from "axios";
+import UiUxResourcesServices from "@/services/uiUxResources.services";
+import { useRouter } from "next/router";
 
-const Categories = ({ categories, params  }) => {
-  const [activeCategory, setActiveCategory] = useState(params);
-  const [categoryDisplayed, setCategoryDisplayed] = useState(categories.filter(category => category.name == params)[0]);
-
+const Categories = ({ categories, params, categoriesData  }) => {
   const categoryTitles = categories.map((category) => category.name);
+  const router = useRouter() 
+  const changeCategory  = (categ) => {
+    router.push(`/resources/${categ.split(" ").join("-")}`)
+  }
 
-  useEffect(() => {
-    setCategoryDisplayed(cat => categories.filter(category => category.name == activeCategory)[0]);
-    console.log(categories.filter(category => category.name == activeCategory));
-  }, [activeCategory]);
-
+  
   return (
     <div className={styles["categories"]}>
       <Container>
@@ -37,49 +37,25 @@ const Categories = ({ categories, params  }) => {
           <div  className={`${styles["tab_left"]} tab_left p-0 d-none d-md-block`}>
             <TabHeader
               tabHeaderData={categoryTitles}
-              setActiveTab={setActiveCategory}
-              activeTab={activeCategory}
+              setActiveTab={changeCategory}
+              activeTab={params}
             />
           </div>
 
           <Col xs={12} className="d-md-none">
             <TabHeaderForMobile
               tabHeaderData={categoryTitles}
-              setActiveTab={setActiveCategory}
-              activeTab={activeCategory}
+              setActiveTab={changeCategory}
+              activeTab={params}
             />
           </Col>
-          {console.log(categoryDisplayed)}
-          {categoryDisplayed?.subCategoeries?.length === 0 ? (
-            <>
-              <Col xs={12} md={8}>
-                <Row className={styles["leftSpacingForInnerCards"]}>
-                  <Masonry
-                    breakpointCols={{ default: 3, 768: 2 }}
-                    className="my-masonry-grid"
-                    columnClassName="my-masonry-grid_column"
-                  >
-                    {categoryDisplayed?.InnerPage?.map((innerPage, i) => (
-                      <InnerPageCard
-                        innerPage={innerPage}
-                        key={innerPage?.id || i}
-                      />
-                    ))}
-                  </Masonry>
-                </Row>
-              </Col>
-            </>
-          ) : (
-            <>
-              <Col xs={12} md={8}>
-                <Row className="g-4">
-                  {categoryDisplayed?.subCategoeries?.map((subCategory, i) => (
-                    <SubCategoryCard key={i} subCategory={subCategory} />
-                  ))}
-                </Row>
-              </Col>
-            </>
-          )}
+          <Col xs={12} md={8}>
+            <Row className="g-4">
+              {categoriesData?.subCategoeries?.map((subCategory, i) => (
+                <SubCategoryCard key={i} subCategory={subCategory} />
+              ))}
+            </Row>
+          </Col>
         </Row>
       </Container>
     </div>

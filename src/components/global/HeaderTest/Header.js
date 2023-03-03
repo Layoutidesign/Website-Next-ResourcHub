@@ -76,13 +76,13 @@ const HeaderTest = () => {
       <Container className=" h-100">
         <Row className="align-items-center justify-content-between h-100">
           <Col xs="2" className="header_logo p-0">
-            <a href="https://www.layouti.com/" target="_blank">
+            <Link href="/resources" >
               {whiteActive ? (
                 <LayoutliLogoWhiteIcon />
               ) : (
                 <LayoutiLogoDarkIcon />
               )}
-            </a>
+            </Link>
           </Col>
           <Col xs={8} className="d-none d-lg-block ">
             <Row
