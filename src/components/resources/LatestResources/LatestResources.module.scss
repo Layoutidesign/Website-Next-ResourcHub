@@ -1,0 +1,50 @@
+/** @format */
+
+@import "@/styles/helpers/_variables.scss";
+
+.latestResources {
+  padding-bottom: 140px;
+  h3 {
+    text-align: center;
+    margin-bottom: 50px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 55px;
+    line-height: 63px;
+  }
+
+  .link {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 0;
+    margin: auto;
+    margin-top: 100px;
+    background-color: $buttonBackgroundColor;
+    color: $buttonColor;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 37px;
+    border-radius: 75px;
+  }
+
+  @media (max-width: 375px) {
+    padding-bottom: 80px;
+    h3 {
+      width: 80%;
+      margin: auto;
+      font-size: 32px;
+      line-height: 40px;
+      margin-bottom: 30px;
+    }
+
+    .link {
+      width: 100%;
+      padding: 12px 0;
+      margin-top: 60px;
+      font-size: 20px;
+      line-height: 37px;
+    }
+  }
+}

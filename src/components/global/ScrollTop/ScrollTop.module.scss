@@ -1,0 +1,29 @@
+/** @format */
+
+@import "@/styles/helpers/_variables.scss";
+
+.scroll_top {
+  position: fixed;
+  bottom: 60px;
+  right: 60px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background-color: $buttonBackgroundColor;
+  color: $buttonColor;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  z-index: 99999;
+  transition: all 0.3s linear;
+  cursor: pointer;
+  &:hover {
+    background-color: $buttonBackgroundColorHover;
+  }
+  @media only screen and (max-width: 600px) {
+    bottom: 20px;
+    right: 20px;
+  }
+}

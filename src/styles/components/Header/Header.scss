@@ -1,0 +1,174 @@
+/** @format */
+
+@import "@/styles/helpers/_variables.scss";
+
+.header_layouti {
+  height: 110px;
+  border-bottom: 1px solid#192b49;
+  background-color: $darkBlueOne;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: all 0.2s ease-in-out;
+  z-index: 4000;
+  &.active {
+    top: -110px;
+  }
+  &.white {
+    background-color: #fff;
+    border-bottom: 1px solid #344156;
+    @media only screen and (max-width: 375px) {
+      background-color: #00122f;
+      .toggle-white-icon path {
+        fill: white;
+      }
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    padding: 0 20px;
+  }
+  @media only screen and (max-width: 375px) {
+    background-color: #00122f;
+  }
+
+  .navbar_one {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0;
+    align-items: center;
+    margin: 0;
+    li {
+      margin-right: 50px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    .navs {
+      white-space: nowrap;
+      font-weight: 400;
+    }
+  }
+
+  .header_logo {
+    @media only screen and (max-width: 600px) {
+      margin-left: 0px;
+    }
+  }
+
+  .navs {
+    @media only screen and (max-width: 600px) {
+      display: none !important;
+    }
+  }
+
+  .nav_item_link {
+    transition: all 0.2s linear;
+    font-size: 14px;
+    position: relative;
+    color: #fff !important;
+    &::before {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      top: 80%;
+      background-color: #3aaa35;
+      left: 0;
+      transition: all 0.3s;
+    }
+    &.white__link {
+      color: #fff;
+    }
+    &:hover {
+      color: #3aaa35 !important;
+      text-decoration: none !important;
+      &::before {
+        width: 100%;
+      }
+    }
+    &.active {
+      color: #3aaa35 !important;
+      text-decoration: none !important;
+      font-weight: 700;
+      &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        top: 80%;
+        background-color: #3aaa35;
+        left: 0;
+      }
+    }
+  }
+
+  .nav_item_btn {
+    a {
+      background-color: $buttonBackgroundColor;
+      color: $buttonColor !important;
+      border-radius: 20px;
+      font-size: 14px;
+      width: 148px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &:hover {
+        color: #fff !important;
+        text-decoration: none;
+        animation: ButtonAnimation 0.3s linear 1;
+        &::before {
+          display: none;
+        }
+      }
+      @media only screen and (max-width: 600px) {
+        width: 100%;
+        height: 45px;
+      }
+    }
+  }
+
+  .toggle_mob {
+    display: none;
+    @media only screen and (max-width: 991px) {
+      display: block;
+    }
+  }
+
+  .toggle-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    float: right;
+    @media only screen and (max-width: 600px) {
+      display: block;
+      margin-left: 20px;
+    }
+  }
+
+  .logo-icon path {
+    transition: all 0.3s ease-in-out;
+  }
+  .menu-icon path {
+    transition: all 0.3s ease-in-out;
+  }
+  .dark-menu path {
+    fill: #23262b;
+  }
+  .dark-logo path:first-of-type {
+    fill: #23262b;
+  }
+  .dark-logo path:last-of-type {
+    fill: #23262b;
+  }
+  .toggle-btn--lang {
+    font-size: 14px;
+    color: white;
+  }
+  .toggle-btn--lang.dark-Lang {
+    color: #000;
+  }
+}

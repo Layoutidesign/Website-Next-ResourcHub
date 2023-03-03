@@ -1,0 +1,8 @@
+/** @format */
+
+.categories {
+  padding-bottom: 180px;
+  @media (max-width: 375px) {
+    padding-bottom: 80px;
+  }
+}

@@ -1,0 +1,32 @@
+/** @format */
+
+@import "@/styles/helpers/_variables.scss";
+
+.categories {
+  padding: 100px 0;
+  .title {
+    margin-bottom: 30px;
+    h2 {
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 37px;
+      margin-bottom: 0;
+    }
+    color: #808ea5;
+    a {
+      color: #fff;
+    }
+  }
+  .tab_left {
+    width: 30% !important;
+  }
+  @media (max-width: 375px) {
+    padding: 0 8px 40px 8px;
+  }
+  @media (min-width: 376px) {
+    .leftSpacingForInnerCards {
+      box-sizing: border-box;
+      margin-left: 30px !important;
+    }
+  }
+}

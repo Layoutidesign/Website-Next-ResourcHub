@@ -1,0 +1,53 @@
+/** @format */
+
+@import "@/styles/helpers/_variables.scss";
+
+.workTogetherSection {
+  padding: 60px 0;
+  color: #fff !important;
+  border: 1px solid #192b49;
+  border-left: 0;
+  border-right: 0;
+  transition: all 0.15s ease-in-out, visibility 1ms;
+  cursor: pointer;
+
+  background-image: linear-gradient(to top, $darkBlueTwo 50%, transparent 0);
+  background-size: 100% 200%;
+  background-position: top;
+  transition: background-position 0.15s ease-in-out, visibility 1ms;
+
+  p {
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 53px;
+  }
+
+  h2 {
+    font-weight: 700;
+    font-size: 61px;
+    line-height: 79px;
+    transition: all 0.5s ease-in-out;
+  }
+
+  &:hover {
+    background-position: bottom;
+
+    h2 {
+      color: $neonGreen;
+    }
+  }
+
+  @media (max-width: 375px) {
+    padding: 40px 8px;
+    p {
+      font-size: 14px;
+      line-height: 26px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 24px;
+      line-height: 31px;
+    }
+  }
+}

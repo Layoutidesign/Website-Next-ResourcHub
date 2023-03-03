@@ -1,0 +1,227 @@
+/** @format */
+
+@import "@/styles/helpers/_variables.scss";
+
+.footer {
+  color: #fff;
+  // padding-top: 58px;
+
+  /* footer__head */
+  header {
+    background-color: #071c3e;
+    padding: 60px 0;
+
+    .footer__external__title {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 37px;
+      margin-bottom: 30px;
+    }
+
+    .footer__link__row {
+      h3 {
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 33px;
+        white-space: nowrap;
+      }
+    }
+
+    .external__link {
+      width: 64px;
+      height: 39px;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff !important;
+      border: 1px solid #3aaa35;
+      transition: all 0.2s linear;
+      margin-right: 20px;
+      &:hover {
+        background-color: $buttonBackgroundColor;
+      }
+      @media only screen and (max-width: 600px) {
+        margin-right: 0;
+      }
+    }
+
+    @media only screen and (max-width: 600px) {
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+  }
+
+  /* footer__container */
+  main {
+    background-color: $mainColor;
+    padding: 60px 0;
+
+    .foot_head {
+      @media only screen and (max-width: 600px) {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+      }
+    }
+
+    .footer_brand {
+      @media (max-width: 320px) {
+        padding-left: 10px;
+      }
+    }
+    .footer_slug {
+      @media (max-width: 320px) {
+        padding-left: 10px;
+      }
+    }
+
+    .footer_desc {
+      width: 50% !important;
+      @media only screen and (max-width: 600px) {
+        width: 90% !important;
+      }
+    }
+
+    .footer_social {
+      padding: 0 !important;
+      display: flex;
+      gap: 10px;
+      // margin-top: 30px;
+      span {
+        display: flex;
+        background-color: #fff;
+        color: #000;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.2s linear;
+        a {
+          color: $darkBlueOne;
+        }
+        svg {
+          transition: all 0.3s ease-in-out;
+        }
+        &:hover {
+          background-color: $buttonBackgroundColor;
+          color: $buttonColor;
+          svg {
+            color: white;
+          }
+        }
+      }
+    }
+
+    .desc_foot {
+      display: block;
+      @media only screen and (max-width: 991px) {
+        display: none;
+      }
+    }
+
+    .footer_navs {
+      padding: 0px;
+      li {
+        margin-bottom: 5px;
+      }
+    }
+
+    .footer_navs_link {
+      color: #fff !important;
+      font-size: 16px;
+      font-weight: 400;
+      transition: all 0.2s linear;
+      line-height: 26px;
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        top: 50%;
+        background-color: #3aaa35;
+        left: -5%;
+        transition: all 0.3s;
+      }
+      &:hover {
+        color: #3aaa35 !important;
+        text-decoration: none !important;
+        &::before {
+          content: "";
+          width: 110%;
+        }
+      }
+      &.active {
+        &::before {
+          content: "";
+          position: absolute;
+          width: 110%;
+          height: 2px;
+          top: 50%;
+          background-color: #3aaa35;
+          left: -5%;
+          transition: all 0.3s;
+        }
+      }
+      li {
+        margin-bottom: 5px;
+      }
+    }
+
+    .mobile_foot {
+      display: none;
+      .accordion-item {
+        background-color: transparent !important;
+        color: #fff !important;
+        border: none !important;
+
+        button {
+          width: 100%;
+          display: flex;
+          background-color: transparent !important;
+          color: #fff !important;
+          border: none !important;
+          border-top: 1px solid rgba(255, 255, 255, 0.438) !important;
+          box-shadow: none !important;
+          border-radius: 0 !important;
+          padding: 1.25rem 1.25rem !important;
+
+          &::after {
+            flex-shrink: 0;
+            width: 1.25rem;
+            height: 1.25rem;
+            height: 10px !important;
+            margin-left: auto;
+            overflow: visible;
+            content: "";
+            color: #fff;
+            background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUzIiBoZWlnaHQ9Ijg4IiB2aWV3Qm94PSIwIDAgMTUzIDg4IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZyBmaWx0ZXI9InVybCgjZmlsdGVyMF9kXzFfMTkpIj4KPHBhdGggZD0iTTE0Ny4wNyAxLjkzMDI2QzE0NC40OTYgLTAuNjQzMjczIDE0MC4zMjMgLTAuNjQzNzEyIDEzNy43NDkgMS45MzA3TDc2LjUwMTYgNjMuMTc5MUwxNS4yNTEzIDEuOTMwMjZDMTIuNjc3OCAtMC42NDMyNzMgOC41MDQ0NSAtMC42NDM3MTIgNS45MzA0OCAxLjkzMDdDMy4zNTY1MSA0LjUwNDY3IDMuMzU2NTEgOC42Nzc1OSA1LjkzMDQ4IDExLjI1MTZMNzEuODQxMyA3Ny4xNjA3QzczLjA3NzQgNzguMzk2NyA3NC43NTM3IDc5LjA5MDkgNzYuNTAxNiA3OS4wOTA5Qzc4LjI0OTUgNzkuMDkwOSA3OS45MjYyIDc4LjM5NjIgODEuMTYxOCA3Ny4xNjAyTDE0Ny4wNjkgMTEuMjUxMUMxNDkuNjQ0IDguNjc3NTkgMTQ5LjY0NCA0LjUwNDIzIDE0Ny4wNyAxLjkzMDI2WiIgZmlsbD0id2hpdGUiLz4KPC9nPgo8ZGVmcz4KPGZpbHRlciBpZD0iZmlsdGVyMF9kXzFfMTkiIHg9IjAiIHk9IjAiIHdpZHRoPSIxNTMiIGhlaWdodD0iODcuMDkwOSIgZmlsdGVyVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBjb2xvci1pbnRlcnBvbGF0aW9uLWZpbHRlcnM9InNSR0IiPgo8ZmVGbG9vZCBmbG9vZC1vcGFjaXR5PSIwIiByZXN1bHQ9IkJhY2tncm91bmRJbWFnZUZpeCIvPgo8ZmVDb2xvck1hdHJpeCBpbj0iU291cmNlQWxwaGEiIHR5cGU9Im1hdHJpeCIgdmFsdWVzPSIwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAxMjcgMCIgcmVzdWx0PSJoYXJkQWxwaGEiLz4KPGZlT2Zmc2V0IGR5PSI0Ii8+CjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjIiLz4KPGZlQ29tcG9zaXRlIGluMj0iaGFyZEFscGhhIiBvcGVyYXRvcj0ib3V0Ii8+CjxmZUNvbG9yTWF0cml4IHR5cGU9Im1hdHJpeCIgdmFsdWVzPSIwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwLjI1IDAiLz4KPGZlQmxlbmQgbW9kZT0ibm9ybWFsIiBpbjI9IkJhY2tncm91bmRJbWFnZUZpeCIgcmVzdWx0PSJlZmZlY3QxX2Ryb3BTaGFkb3dfMV8xOSIvPgo8ZmVCbGVuZCBtb2RlPSJub3JtYWwiIGluPSJTb3VyY2VHcmFwaGljIiBpbjI9ImVmZmVjdDFfZHJvcFNoYWRvd18xXzE5IiByZXN1bHQ9InNoYXBlIi8+CjwvZmlsdGVyPgo8L2RlZnM+Cjwvc3ZnPgo=") !important;
+            background-size: 1.25rem;
+            transition: transform 0.2s ease-in-out;
+            display: block !important;
+          }
+        }
+      }
+
+      .accordion-body {
+        padding-top: 0 !important;
+        padding-left: 30px !important;
+      }
+
+      @media only screen and (max-width: 991px) {
+        display: block;
+      }
+    }
+  }
+
+  /* footer__footer */
+  footer {
+    background-color: #071c3e;
+    height: 110px;
+    @media only screen and (max-width: 600px) {
+      height: 80px;
+    }
+  }
+}
