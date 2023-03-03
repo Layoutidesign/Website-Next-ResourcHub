@@ -12,7 +12,7 @@ import { TestIcon } from "@/components/global/Svgs";
 const CategoryCard = ({ icon, name }) => {
   return (
     <Col xs={6} md={3}>
-      <Link href={`/resources/${name}`} className={styles["categoryCard"]}>
+      <Link href={`/resources/${name.split(" ").join("-")}`} className={styles["categoryCard"]}>
         <div>
           <div className={styles["imageContainer"]}>
             <Image src={icon} width="80" height={80}/>

@@ -20,7 +20,7 @@ const getResourcesTags = async () => {
 
 const addResource = async (title, link) => {
   return await axios.post(
-    `https://laravel.layouti.com/api/frontend/resources/category?search`,
+    `https://www.resourchub-laravel.layouti.com/api/frontend/resources/requestResource`,
     {
       title,
       link,
@@ -30,7 +30,7 @@ const addResource = async (title, link) => {
 
 const likeResource = async (id) => {
   return await axios.post(
-    `https://laravel.layouti.com/api/frontend/resources/like`,
+    `https://www.resourchub-laravel.layouti.com/api/frontend/resources/like`,
     {
       id,
     }
@@ -39,7 +39,7 @@ const likeResource = async (id) => {
 
 const ViewrsResource = async (id) => {
   return await axios.post(
-    `https://laravel.layouti.com/api/frontend/resources/view`,
+    `https://www.resourchub-laravel.layouti.com/api/frontend/resources/view`,
     {
       id,
     }

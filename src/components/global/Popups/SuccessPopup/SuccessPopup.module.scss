@@ -1,6 +1,5 @@
 /** @format */
 @import "@/styles/helpers/_variables.scss";
-
 .popupOverlay {
   position: fixed;
   top: -100%;
@@ -16,7 +15,8 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 40%;
+    width:452px;
+    
     height: 452px;
     padding: 40px 0;
     background-color: #fff;
@@ -42,10 +42,7 @@
       align-items: center;
       height: 100%;
       text-align: center;
-
-      svg {
-      }
-
+    
       p {
         font-weight: 400;
         font-size: 24px;
@@ -55,7 +52,7 @@
       }
 
       button {
-        width: 70%;
+        width: 60%;
         padding: 10px 0;
         font-size: 16px;
         font-weight: 500;
@@ -71,7 +68,7 @@
       transform: translate(-50%, -50%);
     }
 
-    @media (max-width: 375px) {
+    @media (max-width: 600px) {
       width: 90%;
       height: 355px;
 

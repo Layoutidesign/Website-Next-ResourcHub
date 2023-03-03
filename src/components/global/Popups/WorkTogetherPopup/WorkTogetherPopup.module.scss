@@ -16,13 +16,15 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 40%;
+    width: 452px;
+    height: 424px;
     padding: 50px;
     background-color: #fff;
     border-radius: 10px;
     //   font-family: "Helvetica Neue";
     transition: all 0.3s ease-in-out;
     z-index: 9999;
+
 
     header {
       display: flex;
@@ -50,7 +52,7 @@
         > div:not(.buttons) {
           display: flex;
           flex-direction: column;
-          margin-bottom: 20px;
+          margin-bottom: 20px;s
 
           label {
             margin-bottom: 10px;
@@ -68,7 +70,7 @@
             font-size: 14px;
             font-weight: 500;
             line-height: 26px;
-            color: #c3c9d2;
+            
             border: 1px solid #c3c9d2;
             border-radius: 6px;
             outline: none;
@@ -81,11 +83,9 @@
             position: relative;
             display: flex;
             align-items: center;
-
             input {
               width: 100%;
             }
-
             svg {
               position: absolute;
               right: 15px;
@@ -106,6 +106,7 @@
             font-weight: 500;
             line-height: 20px;
             outline: none;
+            height: 45px;
             &:first-of-type {
               width: 40%;
               margin-right: 10px;
@@ -129,14 +130,12 @@
       }
     }
 
-    @media (max-width: 375px) {
+    @media (max-width: 600px) {
       width: 90%;
       padding: 20px;
-
       header {
         margin-bottom: 30px;
       }
-
       main {
         form {
           display: flex;

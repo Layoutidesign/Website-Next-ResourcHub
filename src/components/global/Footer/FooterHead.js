@@ -16,16 +16,6 @@ import {
 
 const internalLinks = [
   {
-    Image: AcademyLogoIcon,
-    text: "Academy",
-    url: "/",
-  },
-  {
-    Image: UiAvatarLogoIcon,
-    text: "UI Avatar Design",
-    url: "/",
-  },
-  {
     Image: Ui365DesignIcon,
     text: "365 UI Design",
     url: "/",
@@ -36,12 +26,7 @@ const externalLinks = [
     Image: EToyAppIcon,
     text: "eToy App",
     url: "https://etoyapp.store/",
-  },
-  {
-    Image: ScanSmileIcon,
-    text: "Scan Smile",
-    url: "https://restaurant.layouti.com/",
-  },
+  }
 ];
 
 const LinkComponent = ({ Image, text, url, type }) => {

@@ -62,6 +62,7 @@
     font-size: 14px;
     position: relative;
     color: #fff !important;
+   
     &::before {
       content: "";
       position: absolute;
@@ -72,15 +73,18 @@
       left: -15%;
       transition: all 0.3s;
     }
-    &.disabled {
-      color: red !important;
-    }
+
     &.white__link {
       color: #fff;
     }
     &:hover {
       color: #3aaa35 !important;
       text-decoration: none !important;
+      svg {
+        path {
+          fill: #3aaa35;
+        }
+      }
       &::before {
         width: 125%;
       }
@@ -101,6 +105,7 @@
     }
   }
 
+
   .nav_item_btn {
     a {
       background-color: $buttonBackgroundColor;
@@ -112,6 +117,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      color: #000;
+      font-weight: bold;
       &:hover {
         color: #fff !important;
         text-decoration: none;
@@ -145,5 +152,31 @@
   }
   .toggle-btn--lang.dark-Lang {
     color: #000;
+  }
+}
+
+.linkWithIcon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+    transition: all 0.2s linear;
+    text-decoration: none !important;
+  svg { 
+    transition: all 0.2s linear;
+    path  {
+      transition: all 0.2s linear;
+    }
+  }
+  &:hover {
+    color: #3aaa35 !important;
+    text-decoration: none !important;
+    svg {
+      path {
+        fill: #3aaa35;
+      }
+    }
+    &::before {
+      width: 0% !important;
+    }
   }
 }

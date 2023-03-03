@@ -7,8 +7,23 @@ import { Container } from "reactstrap";
 import InnerPageCard from "@/components/global/Cards/InnerPageCard/InnerPageCard";
 
 import styles from "./LatestResources.module.scss";
+import UiUxResourcesServices from "@/services/uiUxResources.services";
+import { useState } from "react";
 
 const LatestResources = ({ resources }) => {
+  const [data, setData] = useState(resources) 
+
+  const handleLike = (id) => {
+    UiUxResourcesServices.likeResource(id)
+    setData(cards => cards.map(card => card.id === id?{...card, ip: !card.ip, likes: card.ip?card.likes-1:card.likes+1}:card))
+  };
+
+  function handleView (id) { 
+    UiUxResourcesServices.ViewrsResource(id)
+    setData(cards => cards.map(card => ( card.id === id?{...card, viwers:card.viwers+1}:card)))
+  }
+
+
   return (
     <section className={styles["latestResources"]}>
       <Container>
@@ -18,8 +33,8 @@ const LatestResources = ({ resources }) => {
           className="my-masonry-grid"
           columnClassName="my-masonry-grid_column"
         >
-          {resources?.map((innerPage, i) => (
-            <InnerPageCard innerPage={innerPage} key={innerPage?.id || i} />
+          {data?.map((innerPage, i) => (
+            <InnerPageCard innerPage={innerPage} key={innerPage?.id || i} handleLike={handleLike} handleView={handleView}/>
           ))}
         </Masonry>
         <Link className={styles["link"]} href="/resources/User Interface (UI)">

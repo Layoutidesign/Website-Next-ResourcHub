@@ -27,15 +27,6 @@ const UiUxResources = ({ children, footerContent }) => {
 
   return (
     <>
-      {/* {image && (
-        <Image
-          src={image}
-          width={800}
-          height={800}
-          className="illustration-image"
-          alt="illustration"
-        />
-      )} */}
 
       <Header />
       <Sidebar />

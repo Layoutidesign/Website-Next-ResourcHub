@@ -24,8 +24,8 @@
 
   h2 {
     font-weight: 700;
-    font-size: 61px;
-    line-height: 79px;
+    font-size: 50px;
+    line-height: 60px;
     transition: all 0.5s ease-in-out;
   }
 
@@ -37,7 +37,7 @@
     }
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 600px) {
     padding: 40px 8px;
     p {
       font-size: 14px;

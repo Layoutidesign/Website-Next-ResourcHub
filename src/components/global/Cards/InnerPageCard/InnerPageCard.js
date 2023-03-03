@@ -16,6 +16,8 @@ import {
 
 const InnerPageCard = ({ innerPage, handleLike, handleView }) => {
   
+
+  
   return (
     <div className={styles["innerPageCard"]}>
       <header style={{ background: innerPage?.color }}>

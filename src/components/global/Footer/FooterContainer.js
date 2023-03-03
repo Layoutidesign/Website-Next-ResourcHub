@@ -151,7 +151,7 @@ const FooterContainer = () => {
                     title="Main Menu"
                     type="internal"
                   />
-                  <ContainerLinksComponent
+                  {/* <ContainerLinksComponent
                     links={otherLinks}
                     title="Other Links"
                     type="internal"
@@ -160,7 +160,7 @@ const FooterContainer = () => {
                     links={helpLinks}
                     title="Help?"
                     type="external"
-                  />
+                  /> */}
                 </>
               }
             </Row>

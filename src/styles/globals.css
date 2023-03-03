@@ -101,13 +101,9 @@ ul {
   list-style: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
 
-/* start header */
+
+/* start header */  
 .header_layouti {
   height: 110px;
   border-bottom: 1px solid#192b49;

@@ -12,6 +12,10 @@ import {
 } from "../Svgs";
 import { useRouter } from "next/router";
 import { navLinks } from "@/data/static-data";
+import styles from "./Header.module.scss";
+import { DribbleIcon } from "@/Components/Global/Svgs/DribbleIcon";
+import { InstagramIcon } from "@/Components/Global/Svgs/InstagramIcon";
+
 
 const NavLink = ({ url, text, whiteActive }) => {
   const router = useRouter();
@@ -51,7 +55,7 @@ const HeaderTest = () => {
       }
 
       if (window.scrollY > 0) {
-        
+        setWhiteActive(false);
       } else {
         setWhiteActive(true);
       }
@@ -94,6 +98,30 @@ const HeaderTest = () => {
               className={`navs  align-items-center justify-content-between h-100 fs-6`}
             >
               <ul className="navbar_one">
+              <li className={styles["nav_item"]}>
+                  <a
+                    className={`${
+                      styles["linkWithIcon"]
+                    } nav_item_link `}
+                    href="https://dribbble.com/nazzaly"
+                    target="_blank"
+                  >
+                    <DribbleIcon />
+                    Dribble
+                  </a>
+                </li>
+                <li className={styles["nav_item"]}>
+                  <a
+                    className={`${
+                      styles["linkWithIcon"]
+                    } nav_item_link linkWithIcon`}
+                    href="https://www.instagram.com/layoutidesign/"
+                    target="_blank"
+                  >
+                    <InstagramIcon />
+                    Instagram
+                  </a>
+                </li>
                 {navLinks.map((link, i) => (
                   <NavLink
                     key={i}
@@ -131,7 +159,7 @@ const HeaderTest = () => {
                   fillRule="evenodd"
                   clipRule="evenodd"
                   d="M3 6V7.66667H23V6H3ZM3 12.6667V14.3333H23V12.6667H3ZM3 19.3333V21H23V19.3333H3Z"
-                  fill="#ffffff"
+                  fill={whiteActive?"#ffffff":"#000000"}
                 />
               </svg>
             </button>
