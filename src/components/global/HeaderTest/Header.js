@@ -13,8 +13,6 @@ import {
 import { useRouter } from "next/router";
 import { navLinks } from "@/data/static-data";
 import styles from "./Header.module.scss";
-import { DribbleIcon } from "@/Components/Global/Svgs/DribbleIcon";
-import { InstagramIcon } from "@/Components/Global/Svgs/InstagramIcon";
 
 
 const NavLink = ({ url, text, whiteActive }) => {
