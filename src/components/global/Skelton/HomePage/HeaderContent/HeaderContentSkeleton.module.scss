@@ -1,0 +1,39 @@
+@import "@/GlobalStyles/helpers/variables";
+
+.headerContent {
+  width: 100%;
+  height: 582px;
+  padding-top: 80px;
+  background-color: $darkBlueTwo;
+  margin-bottom: 150px;
+
+  p {
+    position: relative;
+    overflow: hidden;
+    background-color: $darkBlueThree;
+    margin: auto;
+    margin-bottom: 20px;
+    border-radius: 50px;
+
+    &:first-of-type {
+      height: 60px;
+      width: 50%;
+    }
+
+    &:nth-of-type(2) {
+      height: 60px;
+      width: 30%;
+    }
+
+    &:nth-of-type(3) {
+      height: 32px;
+      width: 52%;
+    }
+
+    &:nth-of-type(4) {
+      height: 32px;
+      width: 25%;
+      margin-bottom: 0;
+    }
+  }
+}

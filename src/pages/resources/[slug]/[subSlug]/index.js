@@ -12,7 +12,6 @@ import { useState } from "react";
 const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData }) => {
   const [showLoading, setShowLoading] = useState(false);
   const [total, setTotal] = useState(null);
-  console.log(seoData);
 
   return (
     <>

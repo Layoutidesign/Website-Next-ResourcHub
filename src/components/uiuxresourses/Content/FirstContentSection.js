@@ -7,7 +7,7 @@ import styles from "./Content.module.scss";
 
 const FirstContentSection = ({ title, description, image, images }) => {
   return (
-    <div
+    <><div
       className={styles["firstContentSection"]}
       style={{ backgroundImage: `url("${image}")` }}
     >
@@ -30,13 +30,15 @@ const FirstContentSection = ({ title, description, image, images }) => {
             <h2>{title && title}</h2>
           </Col>
         </Row>
-        <Row>
+        <Row >
           <Col xs={12} md={6} className="p-0">
             <p>{description && description}</p>
           </Col>
         </Row>
       </Container>
     </div>
+      <div  id="scroll"></div>
+      </>
   );
 };
 

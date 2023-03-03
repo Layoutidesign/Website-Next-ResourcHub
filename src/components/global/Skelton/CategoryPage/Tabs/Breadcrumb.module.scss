@@ -1,0 +1,11 @@
+@import "@/GlobalStyles/helpers/variables";
+
+.breadcrumb {
+  position: relative;
+  overflow: hidden;
+  width: 40%;
+  height: 32px;
+  border-radius: 500px;
+  background-color: $darkBlueTwo;
+  margin-bottom: 30px;
+}

@@ -13,7 +13,6 @@ function Resources({
   footerContent,
   seoData,
 }) {
-  console.log(headerContent);
   return (
     <>
       <SEOHead

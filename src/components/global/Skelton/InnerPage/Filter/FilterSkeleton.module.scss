@@ -1,0 +1,27 @@
+@import "@/GlobalStyles/helpers/variables";
+
+.parent {
+  > div {
+    padding: 0 !important;
+  }
+  .filter {
+    display: flex;
+    align-items: center;
+    height: 84px;
+    padding: 10px 20px;
+    margin-bottom: 25px;
+    background-color: $darkBlueTwo;
+    border-radius: 15px;
+
+    p {
+      position: relative;
+      overflow: hidden;
+      width: 10%;
+      height: 34px;
+      background-color: $darkBlueThree;
+      border-radius: 45px;
+      margin-right: 10px;
+      margin-bottom: 0;
+    }
+  }
+}

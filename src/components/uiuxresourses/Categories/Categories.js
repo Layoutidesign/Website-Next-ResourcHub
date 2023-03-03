@@ -19,14 +19,14 @@ const Categories = ({ categories, params, categoriesData  }) => {
   const categoryTitles = categories.map((category) => category.name);
   const router = useRouter() 
   const changeCategory  = (categ) => {
-    router.push(`/resources/${categ.split(" ").join("-")}`)
+    router.push(`/resources/${categ.split(" ").join("-")}#scroll`)
   }
 
   
   return (
-    <div className={styles["categories"]}>
-      <Container>
-      <div className={styles["title"]}>
+    <div className={styles["categories"]} >
+      <Container >
+      <div className={styles["title"]} >
           <h2>
             <Link href={'/resources'}><span><u>Home</u>{" "} . {" "}</span></Link>
             {params}

@@ -9,6 +9,7 @@ import UiUxResourcesServices from '../../../services/uiUxResources.services'
 import axios from "axios";
 import InfiniteScroll from 'react-infinite-scroll-component';
 import useInfiniteScroll from "@/Hooks/useInfiniteScroll";
+import InnerPageCardSkelton from "@/components/global/Skelton/Cards/InnerPageCardSkelton/InnerPageCardSkelton";
 
 const Resources = ({ 
     innerPages, 
@@ -148,6 +149,10 @@ const Resources = ({
                 }
               })
             }
+             {showLoading &&
+            Array.from({ length: 25 }).map((_, i) => (
+              <InnerPageCardSkelton key={i} />
+            ))}
         </Masonry>
         {data&&data.length > 0 && total > websites ? (
           <div className={styles["loadMore"]}>

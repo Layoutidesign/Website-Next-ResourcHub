@@ -1,0 +1,49 @@
+@import "@/GlobalStyles/helpers/variables";
+
+.headerContent {
+  width: 100%;
+  padding-top: 80px;
+  p {
+    position: relative;
+    overflow: hidden;
+    background-color: $darkBlueThree;
+    margin-bottom: 20px;
+    border-radius: 50px;
+
+    &:first-of-type {
+      height: 60px;
+      width: 70%;
+      margin-bottom: 30px;
+    }
+
+    &:nth-of-type(2) {
+      height: 32px;
+      width: 52%;
+    }
+    &:nth-of-type(3) {
+      height: 32px;
+      width: 52%;
+      margin-bottom: 70px;
+    }
+  }
+  @media (max-width: 600px) {
+    padding-top: 50px;
+    p  {
+      &:first-of-type {
+        height: 50px;
+        width: 95%;
+        margin-bottom: 20px;
+      }
+  
+      &:nth-of-type(2) {
+        height: 32px;
+        width: 70%;
+      }
+      &:nth-of-type(3) {
+        height: 32px;
+        width: 70%;
+        margin-bottom: 70px;
+      }
+    }
+  }
+}

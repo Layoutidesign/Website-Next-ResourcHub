@@ -1,0 +1,33 @@
+@import "@/GlobalStyles/helpers/variables";
+
+.tabsSkeleton {
+  height: auto;
+  .tab {
+    display: flex;
+    justify-content: space-between;
+    height: 62px;
+    padding: 20px 20px 20px 30px;
+    margin-bottom: 20px;
+    border-radius: 31px;
+    background-color: $darkBlueTwo;
+
+    .text {
+      position: relative;
+      overflow: hidden;
+      height: 20px;
+      width: 45%;
+      border-radius: 500px;
+
+      background-color: $darkBlueThree;
+    }
+
+    .icon {
+      position: relative;
+      overflow: hidden;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: $darkBlueThree;
+    }
+  }
+}
