@@ -123,12 +123,21 @@
 
 
 
+  @media (max-width: 600px) {
+      img {
+        top: 7% !important;
+      }
+      .secondContent {
+        margin-top: 45% !important;
+      } 
+  }
+
   @media (max-width: 420px) {
       img {
         top: 15% !important;
       }
       .secondContent {
-        margin-top: 55% !important;
+        margin-top:55% !important;
       } 
   }
 
