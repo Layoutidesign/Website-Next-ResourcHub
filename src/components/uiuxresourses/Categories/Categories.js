@@ -52,7 +52,7 @@ const Categories = ({ categories, params, categoriesData  }) => {
           <Col xs={12} md={8}>
             <Row className="g-4">
               {categoriesData?.subCategoeries?.map((subCategory, i) => (
-                <SubCategoryCard key={i} subCategory={subCategory} />
+                <SubCategoryCard key={i} subCategory={subCategory} params={params}/>
               ))}
             </Row>
           </Col>

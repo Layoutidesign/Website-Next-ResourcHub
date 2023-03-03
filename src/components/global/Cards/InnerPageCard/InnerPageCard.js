@@ -14,12 +14,12 @@ import {
   LovelyIcon,
 } from "@/components/global/Svgs";
 
-const InnerPageCard = ({ innerPage, handleLike, handleView }) => {
+const InnerPageCard = ({ innerPage, handleLike,reference, handleView,categoryName }) => {
   
 
   
   return (
-    <div className={styles["innerPageCard"]}>
+    <div className={styles["innerPageCard"]} ref={reference}>
       <header style={{ background: innerPage?.color }}>
         {innerPage?.star && (
           <span className={styles["Suggestions"]}>
@@ -43,9 +43,9 @@ const InnerPageCard = ({ innerPage, handleLike, handleView }) => {
       </header>
       <main>
         <ul>
-          {innerPage?.categories?.map((category, i) => (
+          {innerPage?.categories?.map((cat, i) => (
             <li key={i}>
-              <Link href={`${category.name}`}>#{category.name}</Link>
+              <Link href={`/resources/${cat.category.name.split(" ").join("-")}/${cat.name.split(" ").join("-")}`}>#{cat.name}</Link>
             </li>
           ))}
         </ul>

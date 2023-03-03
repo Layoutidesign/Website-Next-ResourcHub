@@ -104,7 +104,7 @@ const Header = () => {
     <header className={`${styles["header_layouti"]} header_layouti`}>
       <Container className=" h-100">
         <Row className="align-items-center justify-content-between h-100">
-          <Col xs="2" className="header_logo p-0">
+          <Col xs="2" className="header_logo">
             <a href="https://www.layouti.com/" target="_blank">
               {whiteActive ? (
                 <LayoutliLogoWhiteIcon />

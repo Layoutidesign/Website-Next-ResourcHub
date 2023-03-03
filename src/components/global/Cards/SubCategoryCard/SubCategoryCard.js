@@ -9,11 +9,11 @@ import styles from "./SubCategoryCard.module.scss";
 
 import { EyeIcon } from "@/components/global/Svgs";
 
-const SubCategoryCard = ({ subCategory }) => {
+const SubCategoryCard = ({ subCategory, params }) => {
   return (
     <Col xs={12} md={4}>
       <Link
-        href={`/resources/${subCategory?.Category?.name}/${subCategory?.name}`}
+        href={`/resources/${params.split(" ").join("-")}/${subCategory?.name.split(" ").join("-")}`}
         className={styles["subCategoryCard"]}
       >
         <div className={styles["imageContainer"]}>

@@ -17,9 +17,17 @@ const getSubCategoryByName = async (name, type) => {
     `https://www.resourchub-laravel.layouti.com/api/frontend/resources/category?search=${name}&status=${type}`
   );
 };
+const getPages = async (name) => {
+  return await axios.get(
+    `https://www.resourchub-laravel.layouti.com/api/frontend/resources/pages?category=${name}&status=SubCategory`
+  );
+};
 
 const getResourcesTags = async () => {
   return await axios.get(`${process.env.REACT_APP_API}/getAllTags`);
+};
+const getResourcesDetailsSeo = async () => {
+  return await axios.get(`${process.env.REACT_APP_API}/details/seo`);
 };
 
 const addResource = async (title, link) => {
@@ -55,6 +63,8 @@ const UiUxResourcesServices = {
   getSubCategoryByName,
   getUiUxResourcesHomePage,
   getUiUxResourcesFooter,
+  getPages,
+  getResourcesDetailsSeo,
   getResourcesTags,
   addResource,
   likeResource,

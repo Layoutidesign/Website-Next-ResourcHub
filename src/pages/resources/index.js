@@ -44,15 +44,13 @@ export async function getServerSideProps({ req, res }) {
   try {
     const uiUxReq = await UiUxResourcesServices.getUiUxResourcesHomePage();
     const uiUxFooterReq = await UiUxResourcesServices.getUiUxResourcesFooter();
-    const [{ data }] = await Promise.all([uiUxReq]);
-    const  footerData = await Promise.all([uiUxFooterReq]);
     return {
       props: {
-        pages: data?.data?.Pages,
-        categories: data?.data?.Categories,
-        headerContent: data?.data?.headerContent,
-        footerContent: footerData[0]?.data?.data,
-        seoData: data?.data?.seo,
+        pages: uiUxReq?.data?.data?.Pages,
+        categories: uiUxReq?.data?.data?.Categories,
+        headerContent: uiUxReq?.data?.data?.headerContent,
+        footerContent: uiUxFooterReq?.data?.data,
+        seoData: uiUxReq?.data?.data?.seo,
       },
     };
   } catch (error) {

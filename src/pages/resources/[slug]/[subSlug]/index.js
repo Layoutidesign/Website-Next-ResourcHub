@@ -7,27 +7,42 @@ import ContentHeader from "@/components/uiuxresourses/InnerPage/ContentHeader";
 import Resources from "@/components/uiuxresourses/InnerPage/Resources";
 
 import UiUxResourcesServices from "@/services/uiUxResources.services";
+import { useState } from "react";
 
-const SubSlug = ({ data, tags }) => {
- 
+const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData }) => {
+  const [showLoading, setShowLoading] = useState(false);
+  const [total, setTotal] = useState(null);
+  console.log(seoData);
+
   return (
     <>
-      <SEOHead
-        title={`${data?.Category?.name} - ${data?.name}`}
-        description="description of the page "
+     <SEOHead
+        title={seoData?.titleEn}
+        image={seoData?.image}
+        description={seoData?.descriptionEn}
+        ogImgUrl={seoData?.facebookImage}
+        keywords={seoData?.keywords}
+        ogTitle={seoData?.facebookTitleEn}
+        ogDescription={seoData?.facebookDescriptionEn}
       />
       <UiUxResources footerContent={data?.footerContent}>
         {data && (
           <>
             <ContentHeader
-              categoryName={data?.Category?.name}
-              subCategoryName={data?.name}
-              subCategoryDescription={data?.description}
+              categoryName={categoryName?.split("-").join(" ")}
+              subCategoryName={subCategoryName?.split("-").join(" ")}
+              subCategoryDescription={data?.category?.description}
+              numberOfPages={data?.pagination?.total}
             />
-
             <Resources
-              innerPages={data?.InnerPage || []}
+              innerPages={data?.pages || []}
               tags={tags ? tags : []}
+              total={data?.pagination?.total ?? 0}
+              setTotal = {setTotal}
+              showLoading={showLoading}
+              setShowLoading={setShowLoading}
+              categoryName={categoryName?.split("-").join(" ")}
+              subCategoryName={subCategoryName?.split("-").join(" ")}
             />
           </>
         )}
@@ -39,16 +54,18 @@ const SubSlug = ({ data, tags }) => {
 export async function getServerSideProps(ctx) {
   try {
     const { slug, subSlug } = ctx.params;
-    const subCategoryReq = await UiUxResourcesServices.getSubCategoryByName(
-      subSlug
+    const subCategoryReq = await UiUxResourcesServices.getPages(
+      subSlug.split("-").join(" ")
     );
     const tagsReq = await UiUxResourcesServices.getResourcesTags();
-    const [{ data }, tagsRes] = await Promise.all([subCategoryReq, tagsReq]);
-
+    const SeoData = await UiUxResourcesServices.getResourcesDetailsSeo();
     return {
       props: {
-        data: data?.data,
-        tags: tagsRes?.data?.data,
+        data: subCategoryReq?.data?.data,
+        tags: tagsReq?.data?.data,
+        categoryName: slug,
+        subCategoryName: subSlug,
+        seoData:SeoData?.data?.data
       },
     };
   } catch (error) {

@@ -41,14 +41,13 @@ export async function getServerSideProps(context) {
   try {
     const uiUxReq = await UiUxResourcesServices.getUiUxResources();
     const category = await UiUxResourcesServices.getSubCategoryByName(context?.params?.slug.split("-").join(" "), "category");
-    const catData = await Promise.all([category]);
-    const [{ data }] = await Promise.all([uiUxReq]);
+    
     return {
       props: {
-        data: data?.data,
+        data: uiUxReq?.data?.data,
         params: context?.params?.slug,
-        seoData: data?.data?.seo,
-        categories: catData[0]?.data.data
+        seoData: uiUxReq?.data?.data?.seo,
+        categories: category?.data?.data
       },
     };
   } catch (error) {
