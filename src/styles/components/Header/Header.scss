@@ -1,6 +1,6 @@
 /** @format */
 
-@import "../../helpers/_variables.scss";
+@import "@/styles/helpers/_variables.scss";
 
 .header_layouti {
   height: 110px;
@@ -115,8 +115,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      font-weight: bold;
       &:hover {
-        color: #fff !important;
+        color: #000000 !important;
         text-decoration: none;
         animation: ButtonAnimation 0.3s linear 1;
         &::before {

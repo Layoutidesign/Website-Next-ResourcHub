@@ -63,15 +63,8 @@ const HeaderTest = () => {
       } else {
         document.querySelector(".header_layouti").classList.remove("white");
       }
-
-      // if (window.scrollY > 200) {
-      //   document.querySelector(".scroll_top").style.display = "flex";
-      // } else {
-      //   document.querySelector(".scroll_top").style.display = "none";
-      // }
       offset = window.scrollY;
     };
-
     window.addEventListener("scroll", scrollFunction);
     return () => {
       window.removeEventListener("scroll", scrollFunction);
