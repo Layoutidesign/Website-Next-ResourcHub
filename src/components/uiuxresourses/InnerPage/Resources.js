@@ -171,7 +171,7 @@ const Resources = ({
           </div>
         ):null}
 
-        {data&&data.length == 0 && <div className={styles["loadMore"]}>
+        {data&&data.length == 0 && <div className={styles["empty_state"]}>
             <div style={{ color: "#fff" }}>
               <EmptyIcon />
             </div>

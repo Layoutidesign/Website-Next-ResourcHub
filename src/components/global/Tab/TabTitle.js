@@ -18,7 +18,7 @@ const TabTitle = ({ text, index, setActiveTab, activeTab }) => {
       onClick={() => handleClick(text)}
     >
       {text}
-      {text === activeTab ? <RightArrowDarkIcon /> : <RightArrowLightIcon />}
+      {text.toLowerCase() === activeTab ? <RightArrowDarkIcon /> : <RightArrowLightIcon />}
     </li>
   );
 };

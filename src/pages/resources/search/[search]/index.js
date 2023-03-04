@@ -24,7 +24,7 @@ const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData }) => {
         ogTitle={seoData?.facebookTitleEn}
         ogDescription={seoData?.facebookDescriptionEn}
       />
-      <UiUxResources footerContent={data?.footerContent}>
+      <UiUxResources footerContent={data?.footerContent} footer={true}>
         {data && (
           <>
             <ContentHeader

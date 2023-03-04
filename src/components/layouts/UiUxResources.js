@@ -9,7 +9,7 @@ import WorkTogetherSection from "../resources/WorkTogetherSection/WorkTogetherSe
 import WorkTogetherPopup from "../global/Popups/WorkTogetherPopup/WorkTogetherPopup";
 import SuccessPopup from "../global/Popups/SuccessPopup/SuccessPopup";
 
-const UiUxResources = ({ children, footerContent }) => {
+const UiUxResources = ({ children, footerContent, footer }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
@@ -34,11 +34,11 @@ const UiUxResources = ({ children, footerContent }) => {
         setShowSuccessPopup={setShowSuccessPopup}
         text="Thank you for submitting this resource and assisting us. Gather these websites to assist other designers in their work."
       />
-      <WorkTogetherSection
+       {!footer&&<WorkTogetherSection
         setShowPopup={setShowPopup}
         title={footerContent?.title}
         description={footerContent?.description}
-      />
+      />}
       <Footer />
     </>
   );

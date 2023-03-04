@@ -15,7 +15,8 @@
         border-radius: 65px;
         background-color: transparent;
         border: 1px solid $inputColor;
-        outline: none;
+        outline:none;
+        transition: all 0.1s ease-in-out;
         font-weight: 400;
         font-size: 16px;
         line-height: 30px;
@@ -23,6 +24,9 @@
         padding-left: 80px;
         &::placeholder {
             color: $inputColor;
+        }
+        &:focus {
+            border: 2px solid $neonGreen;
         }
     }
     .search_icon {

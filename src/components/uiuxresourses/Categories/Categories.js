@@ -27,8 +27,7 @@ const Categories = ({ categories, params, categoriesData  }) => {
   return (
     <div className={styles["categories"]} >
       <Container className="mt-md-4">
-        
-        <Row> 
+        <Row className="align-items-center"> 
           <Col md={4}>
               <div className={styles["title"]} >
                 <h2>
