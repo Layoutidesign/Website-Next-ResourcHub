@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { 
     Container,
     Row,
@@ -10,7 +10,11 @@ import styles from './searchbar.module.scss'
 const MobileSearch = ({setSearch, search}) => {
     const router = useRouter()
     const [searchData, setSearchData] = useState("");
-    
+    const inputRef = useRef() 
+
+    useEffect(() => {
+        inputRef.current.focus()
+    }, [])
     return (
         <>
             {search&& <div className={styles[`searchbar`]}>
@@ -19,6 +23,7 @@ const MobileSearch = ({setSearch, search}) => {
                     <Col  className="p-0 h-100 d-flex align-items-center">
                         <input
                             type='text'
+                            ref={inputRef}
                             className='h-50 border-0 shadow-none'
                             placeholder='Search on any resources design tools or Inspiration'
                             value={searchData}  
