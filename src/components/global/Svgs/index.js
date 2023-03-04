@@ -28,3 +28,4 @@ export { default as SuccessIcon } from "./Success.svg";
 export { default as SuccessForMobileIcon } from "./SuccessForMobile.svg";
 export { default as SearchIcon } from "./search-normal.svg";
 export { default as TestIcon } from "./TestIcon.svg";
+export { default as EmptyIcon } from "./empty.svg";

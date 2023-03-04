@@ -10,7 +10,7 @@ import axios from "axios";
 import InfiniteScroll from 'react-infinite-scroll-component';
 import useInfiniteScroll from "@/Hooks/useInfiniteScroll";
 import InnerPageCardSkelton from "@/components/global/Skelton/Cards/InnerPageCardSkelton/InnerPageCardSkelton";
-import { SearchIcon } from "@/components/global/Svgs";
+import { EmptyIcon, SearchIcon } from "@/components/global/Svgs";
 import DesktopSearch from "@/components/global/Search/DesktopSearch/DesktopSearch";
 
 const Resources = ({ 
@@ -57,8 +57,7 @@ const Resources = ({
       return ;
     } else {
       axios.get(
-        `https://www.resourchub-laravel.layouti.com/api/frontend/resources/pages?${`search=${subCategoryName.split("-").join(" ")}`
-        }${filter.map((tag, i) => `&tags[${i}]=${tag}`).join("")}`
+        `https://www.resourchub-laravel.layouti.com/api/frontend/resources/pages?${`search=${subCategoryName.split("-").join(" ")}`}${filter.map((tag, i) => `&tags[${i}]=${tag}`).join("")}`
       ).then((res) => {
         setData(res?.data?.data?.pages);
         setTotal(res.data.data?.pagination?.total)
@@ -173,7 +172,7 @@ const Resources = ({
 
         {data&&data.length == 0 && <div className={styles["loadMore"]}>
             <div style={{ color: "#fff" }}>
-              No websites are available right now!
+              <EmptyIcon />
             </div>
           </div>}
       </Container>

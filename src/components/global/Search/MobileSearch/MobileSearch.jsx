@@ -18,7 +18,7 @@ const MobileSearch = ({setSearch, search}) => {
                 <Row className='h-100'>
                     <Col  className="p-0 h-100 d-flex align-items-center">
                         <input
-                            type='search'
+                            type='text'
                             className='h-50 border-0 shadow-none'
                             placeholder='Search on any resources design tools or Inspiration'
                             value={searchData}  

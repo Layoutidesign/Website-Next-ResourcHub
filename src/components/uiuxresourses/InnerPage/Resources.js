@@ -10,7 +10,7 @@ import axios from "axios";
 import InfiniteScroll from 'react-infinite-scroll-component';
 import useInfiniteScroll from "@/Hooks/useInfiniteScroll";
 import InnerPageCardSkelton from "@/components/global/Skelton/Cards/InnerPageCardSkelton/InnerPageCardSkelton";
-import { SearchIcon } from "@/components/global/Svgs";
+import { EmptyIcon, SearchIcon } from "@/components/global/Svgs";
 import DesktopSearch from "@/components/global/Search/DesktopSearch/DesktopSearch";
 
 const Resources = ({ 
@@ -173,7 +173,7 @@ const Resources = ({
 
         {data&&data.length == 0 && <div className={styles["loadMore"]}>
             <div style={{ color: "#fff" }}>
-              No websites are available right now!
+              <EmptyIcon />
             </div>
           </div>}
       </Container>
