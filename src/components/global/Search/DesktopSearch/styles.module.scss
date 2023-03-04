@@ -1,0 +1,54 @@
+@import "@/styles/helpers/_variables.scss";
+
+
+.desktop_search {
+    margin-bottom: 30px;
+    position: relative;
+    @media (max-width: 600px) {
+        display: none;
+    }
+    input { 
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 70px;
+        border-radius: 65px;
+        background-color: transparent;
+        border: 1px solid $inputColor;
+        outline: none;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 30px;
+        color: #fff;
+        padding-left: 80px;
+        &::placeholder {
+            color: $inputColor;
+        }
+    }
+    .search_icon {
+        position: absolute;
+        left:  35px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 60px;
+    }
+    .search_button {
+        position: absolute;
+        right:  12px;
+        top: 50%;
+        height: 100%;
+        transform: translateY(-50%);
+        width: 23%;
+        border-radius: 65px;
+        background-color: $neonGreen;
+        color: $darkBlueOne;
+        font-weight: 700;
+        border: none;
+        font-size: 20px;
+        line-height: 37px;
+        transition: all 0.2s linear;
+        &:hover { 
+            background-color: $DarkNeonGreen;
+        }
+    }
+}

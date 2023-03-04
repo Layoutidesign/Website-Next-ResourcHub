@@ -12,7 +12,7 @@ const ContentHeader = ({
 }) => {
  
   return (
-    <div className={styles["contentHeader"]} >
+    <div className={styles["contentHeader"]} style={!subCategoryDescription?{paddingBottom: 0}: {paddingBottom: "80px"}}>
       <Container className="">
         <Row>
           <Col>

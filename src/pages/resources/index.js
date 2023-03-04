@@ -32,6 +32,7 @@ function Resources({
           subTitle={headerContent?.subTitle}
           subDescription={headerContent?.subDescription}
         />
+        
         <Categories categories={categories ? categories : []} />
         <LatestResources resources={pages || []} />
       </UiUxResources>

@@ -61,7 +61,7 @@ const InnerPageCard = ({ innerPage, handleLike,reference, handleView,categoryNam
       </main>
       <footer>
         <ul>
-          <li onClick={() => handleView(innerPage?.id)}>
+          <li>
             <EyeIcon />
             <p>{innerPage.viwers}</p>
           </li>

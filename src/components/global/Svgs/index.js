@@ -2,6 +2,8 @@
 
 export { default as LayoutiLogoDarkIcon } from "./LayoutiLogoDark.svg";
 export { default as LayoutliLogoWhiteIcon } from "./LayoutliLogoWhite.svg";
+export { default as NewLogoDark } from "./newLogoDark.svg";
+export { default as NewLogoWhite } from "./newLogoWhite.svg";
 export { default as MenuWhiteIcon } from "./MenuWhite.svg";
 export { default as MenuDarkIcon } from "./MenuDark.svg";
 export { default as RightArrowDarkIcon } from "./RightArrowDark.svg";
@@ -24,5 +26,5 @@ export { default as CloseIcon } from "./Close.svg";
 export { default as LinkForInputIcon } from "./LinkForInput.svg";
 export { default as SuccessIcon } from "./Success.svg";
 export { default as SuccessForMobileIcon } from "./SuccessForMobile.svg";
-
+export { default as SearchIcon } from "./search-normal.svg";
 export { default as TestIcon } from "./TestIcon.svg";

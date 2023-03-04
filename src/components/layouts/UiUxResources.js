@@ -23,7 +23,6 @@ const UiUxResources = ({ children, footerContent }) => {
       <Header />
       <Sidebar />
       <main>{children}</main>
-
       <ScrollTop />
       <WorkTogetherPopup
         showPopup={showPopup}

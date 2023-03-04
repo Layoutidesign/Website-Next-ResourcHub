@@ -14,6 +14,7 @@ import Link from "next/link";
 import axios from "axios";
 import UiUxResourcesServices from "@/services/uiUxResources.services";
 import { useRouter } from "next/router";
+import DesktopSearch from "@/components/global/Search/DesktopSearch/DesktopSearch";
 
 const Categories = ({ categories, params, categoriesData  }) => {
   const categoryTitles = categories.map((category) => category.name);
@@ -26,13 +27,20 @@ const Categories = ({ categories, params, categoriesData  }) => {
   return (
     <div className={styles["categories"]} >
       <Container >
-      <div className={styles["title"]} >
-          <h2>
-            <Link href={'/resources'}><span><u>Home</u>{" "} . {" "}</span></Link>
-            {params}
-          </h2>
-        </div>
-
+        
+        <Row> 
+          <Col md={4}>
+              <div className={styles["title"]} >
+                <h2>
+                  <Link href={'/resources'}><span><u>Home</u>{" "} . {" "}</span></Link>
+                  {params}
+                </h2>
+              </div>
+          </Col>
+          <Col md={8}>
+              <DesktopSearch width={"30%"}/> 
+          </Col>
+        </Row>
         <Row className="gx-1 justify-content-between">
           <div  className={`${styles["tab_left"]} tab_left p-0 d-none d-md-block`}>
             <TabHeader

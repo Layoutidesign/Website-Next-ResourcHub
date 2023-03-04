@@ -11,7 +11,7 @@
   left: 0;
   width: 100%;
   transition: all 0.2s ease-in-out;
-  z-index: 4000;
+  z-index: 999999;
   &.active {
     top: -110px;
   }

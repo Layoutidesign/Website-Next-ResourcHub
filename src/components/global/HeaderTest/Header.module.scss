@@ -6,12 +6,13 @@
   height: 110px;
   border-bottom: 1px solid#192b49;
   background-color: transparent;
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
   transition: all 0.2s ease-in-out;
   z-index: 4000;
+
   &.active {
     top: -110px;
   }

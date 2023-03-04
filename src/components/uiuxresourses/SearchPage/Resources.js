@@ -30,7 +30,7 @@ const Resources = ({
   const [getMore, setGetMore] = useState(null);
   const [scroll, setScroll] = useState(2);
 
-
+ 
   const handleLoadMore = () => {
     setInnerPageNum((prevInnerNum) => prevInnerNum + 8);
   };
@@ -57,7 +57,7 @@ const Resources = ({
       return ;
     } else {
       axios.get(
-        `https://www.resourchub-laravel.layouti.com/api/frontend/resources/pages?${`category=${subCategoryName.split("-").join(" ")}&status=SubCategory`
+        `https://www.resourchub-laravel.layouti.com/api/frontend/resources/pages?${`search=${subCategoryName.split("-").join(" ")}`
         }${filter.map((tag, i) => `&tags[${i}]=${tag}`).join("")}`
       ).then((res) => {
         setData(res?.data?.data?.pages);
@@ -72,7 +72,7 @@ const Resources = ({
     if(filter.length == 0 && scroll <= 3){
       setShowLoading(true);
       axios.get(
-        `https://www.resourchub-laravel.layouti.com/api/frontend/resources/pages?category=${subCategoryName}&status=SubCategory&page=${scroll}`
+        `https://www.resourchub-laravel.layouti.com/api/frontend/resources/pages?search=${subCategoryName}&page=${scroll}`
       ).then((res) => {
         setData((current) => [...current,...res?.data?.data?.pages]);
         setShowLoading(false);
@@ -80,7 +80,7 @@ const Resources = ({
     }else if(scroll <= 3){
       setShowLoading(true);
       axios.get(
-        `$https://www.resourchub-laravel.layouti.com/api/frontend/resources/pages?${`category=${subCategoryName}&status=SubCategory&page=${scroll}`
+        `$https://www.resourchub-laravel.layouti.com/api/frontend/resources/pages?${`search=${subCategoryName}&page=${scroll}`
         }${filter.map((tag, i) => `&tags[${i}]=${tag}`).join("")}`
       ).then((res) => {
         setShowLoading(false);
