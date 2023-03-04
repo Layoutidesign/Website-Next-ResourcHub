@@ -9,7 +9,7 @@ import Resources from "@/components/uiuxresourses/SearchPage/Resources";
 import UiUxResourcesServices from "@/services/uiUxResources.services";
 import { useState } from "react";
 
-const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData }) => {
+const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData, footer }) => {
   const [showLoading, setShowLoading] = useState(false);
   const [total, setTotal] = useState(null);
   console.log(data);
@@ -24,7 +24,7 @@ const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData }) => {
         ogTitle={seoData?.facebookTitleEn}
         ogDescription={seoData?.facebookDescriptionEn}
       />
-      <UiUxResources footerContent={data?.footerContent} footer={true}>
+      <UiUxResources footerContent={footer}>
         {data && (
           <>
             <ContentHeader
@@ -56,12 +56,16 @@ export async function getServerSideProps(ctx) {
     const subCategoryReq = await UiUxResourcesServices.getSearch(search);
     const tagsReq = await UiUxResourcesServices.getResourcesTags();
     const SeoData = await UiUxResourcesServices.getResourcesDetailsSeo();
+    const footer = await UiUxResourcesServices.getFooter();
+
     return {
       props: {
         data: subCategoryReq?.data?.data,
         tags: tagsReq?.data?.data,
         seoData:SeoData?.data?.data,
-        subCategoryName: search
+        subCategoryName: search,
+        footer: footer?.data?.data
+
       },
     };
   } catch (error) {

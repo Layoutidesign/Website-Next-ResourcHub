@@ -9,10 +9,10 @@ import Resources from "@/components/uiuxresourses/InnerPage/Resources";
 import UiUxResourcesServices from "@/services/uiUxResources.services";
 import { useState } from "react";
 
-const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData }) => {
+const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData, footer }) => {
   const [showLoading, setShowLoading] = useState(false);
   const [total, setTotal] = useState(null);
-
+  console.log(footer);
   return (
     <>
      <SEOHead
@@ -24,7 +24,7 @@ const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData }) => {
         ogTitle={seoData?.facebookTitleEn}
         ogDescription={seoData?.facebookDescriptionEn}
       />
-      <UiUxResources footerContent={data?.footerContent}>
+      <UiUxResources footerContent={footer}>
         {data && (
           <>
             <ContentHeader
@@ -58,13 +58,16 @@ export async function getServerSideProps(ctx) {
     );
     const tagsReq = await UiUxResourcesServices.getResourcesTags();
     const SeoData = await UiUxResourcesServices.getResourcesDetailsSeo();
+    const footer = await UiUxResourcesServices.getFooter();
+
     return {
       props: {
         data: subCategoryReq?.data?.data,
         tags: tagsReq?.data?.data,
         categoryName: slug,
         subCategoryName: subSlug,
-        seoData:SeoData?.data?.data
+        seoData:SeoData?.data?.data,
+        footer: footer?.data?.data
       },
     };
   } catch (error) {

@@ -8,7 +8,7 @@ import UiUxResources from "@/components/layouts/UiUxResources";
 import FirstContentSection from "@/components/uiuxresourses/Content/FirstContentSection";
 import Categories from "@/components/uiuxresourses/Categories/Categories";
 
-function Slug({ data, params, seoData, categories }) {
+function Slug({ data, params, seoData, categories, footer }) {
   
   return (
     <>
@@ -20,7 +20,7 @@ function Slug({ data, params, seoData, categories }) {
         ogTitle={seoData?.facebookTitleEn}
         ogDescription={seoData?.facebookDescriptionEn}
       />
-      <UiUxResources footerContent={data?.footerContent}>
+      <UiUxResources footerContent={footer}>
         {data && (
           <>
             <FirstContentSection
@@ -41,13 +41,15 @@ export async function getServerSideProps(context) {
   try {
     const uiUxReq = await UiUxResourcesServices.getUiUxResources();
     const category = await UiUxResourcesServices.getSubCategoryByName(context?.params?.slug.split("-").join(" "), "category");
-    
+    const footer = await UiUxResourcesServices.getFooter();
+    console.log(footer.data.data);
     return {
       props: {
         data: uiUxReq?.data?.data,
         params: context?.params?.slug,
         seoData: uiUxReq?.data?.data?.seo,
-        categories: category?.data?.data
+        categories: category?.data?.data,
+        footer: footer?.data?.data
       },
     };
   } catch (error) {

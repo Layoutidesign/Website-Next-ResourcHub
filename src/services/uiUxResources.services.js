@@ -29,6 +29,12 @@ const getSearch = async (name) => {
   );
 };
 
+const getFooter = async () => {
+  return await axios.get(
+    `https://www.resourchub-laravel.layouti.com/api/frontend/resources/footer`
+  );
+};
+
 
 const getResourcesTags = async () => {
   return await axios.get(`${process.env.REACT_APP_API}/getAllTags`);
@@ -76,6 +82,7 @@ const UiUxResourcesServices = {
   addResource,
   likeResource,
   ViewrsResource,
+  getFooter,
   getSearch
 };
 
