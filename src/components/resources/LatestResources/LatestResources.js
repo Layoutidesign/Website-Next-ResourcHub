@@ -37,7 +37,7 @@ const LatestResources = ({ resources }) => {
             <InnerPageCard innerPage={innerPage} key={innerPage?.id || i} handleLike={handleLike} handleView={handleView}/>
           ))}
         </Masonry>
-        <Link className={styles["link"]} href="/resources/User Interface (UI)">
+        <Link className={styles["link"]} href="/resources/tools">
           View Additional Resources
         </Link>
       </Container>
