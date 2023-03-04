@@ -13,7 +13,7 @@ const SubCategoryCard = ({ subCategory, params }) => {
   return (
     <Col xs={12} md={4}>
       <Link
-        href={`/resources/${params.split(" ").join("-")}/${subCategory?.name.split(" ").join("-")}`}
+        href={`/resources/${params.toLowerCase().split(" ").join("-")}/${subCategory?.name.toLowerCase().split(" ").join("-")}`}
         className={styles["subCategoryCard"]}
       >
         <div className={styles["imageContainer"]}>

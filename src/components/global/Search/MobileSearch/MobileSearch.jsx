@@ -29,7 +29,7 @@ const MobileSearch = ({setSearch, search}) => {
                             value={searchData}  
                             onChange={(e) => 
                                 setSearchData(e.target.value)}
-                            onKeyDown={event =>(event.key === 'Enter' || event.keyCode === 13 || event.keyCode === 10)&&(router.push(`/resources/search/${searchData.split(" ").join("-")}`),setSearch(false))}
+                            onKeyDown={event =>(event.key === 'Enter' || event.keyCode === 13 || event.keyCode === 10)&&(router.push(`/resources/search/${searchData.toLowerCase().split(" ").join("-")}`),setSearch(false))}
                         />
                     </Col>
                 </Row>

@@ -14,7 +14,7 @@ const TabTitle = ({ text, index, setActiveTab, activeTab }) => {
 
   return (
     <li
-      className={`${text === activeTab ? styles["active"] : ""}`}
+      className={`${text.toLowerCase() === activeTab ? styles["active"] : ""}`}
       onClick={() => handleClick(text)}
     >
       {text}

@@ -82,21 +82,23 @@ const HeaderTest = () => {
       
         <Row className="align-items-center justify-content-between h-100">
           <Col xs="3" className="header_logo">
+            <Link href="/resources" >
             <Row className="align-items-center">
               <Col xs={2}>
-                <Link href="/resources" >
+                
                 {whiteActive ? (
                   <NewLogoDark />
                 ) : (
                   <NewLogoWhite />
                 )}
                 
-                </Link>
+               
               </Col>
               <Col>
-                  <h1 className={`fs-4 text-${whiteActive?"white":"black"} m-0 p-0 mx-4 d-md-block d-none`}>ResourcHub</h1>
+                  <h1 className={`fs-5 text-${whiteActive?"white":"black"} m-0 p-0 mx-4 d-md-block d-none`}>ResourcHub</h1>
               </Col>
             </Row>
+              </Link>
           </Col>
           <Col xs={8} className="d-none d-lg-block">
             <Row

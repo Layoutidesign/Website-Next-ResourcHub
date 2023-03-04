@@ -20,13 +20,13 @@ const Categories = ({ categories, params, categoriesData  }) => {
   const categoryTitles = categories.map((category) => category.name);
   const router = useRouter() 
   const changeCategory  = (categ) => {
-    router.push(`/resources/${categ.split(" ").join("-")}#scroll`)
+    router.push(`/resources/${categ.toLowerCase().split(" ").join("-")}#scroll`)
   }
 
   
   return (
     <div className={styles["categories"]} >
-      <Container >
+      <Container className="mt-md-4">
         
         <Row> 
           <Col md={4}>

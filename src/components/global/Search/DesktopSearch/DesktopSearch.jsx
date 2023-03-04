@@ -22,7 +22,7 @@ const DesktopSearch = ({width}) => {
             />
         </Col>
         <SearchIcon className={styles["search_icon"]}/>
-        <button className={styles["search_button"]} style={width&&{width}} onClick={() => router.push(`/resources/search/${search.split(" ").join("-")}`)} >
+        <button className={styles["search_button"]} style={width&&{width}} onClick={() => router.push(`/resources/search/${search.toLowerCase().split(" ").join("-")}`)} >
             Search
         </button>
     </Row>
