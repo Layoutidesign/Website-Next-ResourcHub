@@ -74,7 +74,7 @@
       width: 0%;
       height: 2px;
       top: 80%;
-      background-color: #3aaa35;
+      background-color: #26e71e;
       left: 0;
       transition: all 0.3s;
     }
@@ -82,14 +82,14 @@
       color: #fff;
     }
     &:hover {
-      color: #3aaa35 !important;
+      color: #26e71e !important;
       text-decoration: none !important;
       &::before {
         width: 100%;
       }
     }
     &.active {
-      color: #3aaa35 !important;
+      color: #26e71e !important;
       text-decoration: none !important;
       font-weight: 700;
       &::before {
@@ -98,7 +98,7 @@
         width: 100%;
         height: 2px;
         top: 80%;
-        background-color: #3aaa35;
+        background-color: #26e71e;
         left: 0;
       }
     }
@@ -171,5 +171,33 @@
   }
   .toggle-btn--lang.dark-Lang {
     color: #000;
+  }
+}
+
+
+
+.nav_item_link_social {
+  font-size: 14px ;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  transition: all 0.3s linear;
+  font-weight: 500;
+  svg { 
+    path {
+      transition: all 0.3s linear;
+
+    }
+
+  }
+  &:hover { 
+    color: #26e71e !important;
+    svg { 
+      path {
+
+        fill: #26e71e !important;
+      }
+
+    }
   }
 }

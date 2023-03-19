@@ -25,14 +25,14 @@ export const navLinks = [
     url: "/resources",
     text: "Resources",
   },
-  {
-    url: "https://www.uiuxedu.com/ux-process",
-    text: "UX Process",
-  },
-  {
-    url: "https://www.uiuxedu.com/articles",
-    text: "Articles",
-  },
+  // {
+  //   url: "https://www.uiuxedu.com/ux-process",
+  //   text: "UX Process",
+  // },
+  // {
+  //   url: "https://www.uiuxedu.com/articles",
+  //   text: "Articles",
+  // },
   // {
   //   url: "/ui-book",
   //   text: "UI Book",
@@ -52,14 +52,14 @@ export const mainMenuLinks = [
     url: "/resources",
     text: "Resources",
   },
-  {
-    url: "https://www.uiuxedu.com/ux-process",
-    text: "UX Process",
-  },
-  {
-    url: "https://www.uiuxedu.com/articles",
-    text: "Articles",
-  },
+  // {
+  //   url: "https://www.uiuxedu.com/ux-process",
+  //   text: "UX Process",
+  // },
+  // {
+  //   url: "https://www.uiuxedu.com/articles",
+  //   text: "Articles",
+  // },
   // {
   //   text: "UX Process",
   //   url: "/ux-process",
