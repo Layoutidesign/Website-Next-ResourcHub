@@ -15,7 +15,7 @@ const CategoryCard = ({ icon, name }) => {
       <Link href={`/resources/${name.toLowerCase().split(" ").join("-")}`} className={styles["categoryCard"]}>
         <div>
           <div className={styles["imageContainer"]}>
-            <Image src={icon} width="80" height={80} alt=""/>
+            <Image src={icon} width="80" height={80} alt="resource image"/>
           </div>
         </div>
         <p>{name}</p>

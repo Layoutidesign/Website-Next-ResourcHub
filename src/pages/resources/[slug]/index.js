@@ -18,6 +18,7 @@ function Slug({ data, params, seoData, categories, footer, footerData }) {
         keywords={seoData?.keywordsEn}
         ogTitle={seoData?.facebookTitleEn}
         ogDescription={seoData?.facebookDescriptionEn}
+        favicon={footer?.navbar?.favIcon}
       />
       <UiUxResources footerContent={footer} footerData={footerData}>
         {data && (

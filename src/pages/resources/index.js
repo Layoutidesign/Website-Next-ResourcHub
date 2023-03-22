@@ -14,7 +14,7 @@ function Resources({
   seoData,
   footerData
 }) {
-  
+  console.log(footerContent);
   return (
     <>
       <SEOHead
@@ -24,7 +24,7 @@ function Resources({
         keywords={seoData?.keywordsEn}
         ogTitle={seoData?.facebookTitleEn}
         ogDescription={seoData?.facebookDescriptionEn}
-        favicon={footerContent?.navbar?.favicon}
+        favicon={footerContent?.navbar?.favIcon}
       />
         <UiUxResources footerContent={footerContent} footerData={footerData}>
         <FirstContentSectionHome

@@ -12,7 +12,7 @@ import SuccessPopup from "../global/Popups/SuccessPopup/SuccessPopup";
 const UiUxResources = ({ children, footerContent, footer, footerData }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
-
+  console.log(footerContent);
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
@@ -35,8 +35,8 @@ const UiUxResources = ({ children, footerContent, footer, footerData }) => {
       />
        {!footer&&<WorkTogetherSection
         setShowPopup={setShowPopup}
-        title={footerContent?.title}
-        description={footerContent?.description}
+        title={footerContent?.footer?.title}
+        description={footerContent?.footer?.description}
       />}
       {footerData&&<Footer  data={footerData}/>}
     </>
