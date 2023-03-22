@@ -15,6 +15,7 @@ import {
 } from "@/components/global/Svgs";
 
 const internalLinks = [
+
   {
     Image: Ui365DesignIcon,
     text: "365 UI Design",
@@ -26,17 +27,18 @@ const externalLinks = [
     Image: EToyAppIcon,
     text: "eToy App",
     url: "https://etoyapp.store/",
-  }
+  },
+  
 ];
 
-const LinkComponent = ({ Image, text, url, type }) => {
+const LinkComponent = ({ image, text, url, type }) => {
   return (
     <Row className="mb-4">
       <Col xs="9">
         <div
           className={`${styles["footer__link__row"]} d-flex align-items-center gap-4`}
         >
-          <Image />
+          <Image src={image} width={50} height={50} />
           <h3 className="m-0">{text}</h3>
         </div>
       </Col>
@@ -55,38 +57,38 @@ const LinkComponent = ({ Image, text, url, type }) => {
   );
 };
 
-const ContainerLinksComponent = ({ title, links, type }) => {
+const ContainerLinksComponent = ({ data, title }) => {
   return (
     <Col md={6}>
       <h2 className={styles["footer__external__title"]}>{title}</h2>
-      {links.map((link, i) => (
-        <LinkComponent
+
+      {data.map((link, i) => (
+      <LinkComponent
           key={i}
-          Image={link.Image}
-          text={link.text}
-          url={link.url}
-          type={type}
+          image={link.image}
+          text={link.title}
+          url={link.link}
         />
       ))}
     </Col>
   );
 };
 
-const FooterHead = () => {
+const FooterHead = ({data}) => {
   return (
-    <header>
+    <header style={{backgroundColor: data.FooterColors.firstColor, color:  data.FooterColors.fontColor}}>
       <Container>
         <Row>
           <ContainerLinksComponent
-            title="Our Products"
-            links={internalLinks}
-            type="internal"
+            
+            data={data?.FooterOurProducts}
+            title="Our Projects"
           />
 
           <ContainerLinksComponent
-            title="In-house Works"
-            links={externalLinks}
-            type="external"
+            
+            data={data?.FooterInHouseWorks}
+            title="In-house Products"
           />
         </Row>
       </Container>

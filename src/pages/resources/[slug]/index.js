@@ -8,8 +8,7 @@ import UiUxResources from "@/components/layouts/UiUxResources";
 import FirstContentSection from "@/components/uiuxresourses/Content/FirstContentSection";
 import Categories from "@/components/uiuxresourses/Categories/Categories";
 
-function Slug({ data, params, seoData, categories, footer }) {
-  
+function Slug({ data, params, seoData, categories, footer, footerData }) {
   return (
     <>
       <SEOHead
@@ -20,7 +19,7 @@ function Slug({ data, params, seoData, categories, footer }) {
         ogTitle={seoData?.facebookTitleEn}
         ogDescription={seoData?.facebookDescriptionEn}
       />
-      <UiUxResources footerContent={footer}>
+      <UiUxResources footerContent={footer} footerData={footerData}>
         {data && (
           <>
             <FirstContentSection
@@ -42,14 +41,15 @@ export async function getServerSideProps(context) {
     const uiUxReq = await UiUxResourcesServices.getUiUxResources();
     const category = await UiUxResourcesServices.getSubCategoryByName(context?.params?.slug.split("-").join(" "), "category");
     const footer = await UiUxResourcesServices.getFooter();
-    console.log(footer.data.data);
+    const FooterLinksData = await UiUxResourcesServices.getLayoutiFooter();
     return {
       props: {
         data: uiUxReq?.data?.data,
         params: context?.params?.slug,
         seoData: uiUxReq?.data?.data?.seo,
         categories: category?.data?.data,
-        footer: footer?.data?.data
+        footer: footer?.data?.data,
+        footerData: FooterLinksData?.data.data
       },
     };
   } catch (error) {

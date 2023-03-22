@@ -31,7 +31,7 @@
 .side_header {
   height: 110px;
 
-  @media only screen and (max-width: 376px) {
+  @media only screen and (max-width: 480px) {
     padding: 0 20px;
     .side_header_slug {
       display: none;
@@ -81,16 +81,7 @@
   transition: all 0.2s linear;
   line-height: 26px;
   position: relative;
-  &::before {
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    top: 50%;
-    background-color: #3aaa35;
-    left: -5%;
-    transition: all 0.3s;
-  }
+  
   &:hover {
     color: #3aaa35 !important;
     text-decoration: none !important;
@@ -105,7 +96,7 @@
       position: absolute;
       width: 110%;
       height: 2px;
-      top: 50%;
+      top: 100%;
       background-color: #3aaa35;
       left: -5%;
       transition: all 0.3s;
@@ -205,7 +196,7 @@
     position: absolute;
     width: 0%;
     height: 2px;
-    top: 50%;
+    bottom:0;
     background-color: #3aaa35;
     left: -15%;
     transition: all 0.3s;

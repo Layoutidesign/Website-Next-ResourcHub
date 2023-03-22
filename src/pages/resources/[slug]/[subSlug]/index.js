@@ -9,7 +9,7 @@ import Resources from "@/components/uiuxresourses/InnerPage/Resources";
 import UiUxResourcesServices from "@/services/uiUxResources.services";
 import { useState } from "react";
 
-const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData, footer }) => {
+const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData, footer,footerData }) => {
   const [showLoading, setShowLoading] = useState(false);
   const [total, setTotal] = useState(null);
   console.log(footer);
@@ -24,7 +24,7 @@ const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData, footer })
         ogTitle={seoData?.facebookTitleEn}
         ogDescription={seoData?.facebookDescriptionEn}
       />
-      <UiUxResources footerContent={footer}>
+      <UiUxResources footerContent={footer} footerData={footerData}>
         {data && (
           <>
             <ContentHeader
@@ -59,7 +59,7 @@ export async function getServerSideProps(ctx) {
     const tagsReq = await UiUxResourcesServices.getResourcesTags();
     const SeoData = await UiUxResourcesServices.getResourcesDetailsSeo();
     const footer = await UiUxResourcesServices.getFooter();
-
+    const FooterLinksData = await UiUxResourcesServices.getLayoutiFooter();
     return {
       props: {
         data: subCategoryReq?.data?.data,
@@ -67,7 +67,9 @@ export async function getServerSideProps(ctx) {
         categoryName: slug,
         subCategoryName: subSlug,
         seoData:SeoData?.data?.data,
-        footer: footer?.data?.data
+        footer: footer?.data?.data,
+        footerData: FooterLinksData?.data.data
+
       },
     };
   } catch (error) {

@@ -17,7 +17,8 @@ import {
 import { useState } from "react";
 import { LayoutliLogoWhiteIcon } from "../Svgs";
 
-import { otherLinks, mainMenuLinks, helpLinks } from "@/data/static-data";
+import { otherLinks, mainMenuLinks, helpLinks, layoutiLinks } from "@/data/static-data";
+import Image from "next/image";
 
 const ContainerLinksComponent = ({ title, links, type }) => {
   return (
@@ -25,7 +26,7 @@ const ContainerLinksComponent = ({ title, links, type }) => {
       <Col className={`side_navbar_one p-0`}>
         <h3 className="fs-5 fw-bolder">{title}</h3>
         <ul className={`footer_navs mt-4`}>
-          {links.map((link, i) => (
+          {links?.map((link, i) => (
             <li key={i}>
               {type === "internal" ? (
                 <Link className="footer_navs_link" href={link.url}>
@@ -59,12 +60,12 @@ const externalLinks = [
   }
 ];
 
-const LinkComponent = ({ Image, text, url, type }) => {
+const LinkComponent = ({ image, text, url, type }) => {
   return (
     <Row className="m-0 mb-4">
       <Col className="p-0">
         <div className={`footer__link__row d-flex align-items-center gap-4`}>
-          <Image />
+          <Image src={image} width={40} height={40}/>
           <h3 className="m-0">{text}</h3>
         </div>
       </Col>
@@ -83,28 +84,29 @@ const LinkComponent = ({ Image, text, url, type }) => {
   );
 };
 
-const ContainerProductsComponent = ({ title, links, type }) => {
+const ContainerProductsComponent = ({ title, data, type }) => {
   return (
     <>
       <h3 className={`footer__external__title fs-5 mb-4 fw-bolder`}>{title}</h3>
-      {links.map((link, i) => (
+      {data.map((link, i) => (
         <LinkComponent
           key={i}
-          Image={link.Image}
-          text={link.text}
-          url={link.url}
-          type={type}
+          image={link.image}
+          text={link.title}
+          url={link.link}
         />
       ))}
     </>
   );
 };
 
+
+
 const AccordionBody = ({ links, type }) => {
   return (
     <div className="accordion-body">
       <ul className="footer_navs">
-        {links.map((link) => (
+        {links?.map((link) => (
           <li key={link.url}>
             {type === "internal" ? (
               <Link className="footer_navs_link" href={link.url}>
@@ -122,15 +124,15 @@ const AccordionBody = ({ links, type }) => {
   );
 };
 
-const AccordionBodyForProducts = ({ links, type }) => {
+const AccordionBodyForProducts = ({ data, type }) => {
   return (
     <div className="accordion-body">
-      {links.map((link, i) => (
+      {data?.map((link, i) => (
         <LinkComponent
           key={i}
-          Image={link.Image}
-          text={link.text}
-          url={link.url}
+          image={link.image}
+          text={link.title}
+          url={link.link}
           type={type}
         />
       ))}
@@ -138,12 +140,13 @@ const AccordionBodyForProducts = ({ links, type }) => {
   );
 };
 
-const SidebarTest = () => {
+const SidebarTest = ({data}) => {
   const [col1, setcol1] = useState(false);
   const [col2, setcol2] = useState(false);
   const [col3, setcol3] = useState(false);
   const [col4, setcol4] = useState(false);
   const [col5, setcol5] = useState(false);
+  const [col6, setcol6] = useState(false);
 
   const t_col1 = () => {
     setcol1(!col1);
@@ -185,6 +188,15 @@ const SidebarTest = () => {
     setcol4(false);
     setcol3(false);
   };
+  const t_col6 = () => {
+    /* eslint-disable-line */
+    setcol6(!col6);
+    setcol1(false);
+    setcol2(false);
+    setcol4(false);
+    setcol3(false);
+    setcol5(false);
+  };
 
   function sideToggle() {
     document.querySelector(".sidebar").classList.toggle("active");
@@ -196,20 +208,12 @@ const SidebarTest = () => {
         <Row
           className={`side_header justify-content-between align-items-center `}
         >
-          <Col className="p-0">
+          <Col className="p-0 mt-3">
             <Row className="align-items-center flex-nowrap gap-2 m-0">
-              <Col lg={1} md={2} xs={4} className="">
+              <Col  className="">
                 <a href="https://www.layouti.com/" target="_blank">
-                  <LayoutliLogoWhiteIcon className="sidebar-menu__logo" />{" "}
+                <Image src={data.FooterContent.logo} width={200} height={75}/>{" "}
                 </a>
-              </Col>
-              <Col lg={11} md={10} xs={8} className="side_header_title">
-                <h2 className={`footer_brand m-0 fs-md-3 fs-4`}>Layouti</h2>
-                <p
-                  className={`footer_slug side_header_slug m-0 fs-md-6 fw-lighter`}
-                >
-                  Great idea, desevers great layout
-                </p>
               </Col>
             </Row>
           </Col>
@@ -219,63 +223,83 @@ const SidebarTest = () => {
             </button>
           </Col>
         </Row>
-        <Row className="m-0 gap-4">
+
+        
+        <Row className="m-0 gap-4 ">
           <Col className={`desc_foot p-0 mt-5 `}>
+            <Row className="m-0 mb-4 mt-2">
+            <Col className={`side_navbar_one p-0`}>
+              <ul className={`footer_navs`}>
+                {mainMenuLinks.map((link, i) => (
+                  <li key={i} className={"mb-4"} >
+                      <Link className="footer_navs_link fs-3 fw-bold" href={link.url}>
+                        {link.text}
+                      </Link>
+                  </li>
+                ))}
+              </ul>
+            </Col>
+          </Row>
+          </Col>
+          <Col className={`desc_foot p-0 mt-5 col-3 mx-5`}>
+            <ContainerProductsComponent
+              data={data?.FooterOurProducts}
+              title="Our Projects"
+            />
+            <ContainerProductsComponent
+             data={data?.FooterInHouseWorks}
+             title="In-house Products"
+            />
+          </Col>
+
+          <Col className={`desc_foot p-0 mt-5 mx-5`}  >
             <ContainerLinksComponent
-              links={mainMenuLinks}
-              title="Main Menu"
-              type="internal"
+              links={layoutiLinks}
+              title="Layouti"
             />
-          </Col>
-          <Col className={`desc_foot p-0 mt-5 col-4`}>
-            <ContainerProductsComponent
-              title="Our Products"
-              links={internalLinks}
-              type="internal"
-            />
-            <ContainerProductsComponent
-              title="In-house Works"
-              links={externalLinks}
-              type="external"
-            />
-          </Col>
-          <Col className={`desc_foot p-0 mt-5`}>
-            {/* <ContainerLinksComponent
+            <ContainerLinksComponent
               links={otherLinks}
               title="Other Links"
               type="internal"
             />
+           
+          </Col>
+
+          <Col className={`desc_foot p-0 mt-5`}>
+            <Row className="mb-4">
             <ContainerLinksComponent
               links={helpLinks}
               title="Help?"
               type="external"
-            /> */}
-          </Col>
-          <Col className={`desc_foot p-0 mt-5`}>
-            <Row className="mb-4">
+            />
               <Col>
-                <h3 className="fs-5 fw-bolder">Hire us</h3>
+                <h3 className="fs-5 fw-bolder">{data.FooterContent.title}</h3>
                 <ul className={`side_navs mt-4 `}>
                   <li>
                     <p className="m-0  w-70">
-                      Great ideas get more hits with great layouts. Therefore,
-                      we design.
+                    {data.FooterContent.subDescription}
                     </p>
                   </li>
                   <li className={`nav_item_btn nav_item mt-2`}>
                     {/* <a className='nav_item_link' onClick={sideToggle} href='https://365design.layouti.com/layouti-tree/' target='blank'>Reach out</a> */}
-                    <Link
+                    <a
                       className="nav_item_link"
                       onClick={sideToggle}
-                      href="/contact-us?scroll=true"
+                      href="https://layouti.com/contact-us?scroll=true"
+                      target="_blank"
                     >
                       Reach out
-                    </Link>
+                    </a>
                   </li>
                 </ul>
               </Col>
             </Row>
           </Col>
+          
+          
+
+
+          
           <Col lg={6} sm={12} className={`mobile_foot mt-4 p-0`}>
             <div className="accordion" id="accordion">
               <div className="accordion-item">
@@ -309,14 +333,13 @@ const SidebarTest = () => {
                     onClick={t_col2}
                     style={{ cursor: "pointer" }}
                   >
-                    <h3 className="fs-md-5 fs-6 m-0">Our Products</h3>
+                    <h3 className="fs-md-5 fs-6 m-0">Our Projects</h3>
                   </button>
                 </h2>
 
                 <Collapse isOpen={col2} className="accordion-collapse">
-                  <AccordionBodyForProducts
-                    links={internalLinks}
-                    type="internal"
+                <AccordionBodyForProducts
+                    data={data?.FooterOurProducts}
                   />
                 </Collapse>
               </div>
@@ -332,15 +355,34 @@ const SidebarTest = () => {
                     onClick={t_col3}
                     style={{ cursor: "pointer" }}
                   >
-                    <h3 className="fs-md-5 fs-6 m-0">In-house Works</h3>
+                    <h3 className="fs-md-5 fs-6 m-0">In-house Products</h3>
                   </button>
                 </h2>
 
                 <Collapse isOpen={col3} className="accordion-collapse">
                   <AccordionBodyForProducts
-                    links={externalLinks}
-                    type="external"
+                    data={data?.FooterInHouseWorks}
                   />
+                </Collapse>
+              </div>
+
+              <div className="accordion-item">
+                <h2 className="accordion-header" id="headingFour">
+                  <button
+                    // className={`${
+                    //   styles[("accordion-button-footer", " accordion-button")]
+                    // } fw-medium collapsed: ${!col2} `}
+                    className={classnames("fw-medium", { collapsed: !col4 })}
+                    type="button"
+                    onClick={t_col6}
+                    style={{ cursor: "pointer" }}
+                  >
+                    <h3 className="fs-md-5 fs-6 m-0">Layouti</h3>
+                  </button>
+                </h2>
+
+                <Collapse isOpen={col6} className="accordion-collapse">
+                  <AccordionBody links={layoutiLinks} type="internal" />
                 </Collapse>
               </div>
 

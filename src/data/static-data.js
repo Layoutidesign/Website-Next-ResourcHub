@@ -25,39 +25,23 @@ export const navLinks = [
     url: "/resources",
     text: "Resources",
   },
-  // {
-  //   url: "https://www.uiuxedu.com/ux-process",
-  //   text: "UX Process",
-  // },
-  // {
-  //   url: "https://www.uiuxedu.com/articles",
-  //   text: "Articles",
-  // },
-  // {
-  //   url: "/ui-book",
-  //   text: "UI Book",
-  // },
-  // {
-  //   url: "/academy",
-  //   text: "Academy",
-  // },
+  
 ];
 
 export const mainMenuLinks = [
-  // {
-  //   text: "Home",
-  //   url: "/",
-  // },
   {
-    url: "/resources",
+    text: "Home",
+    url: "/",
+  },
+  {
+    url: "/resource",
     text: "Resources",
   },
   // {
-  //   url: "https://www.uiuxedu.com/ux-process",
-  //   text: "UX Process",
-  // },
-  // {
-  //   url: "https://www.uiuxedu.com/articles",
+  //   url: "/ux-process",
+  //   text: "Desgin Process",
+  // },{
+  //   url: "/articles",
   //   text: "Articles",
   // },
   // {
@@ -84,41 +68,69 @@ export const mainMenuLinks = [
 
 export const otherLinks = [
   {
+    text: "365 Design",
+    url: "#",
+  },
+  {
     text: "UI Generator",
-    url: "/uiavatar",
+    url: "#",
   },
   {
     text: "Content Generator",
-    url: "/uiavatar/contentgenerator",
+    url: "#",
   },
   {
     text: "Links",
-    url: "/365design/links",
+    url: "#",
   },
   {
     text: "Products",
-    url: "/365design/products",
+    url: "#",
   },
   {
     text: "CV 2022",
-    url: "/365design/CV2022",
-  },
-  {
-    text: "Resources",
-    url: "/resources",
+    url: "#",
   },
 ];
 
 export const helpLinks = [
   {
     text: "Term & Condition",
-    url: "https://layouti.com/terms-of-use/",
+    url: "#",
   },
   {
     text: "Sitemap",
-    url: "/",
+    url: "#",
   },
 ];
+
+
+export const layoutiLinks = [
+  {
+    text: "Services",
+    url: "https://layouti.com/services",
+  },
+  {
+    text: "Projects",
+    url: "https://layouti.com/works",
+  },{
+    text: "About",
+    url: "https://layouti.com/about",
+  },{
+    text: "Blog",
+    url: "https://layouti.com/blog",
+  },{
+    text: "Contact Us",
+    url: "https://layouti.com/contact-us?scroll=true",
+  },{
+    text: "100 Things",
+    url: "https://layouti.com/100-things",
+  },
+];
+
+
+
+
 
 export const socialMediaLinks = [
   {

@@ -15,16 +15,18 @@ import {
   mainMenuLinks,
   helpLinks,
   socialMediaLinks,
+  layoutiLinks,
 } from "@/data/static-data";
+import Image from "next/image";
 
 const SocialMediaLink = ({ url, icon }) => {
   return (
     <span>
       <a href={url} target="blank">
-        <FontAwesomeIcon icon={icon} />
+        <Image src={icon} width={25} height={25}/>
       </a>
     </span>
-  );
+  );  
 };
 
 const ContainerLinksComponent = ({ title, links, type }) => {
@@ -32,12 +34,12 @@ const ContainerLinksComponent = ({ title, links, type }) => {
     <Col>
       <Row>
         <Col>
-          <h3 className="fs-5 fw-bolder">{title}</h3>
+          <h3 className="fs-4 fw-bolder">{title}</h3>
           <ul className={styles["footer_navs"]}>
             {links.map((link, i) => (
               <li key={i}>
                 {type === "internal" ? (
-                  <Link className={styles["footer_navs_link"]} href={link.url}>
+                  <Link className={styles["footer_navs_link"]} href={link.url} >
                     {link.text}
                   </Link>
                 ) : (
@@ -57,6 +59,9 @@ const ContainerLinksComponent = ({ title, links, type }) => {
     </Col>
   );
 };
+
+
+
 
 const AccordionBody = ({ links, type }) => {
   return (
@@ -80,10 +85,11 @@ const AccordionBody = ({ links, type }) => {
   );
 };
 
-const FooterContainer = () => {
+const FooterContainer = ({data}) => {
   const [col1, setcol1] = useState(false);
   const [col2, setcol2] = useState(false);
   const [col3, setcol3] = useState(false);
+  const [col4, setcol4] = useState(false);
 
   const t_col1 = () => {
     setcol1(!col1);
@@ -101,79 +107,98 @@ const FooterContainer = () => {
     setcol3(!col3);
     setcol1(false);
     setcol2(false);
-  };
+  };         
+  const t_col4 = () => {
+    setcol4(!col4);
+    setcol1(false);
+    setcol2(false);
+    setcol3(false);
+  };         
 
   return (
-    <main>
+    <>
+    {data && <main style={{backgroundColor: data?.FooterColors?.meddleColor, color:  data?.FooterColors.fontColor}}>
       <Container>
         <Row>
-          <Col lg={6} sm={12} className={styles["foot_head"]}>
+          <Col lg={5} sm={12} className={styles["foot_head"]}>
             <Row className="align-items-center flex-nowrap m-0">
               <Col lg={2} xs={3} className="p-0 ">
                 <a href="https://www.layouti.com/" target="_blank">
-                  <LayoutliLogoWhiteIcon />
+                  <Image src={data?.FooterContent?.logo} width={200} height={75}/>
                 </a>
               </Col>
-              <Col lg={10} xs={9} className="p-0">
+              {/* <Col lg={10} xs={9} className="p-0">
                 <h2 className={`${styles["footer_brand"]} m-0 fs-3`}>
-                  Layouti
+                  {data.FooterContent.name}
                 </h2>
                 <p className={`${styles["footer_slug"]} m-0 fs-6 fw-lighter`}>
-                  Great idea, deservers great layout
+                  {data.FooterContent.slogan}
                 </p>
-              </Col>
+              </Col> */}
             </Row>
-            <Row className="mt-4 m-0">
+            <Row className="mt-3 m-0 ">
+              <p className={`${styles["footer_desc"]} p-0 fs-6 fw-bold`}>
+                {data?.FooterContent.slogan}
+              </p>
+            </Row>
+            <Row className="m-0">
               <p className={`${styles["footer_desc"]} p-0 fs-6 fw-lighter`}>
-                Looking good is great. But it is just the first step, helping
-                you move your business. Indeed, these are more than just case
-                studies, it is reimagining figure business in the digital era.
+                {data?.FooterContent.description}
               </p>
             </Row>
             <Row className="mt-3 m-0">
               <div className={styles["footer_social"]}>
-                {socialMediaLinks.map((link) => (
+                {data.FooterSocialMedia.map((link) => (
                   <SocialMediaLink
                     key={link.url}
-                    url={link.url}
-                    icon={link.icon}
+                    url={link.link}
+                    icon={link.image}
                   />
                 ))}
               </div>
             </Row>
           </Col>
-          <Col lg={6} sm={12} className={styles["desc_foot"]}>
+          <Col lg={7} sm={12} className={styles["desc_foot"]}>
             <Row>
-              {
                 <>
                   <ContainerLinksComponent
                     links={mainMenuLinks}
                     title="Main Menu"
                     type="internal"
                   />
-                  {/* <ContainerLinksComponent
+                </>
+                <>
+                  <ContainerLinksComponent
+                    links={layoutiLinks}
+                    title="Layouti"
+                  />
+                </>
+                <>
+                  <ContainerLinksComponent
                     links={otherLinks}
                     title="Other Links"
-                    type="internal"
                   />
+                </>
+               
+                <>
                   <ContainerLinksComponent
                     links={helpLinks}
                     title="Help?"
-                    type="external"
-                  /> */}
+                  />
                 </>
-              }
             </Row>
           </Col>
+
+          
+
+
+
 
           <Col lg={6} sm={12} className={`${styles["mobile_foot"]} mt-4 p-0`}>
             <div className="accordion" id="accordion">
               <div className={styles["accordion-item"]}>
                 <h2 className="accordion-header" id="headingOne">
                   <button
-                    // className={`${
-                    //   styles[("accordion-button-footer", " accordion-button")]
-                    // } fw-medium collapsed: ${!col1} `}
                     className={classnames("fw-medium", { collapsed: !col1 })}
                     type="button"
                     onClick={t_col1}
@@ -188,12 +213,26 @@ const FooterContainer = () => {
                 </Collapse>
               </div>
 
+
               <div className={styles["accordion-item"]}>
                 <h2 className="accordion-header" id="headingTwo">
                   <button
-                    // className={`${
-                    //   styles[("accordion-button-footer", " accordion-button")]
-                    // } fw-medium collapsed: ${!col2} `}
+                    className={classnames("fw-medium", { collapsed: !col4 })}
+                    type="button"
+                    onClick={t_col4}
+                    style={{ cursor: "pointer" }}
+                  >
+                    <h3 className="fs-md-5 fs-6 m-0">Layouti</h3>
+                  </button>
+                </h2>
+                <Collapse isOpen={col4} className="accordion-collapse">
+                  <AccordionBody links={layoutiLinks} type="internal" />
+                </Collapse>
+              </div>
+
+              <div className={styles["accordion-item"]}>
+                <h2 className="accordion-header" id="headingTwo">
+                  <button
                     className={classnames("fw-medium", { collapsed: !col2 })}
                     type="button"
                     onClick={t_col2}
@@ -211,9 +250,6 @@ const FooterContainer = () => {
               <div className={styles["accordion-item"]}>
                 <h2 className="accordion-header" id="headingThree">
                   <button
-                    // className={`${
-                    //   styles[("accordion-button-footer", " accordion-button")]
-                    // } fw-medium collapsed: ${!col3} `}
                     className={classnames("fw-medium", { collapsed: !col3 })}
                     type="button"
                     onClick={t_col3}
@@ -230,7 +266,7 @@ const FooterContainer = () => {
           </Col>
         </Row>
       </Container>
-    </main>
+    </main>}</>
   );
 };
 

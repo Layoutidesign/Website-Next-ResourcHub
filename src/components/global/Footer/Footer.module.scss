@@ -35,21 +35,11 @@
       align-items: center;
       justify-content: center;
       color: #fff !important;
-      border: 2px solid $buttonBackgroundColor;
+      border: 1px solid #3aaa35;
       transition: all 0.2s linear;
       margin-right: 20px;
-      >svg {
-        path { 
-          transition: all 0.2s linear;
-        }
-      }
       &:hover {
         background-color: $buttonBackgroundColor;
-         >svg {
-          path { 
-            fill: $darkBlueOne !important;
-          }
-        }
       }
       @media only screen and (max-width: 600px) {
         margin-right: 0;
@@ -86,7 +76,7 @@
     }
 
     .footer_desc {
-      width: 50% !important;
+      width: 80% !important;
       @media only screen and (max-width: 600px) {
         width: 90% !important;
       }
@@ -118,7 +108,7 @@
           background-color: $buttonBackgroundColor;
           color: $buttonColor;
           svg {
-            color: $darkBlueOne;
+            color: white;
           }
         }
       }
@@ -143,14 +133,14 @@
       font-size: 16px;
       font-weight: 400;
       transition: all 0.2s linear;
-      line-height: 26px;
+      line-height: 32px;
       position: relative;
       &::before {
         content: "";
         position: absolute;
         width: 0%;
         height: 2px;
-        top: 50%;
+        bottom:0;
         background-color: #3aaa35;
         left: -5%;
         transition: all 0.3s;
@@ -233,5 +223,15 @@
     @media only screen and (max-width: 600px) {
       height: 80px;
     }
+  }
+}
+
+
+.foot_container {
+  height: 100%;
+  a {
+    color: #26e71e;
+    font-weight: 600;
+    text-decoration: underline !important;
   }
 }

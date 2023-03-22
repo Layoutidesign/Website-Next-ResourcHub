@@ -24,15 +24,16 @@
 
 .sidebar_container {
   @media only screen and (max-width: 600px) {
-    padding: 20px 0 0 0 !important;
+    padding: 0 0 0 0 !important;
   }
 }
 
 .side_header {
   height: 110px;
 
-  @media only screen and (max-width: 376px) {
+  @media only screen and (max-width: 480px) {
     padding: 0 20px;
+    height: 90px;
     .side_header_slug {
       display: none;
       padding: 0;
@@ -93,7 +94,7 @@
     position: absolute;
     width: 0%;
     height: 2px;
-    top: 50%;
+    bottom: 0px;
     background-color: #3aaa35;
     left: -5%;
     transition: all 0.3s;
@@ -156,7 +157,7 @@
   color: #fff !important;
   border: 1px solid #3aaa35;
   transition: all 0.2s linear;
-  margin-right: 20px;
+  // margin-right: 20px;
   &:hover {
     background-color: $buttonBackgroundColor;
   }
@@ -300,8 +301,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: 700;
     &:hover {
-      color: #fff !important;
+      color: $buttonColor !important;
       text-decoration: none;
       animation: ButtonAnimation 0.3s linear 1;
       &::before {

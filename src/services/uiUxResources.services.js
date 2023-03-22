@@ -71,6 +71,12 @@ const ViewrsResource = async (id) => {
   );
 };
 
+
+const getLayoutiFooter = async () => {
+  return await axios.get(`https://laravel.layouti.com/api/frontend/footer`);
+};
+
+
 const UiUxResourcesServices = {
   getUiUxResources,
   getSubCategoryByName,
@@ -83,7 +89,8 @@ const UiUxResourcesServices = {
   likeResource,
   ViewrsResource,
   getFooter,
-  getSearch
+  getSearch,
+  getLayoutiFooter
 };
 
 export default UiUxResourcesServices;

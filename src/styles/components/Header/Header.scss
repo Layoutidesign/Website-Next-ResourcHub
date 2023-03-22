@@ -11,15 +11,15 @@
   left: 0;
   width: 100%;
   transition: all 0.2s ease-in-out;
-  z-index: 999999;
+  z-index: 4000;
   &.active {
     top: -110px;
   }
   &.white {
     background-color: #fff;
     border-bottom: 1px solid #344156;
-    @media only screen and (max-width: 375px) {
-      background-color: #00122f;
+    @media only screen and (max-width: 480px) {
+      // background-color: #00122f;
       .toggle-white-icon path {
         fill: white;
       }
@@ -28,8 +28,8 @@
   @media only screen and (max-width: 600px) {
     padding: 0 20px;
   }
-  @media only screen and (max-width: 375px) {
-    background-color: #00122f;
+  @media only screen and (max-width: 480px) {
+    // background-color: #00122f;
   }
 
   .navbar_one {
@@ -40,7 +40,7 @@
     align-items: center;
     margin: 0;
     li {
-      margin-right: 50px;
+      margin-right: 40px;
       &:last-child {
         margin-right: 0;
       }
@@ -68,6 +68,7 @@
     font-size: 14px;
     position: relative;
     color: #fff !important;
+    white-space: nowrap;
     &::before {
       content: "";
       position: absolute;
@@ -115,9 +116,10 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-weight: bold;
+      font-weight: 700;
+     
       &:hover {
-        color: #000000 !important;
+        color: $buttonColor !important;
         text-decoration: none;
         animation: ButtonAnimation 0.3s linear 1;
         &::before {
@@ -127,6 +129,17 @@
       @media only screen and (max-width: 600px) {
         width: 100%;
         height: 45px;
+      }
+    }
+    &.nav_item_btn_blog {
+      a {
+        background-color: transparent;
+        border: 1px solid $buttonBackgroundColor;
+        transition: all 0.2s linear;
+        &:hover {
+          color: #fff !important;
+          background-color: #1DB317;
+        }
       }
     }
   }
@@ -174,7 +187,20 @@
   }
 }
 
-
+.tabs_row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 110px;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  transition: all 0.2s ease-in-out;
+  &.active {
+      top: 0px;
+  }
+}
 
 .nav_item_link_social {
   font-size: 14px ;

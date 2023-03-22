@@ -12,7 +12,9 @@ function Resources({
   headerContent,
   footerContent,
   seoData,
+  footerData
 }) {
+  
   return (
     <>
       <SEOHead
@@ -22,8 +24,9 @@ function Resources({
         keywords={seoData?.keywordsEn}
         ogTitle={seoData?.facebookTitleEn}
         ogDescription={seoData?.facebookDescriptionEn}
+        favicon={footerContent?.navbar?.favicon}
       />
-      <UiUxResources footerContent={footerContent}>
+        <UiUxResources footerContent={footerContent} footerData={footerData}>
         <FirstContentSectionHome
           title={headerContent?.title}
           description={headerContent?.description}
@@ -32,7 +35,6 @@ function Resources({
           subTitle={headerContent?.subTitle}
           subDescription={headerContent?.subDescription}
         />
-        
         <Categories categories={categories ? categories : []} />
         <LatestResources resources={pages || []} />
       </UiUxResources>
@@ -44,6 +46,7 @@ export async function getServerSideProps({ req, res }) {
   try {
     const uiUxReq = await UiUxResourcesServices.getUiUxResourcesHomePage();
     const uiUxFooterReq = await UiUxResourcesServices.getUiUxResourcesFooter();
+    const FooterLinksData = await UiUxResourcesServices.getLayoutiFooter();
     return {
       props: {
         pages: uiUxReq?.data?.data?.Pages,
@@ -51,6 +54,7 @@ export async function getServerSideProps({ req, res }) {
         headerContent: uiUxReq?.data?.data?.headerContent,
         footerContent: uiUxFooterReq?.data?.data,
         seoData: uiUxReq?.data?.data?.seo,
+        footerData: FooterLinksData?.data.data
       },
     };
   } catch (error) {
