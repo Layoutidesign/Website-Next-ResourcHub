@@ -53,11 +53,16 @@ const addResource = async (title, link) => {
   );
 };
 
-const likeResource = async (id) => {
+const likeResource = async ({id, token}) => {
   return await axios.post(
-    `https://www.resourchub-laravel.layouti.com/api/frontend/resources/like`,
+    `https://www.resourchub-laravel.layouti.com/api/frontend/resources/pages/favourite`,
     {
       id,
+    }, {
+      headers: { 
+        'language': 'en', 
+        'Authorization': `Bearer ${token}`
+      }
     }
   );
 };

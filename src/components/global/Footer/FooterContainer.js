@@ -23,7 +23,7 @@ const SocialMediaLink = ({ url, icon }) => {
   return (
     <span>
       <a href={url} target="blank">
-        <Image src={icon} width={25} height={25}/>
+        <Image src={icon} width={25} height={25} alt='sad'/>
       </a>
     </span>
   );  
@@ -67,8 +67,8 @@ const AccordionBody = ({ links, type }) => {
   return (
     <div className={styles["accordion-body"]}>
       <ul className={styles["footer_navs"]}>
-        {links.map((link) => (
-          <li key={link.url}>
+        {links.map((link,i) => (
+          <li key={i}>
             {type === "internal" ? (
               <Link className={styles["footer_navs_link"]} href={link.url}>
                 {link.text}
@@ -124,7 +124,7 @@ const FooterContainer = ({data}) => {
             <Row className="align-items-center flex-nowrap m-0">
               <Col lg={2} xs={3} className="p-0 ">
                 <a href="https://www.layouti.com/" target="_blank">
-                  <Image src={data?.FooterContent?.logo} width={200} height={75}/>
+                  <Image src={data?.FooterContent?.logo} width={200} height={75} alt='asd'/>
                 </a>
               </Col>
               {/* <Col lg={10} xs={9} className="p-0">
@@ -148,9 +148,9 @@ const FooterContainer = ({data}) => {
             </Row>
             <Row className="mt-3 m-0">
               <div className={styles["footer_social"]}>
-                {data.FooterSocialMedia.map((link) => (
+                {data.FooterSocialMedia.map((link, i) => (
                   <SocialMediaLink
-                    key={link.url}
+                    key={i}
                     url={link.link}
                     icon={link.image}
                   />

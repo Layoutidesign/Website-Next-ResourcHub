@@ -145,9 +145,9 @@ const HeaderTest = ({data, color, session}) => {
             <Row className="align-items-center gap-md-3">
               <Col md="1" xs={2}>
                 {whiteActive ? (
-                  <Image src={data?.lightImage} width={45} height={45} alt=""/>
+                  <Image src={data?.lightImage} width={45} height={45} alt="aasdf"/>
                 ) : (
-                  <Image src={data?.darkImage} width={45} height={45} alt=""/>
+                  <Image src={data?.darkImage} width={45} height={45} alt="sad"/>
 
                 )}
                

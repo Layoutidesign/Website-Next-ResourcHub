@@ -45,6 +45,7 @@ const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData, footer , 
               setShowLoading={setShowLoading}
               categoryName={categoryName?.split("-").join(" ")}
               subCategoryName={subCategoryName?.split("-").join(" ")}
+              session={session}
             />
           </>
         )}

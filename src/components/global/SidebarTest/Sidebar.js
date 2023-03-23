@@ -65,7 +65,7 @@ const LinkComponent = ({ image, text, url, type }) => {
     <Row className="m-0 mb-4">
       <Col className="p-0">
         <div className={`footer__link__row d-flex align-items-center gap-4`}>
-          <Image src={image} width={40} height={40}/>
+          <Image src={image} width={40} height={40} alt='sad'/>
           <h3 className="m-0">{text}</h3>
         </div>
       </Col>
@@ -94,6 +94,7 @@ const ContainerProductsComponent = ({ title, data, type }) => {
           image={link.image}
           text={link.title}
           url={link.link}
+          
         />
       ))}
     </>
@@ -212,7 +213,7 @@ const SidebarTest = ({data}) => {
             <Row className="align-items-center flex-nowrap gap-2 m-0">
               <Col  className="">
                 <a href="https://www.layouti.com/" target="_blank">
-                <Image src={data.FooterContent.logo} width={200} height={75}/>{" "}
+                <Image src={data.FooterContent.logo} width={200} height={75} alt=''/>{" "}
                 </a>
               </Col>
             </Row>

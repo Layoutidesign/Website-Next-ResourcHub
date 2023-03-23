@@ -10,11 +10,15 @@ import styles from "./LatestResources.module.scss";
 import UiUxResourcesServices from "@/services/uiUxResources.services";
 import { useState } from "react";
 
-const LatestResources = ({ resources }) => {
+const LatestResources = ({ resources,session }) => {
   const [data, setData] = useState(resources) 
-
+  
   const handleLike = (id) => {
-    UiUxResourcesServices.likeResource(id)
+    if (!session) {
+        console.log('please Login in First');
+      return;
+    }
+    UiUxResourcesServices.likeResource({id, token: session.user.accessToken})
     setData(cards => cards.map(card => card.id === id?{...card, ip: !card.ip, likes: card.ip?card.likes-1:card.likes+1}:card))
   };
 

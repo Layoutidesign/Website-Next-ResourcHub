@@ -21,7 +21,8 @@ const Resources = ({
     showLoading, 
     setShowLoading, 
     categoryName, 
-    subCategoryName 
+    subCategoryName,
+    session
   }) => {
   const [innerPageNum, setInnerPageNum] = useState(30);
   const [websites, setwebsites] = useState(30);
@@ -42,7 +43,11 @@ const Resources = ({
   }, [innerPages, filter])
 
   const handleLike = (id) => {
-    UiUxResourcesServices.likeResource(id)
+    if (!session) {
+        console.log('please Login in First');
+      return;
+    }
+    UiUxResourcesServices.likeResource({id, token: session.user.accessToken})
     setData(cards => cards.map(card => card.id === id?{...card, ip: !card.ip, likes: card.ip?card.likes-1:card.likes+1}:card))
   };
 
