@@ -5,6 +5,7 @@ import Categories from "@/components/resources/Categories/Categories";
 import LatestResources from "@/components/resources/LatestResources/LatestResources";
 import UiUxResourcesServices from "@/services/uiUxResources.services";
 import FirstContentSectionHome from "@/components/resources/FirstContentSectionHome/FirstContentSectionHome";
+import { getSession } from "next-auth/react";
 
 function Resources({
   pages,
@@ -12,9 +13,10 @@ function Resources({
   headerContent,
   footerContent,
   seoData,
-  footerData
+  footerData,
+  session
 }) {
-  console.log(footerContent);
+ 
   return (
     <>
       <SEOHead
@@ -26,7 +28,7 @@ function Resources({
         ogDescription={seoData?.facebookDescriptionEn}
         favicon={footerContent?.navbar?.favIcon}
       />
-        <UiUxResources footerContent={footerContent} footerData={footerData}>
+        <UiUxResources footerContent={footerContent} footerData={footerData} session={session}>
         <FirstContentSectionHome
           title={headerContent?.title}
           description={headerContent?.description}
@@ -42,8 +44,9 @@ function Resources({
   );
 }
 
-export async function getServerSideProps({ req, res }) {
+export async function getServerSideProps(context) {
   try {
+    const session = await getSession(context)
     const uiUxReq = await UiUxResourcesServices.getUiUxResourcesHomePage();
     const uiUxFooterReq = await UiUxResourcesServices.getUiUxResourcesFooter();
     const FooterLinksData = await UiUxResourcesServices.getLayoutiFooter();
@@ -54,7 +57,8 @@ export async function getServerSideProps({ req, res }) {
         headerContent: uiUxReq?.data?.data?.headerContent,
         footerContent: uiUxFooterReq?.data?.data,
         seoData: uiUxReq?.data?.data?.seo,
-        footerData: FooterLinksData?.data.data
+        footerData: FooterLinksData?.data.data,
+        session
       },
     };
   } catch (error) {

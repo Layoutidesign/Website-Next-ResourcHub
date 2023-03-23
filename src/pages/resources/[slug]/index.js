@@ -7,8 +7,9 @@ import UiUxResourcesServices from "@/services/uiUxResources.services";
 import UiUxResources from "@/components/layouts/UiUxResources";
 import FirstContentSection from "@/components/uiuxresourses/Content/FirstContentSection";
 import Categories from "@/components/uiuxresourses/Categories/Categories";
+import { getSession } from "next-auth/react";
 
-function Slug({ data, params, seoData, categories, footer, footerData }) {
+function Slug({ data, params, seoData, categories, footer, footerData,session }) {
   return (
     <>
       <SEOHead
@@ -20,7 +21,7 @@ function Slug({ data, params, seoData, categories, footer, footerData }) {
         ogDescription={seoData?.facebookDescriptionEn}
         favicon={footer?.navbar?.favIcon}
       />
-      <UiUxResources footerContent={footer} footerData={footerData}>
+      <UiUxResources footerContent={footer} footerData={footerData} session={session}>
         {data && (
           <>
             <FirstContentSection
@@ -39,6 +40,7 @@ function Slug({ data, params, seoData, categories, footer, footerData }) {
 
 export async function getServerSideProps(context) {
   try {
+    const session = await getSession(context)
     const uiUxReq = await UiUxResourcesServices.getUiUxResources();
     const category = await UiUxResourcesServices.getSubCategoryByName(context?.params?.slug.split("-").join(" "), "category");
     const footer = await UiUxResourcesServices.getFooter();
@@ -50,7 +52,8 @@ export async function getServerSideProps(context) {
         seoData: uiUxReq?.data?.data?.seo,
         categories: category?.data?.data,
         footer: footer?.data?.data,
-        footerData: FooterLinksData?.data.data
+        footerData: FooterLinksData?.data.data,
+        session
       },
     };
   } catch (error) {

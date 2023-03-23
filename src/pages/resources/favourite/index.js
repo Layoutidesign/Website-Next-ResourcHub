@@ -7,12 +7,13 @@ import ContentHeader from "@/components/uiuxresourses/FavPage/ContentHeader";
 import Resources from "@/components/uiuxresourses/FavPage/Resources";
 
 import UiUxResourcesServices from "@/services/uiUxResources.services";
+import { getSession } from "next-auth/react";
 import { useState } from "react";
 
-const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData, footer, footerData }) => {
+const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData, footer, footerData, session }) => {
   const [showLoading, setShowLoading] = useState(false);
   const [total, setTotal] = useState(null);
-  
+  console.log(session);
   return (
     <>
      <SEOHead
@@ -26,7 +27,7 @@ const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData, footer, f
         favicon={footer?.navbar?.favIcon}
 
       />
-      <UiUxResources footerContent={footer} footerData={footerData}>
+      <UiUxResources footerContent={footer} footerData={footerData} session={session}>
         {data && (
           <>
             <ContentHeader
@@ -52,22 +53,35 @@ const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData, footer, f
   );
 };
 
-export async function getServerSideProps() {
+export async function getServerSideProps(ctx) {
   try {
-  
-    const subCategoryReq = await UiUxResourcesServices.getFav();
+    const session = await getSession(ctx)
+
+    if(session == undefined) {
+      return {
+        redirect: {
+          destination: '/resources',
+          permanent: false
+        }
+      }
+    }
+    const subCategoryReq = await UiUxResourcesServices.getFav(session.user.accessToken);
     const tagsReq = await UiUxResourcesServices.getResourcesTags();
     const SeoData = await UiUxResourcesServices.getResourcesDetailsSeo();
     const footer = await UiUxResourcesServices.getFooter();
     const FooterLinksData = await UiUxResourcesServices.getLayoutiFooter();
+    
+    
+ 
+
     return {
       props: {
         data: subCategoryReq?.data?.data,
         tags: tagsReq?.data?.data,
         seoData:SeoData?.data?.data,
         footer: footer?.data?.data,
-        footerData: FooterLinksData?.data.data
-
+        footerData: FooterLinksData?.data.data,
+        session
       },
     };
   } catch (error) {

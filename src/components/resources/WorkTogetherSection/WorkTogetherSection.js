@@ -5,7 +5,6 @@ import { Container } from "reactstrap";
 import styles from "./WorkTogetherSection.module.scss";
 
 const WorkTogetherSection = ({ title, description, setShowPopup }) => {
-  console.log(title, description);
   const handleShow = () => setShowPopup(true);
   return (
     <section className={styles["workTogetherSection"]} onClick={handleShow}>

@@ -30,9 +30,8 @@ const NavLink = ({ url, text, whiteActive }) => {
   );
 };
 
-const HeaderTest = ({data, color, type}) => {
+const HeaderTest = ({data, color, session}) => {
   const [whiteActive, setWhiteActive] = useState(true);
-  const { data: session } = useSession()
   const router = useRouter()
   const [active, setActive] = useState(false)
   

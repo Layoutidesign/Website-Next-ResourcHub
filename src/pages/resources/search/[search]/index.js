@@ -7,12 +7,13 @@ import ContentHeader from "@/components/uiuxresourses/SearchPage/ContentHeader";
 import Resources from "@/components/uiuxresourses/SearchPage/Resources";
 
 import UiUxResourcesServices from "@/services/uiUxResources.services";
+import { getSession } from "next-auth/react";
 import { useState } from "react";
 
-const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData, footer , footerData}) => {
+const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData, footer , footerData,session}) => {
   const [showLoading, setShowLoading] = useState(false);
   const [total, setTotal] = useState(null);
-  console.log(data);
+
   return (
     <>
      <SEOHead
@@ -26,7 +27,7 @@ const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData, footer , 
         favicon={footer?.navbar?.favIcon}
 
       />
-      <UiUxResources footerContent={footer} footerData={footerData}>
+      <UiUxResources footerContent={footer} footerData={footerData} session={session}>
         {data && (
           <>
             <ContentHeader
@@ -54,6 +55,7 @@ const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData, footer , 
 
 export async function getServerSideProps(ctx) {
   try {
+    const session = await getSession(ctx)
     const { search } = ctx.params;
     const subCategoryReq = await UiUxResourcesServices.getSearch(search);
     const tagsReq = await UiUxResourcesServices.getResourcesTags();
@@ -67,7 +69,8 @@ export async function getServerSideProps(ctx) {
         seoData:SeoData?.data?.data,
         subCategoryName: search,
         footer: footer?.data?.data,
-        footerData: FooterLinksData?.data.data
+        footerData: FooterLinksData?.data.data,
+        session
 
       },
     };

@@ -1,10 +1,11 @@
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { HeartIcon, HeartNewIcon, LogoutIcon } from '../Svgs'
 import Login from './Login'
 import styles from './style.module.scss'
 const User = ({whiteActive, session, signIn,signOut, active, setActive}) => {
-  
+    const router = useRouter()
   return (
     <div>
       {!session&&<Login whiteActive={whiteActive} signIn={signIn}/>}
@@ -12,7 +13,7 @@ const User = ({whiteActive, session, signIn,signOut, active, setActive}) => {
         <Image  src={session.user.image} width={30} height={30} className='rounded-circle'/>
         <p style={whiteActive?{color: "#fff"}:{color: "#000"}} >{session.user.name.split(" ")[0]}</p>
         {active&&<div className={styles['dropdown']}>
-          <button><HeartNewIcon /> Favourite</button>
+          <button onClick={() => router.push('/resources/favourite')}><HeartNewIcon /> Favourite</button>
           <button onClick={() => signOut()}><LogoutIcon /> Logout</button>
         </div>}
       </div>

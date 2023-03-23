@@ -10,7 +10,7 @@ import WorkTogetherPopup from "../global/Popups/WorkTogetherPopup/WorkTogetherPo
 import SuccessPopup from "../global/Popups/SuccessPopup/SuccessPopup";
 
 
-const UiUxResources = ({ children, footerContent, footer, footerData }) => {
+const UiUxResources = ({ children, footerContent, footer, footerData, session}) => {
   
   const [showPopup, setShowPopup] = useState(false);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
@@ -20,7 +20,7 @@ const UiUxResources = ({ children, footerContent, footer, footerData }) => {
 
   return (
     <>
-      <Header  data={footerContent?.navbar}/>
+      <Header  data={footerContent?.navbar} session={session}/>
       {footerData&&<Sidebar data={footerData}/>}
       <main>{children}</main>
       <ScrollTop />

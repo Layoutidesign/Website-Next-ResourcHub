@@ -75,12 +75,11 @@ const ViewrsResource = async (id) => {
 const getLayoutiFooter = async () => {
   return await axios.get(`https://laravel.layouti.com/api/frontend/footer`);
 };
-const getFav = async () => {
+const getFav = async (token) => {
   return await axios.get(`https://www.resourchub-laravel.layouti.com/api/frontend/resources/pages/favourite`, {
     headers: { 
       'language': 'en', 
-      'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbGFyYXZlbC51aXV4ZWR1LmNvbVwvYXBpXC9PQXV0aCIsImlhdCI6MTY3NzY4MDI2NiwiZXhwIjozNTQzOTIwMjY2LCJuYmYiOjE2Nzc2ODAyNjYsImp0aSI6IjNnVU5ndzFiejRraGtkQnoiLCJzdWIiOjYxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.LXDONU3uxSE134Yk3-cXJfIbHd14NuWpZaOhBQRUYQo', 
-      'Cookie': 'laravel_session=2oqXvgaTR4kJ72xL9RuSVld4AbTeRDLYbD3E7oHR'
+      'Authorization': `Bearer ${token}`
     }
   });
 };
