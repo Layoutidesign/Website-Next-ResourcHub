@@ -3,16 +3,16 @@
 import SEOHead from "@/components/global/SEOHead/SEOHead";
 
 import UiUxResources from "@/components/layouts/UiUxResources";
-import ContentHeader from "@/components/uiuxresourses/SearchPage/ContentHeader";
-import Resources from "@/components/uiuxresourses/SearchPage/Resources";
+import ContentHeader from "@/components/uiuxresourses/FavPage/ContentHeader";
+import Resources from "@/components/uiuxresourses/FavPage/Resources";
 
 import UiUxResourcesServices from "@/services/uiUxResources.services";
 import { useState } from "react";
 
-const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData, footer , footerData}) => {
+const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData, footer, footerData }) => {
   const [showLoading, setShowLoading] = useState(false);
   const [total, setTotal] = useState(null);
-  console.log(data);
+  
   return (
     <>
      <SEOHead
@@ -31,7 +31,7 @@ const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData, footer , 
           <>
             <ContentHeader
               categoryName={categoryName?.split("-").join(" ")}
-              subCategoryName={"Search"}
+              subCategoryName={"Favoutire"}
               subCategoryDescription={""}
               numberOfPages={data?.pagination?.total}
             />
@@ -52,10 +52,10 @@ const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData, footer , 
   );
 };
 
-export async function getServerSideProps(ctx) {
+export async function getServerSideProps() {
   try {
-    const { search } = ctx.params;
-    const subCategoryReq = await UiUxResourcesServices.getSearch(search);
+  
+    const subCategoryReq = await UiUxResourcesServices.getFav();
     const tagsReq = await UiUxResourcesServices.getResourcesTags();
     const SeoData = await UiUxResourcesServices.getResourcesDetailsSeo();
     const footer = await UiUxResourcesServices.getFooter();
@@ -65,7 +65,6 @@ export async function getServerSideProps(ctx) {
         data: subCategoryReq?.data?.data,
         tags: tagsReq?.data?.data,
         seoData:SeoData?.data?.data,
-        subCategoryName: search,
         footer: footer?.data?.data,
         footerData: FooterLinksData?.data.data
 

@@ -57,7 +57,7 @@ const Resources = ({
       return ;
     } else {
       axios.get(
-        `https://www.resourchub-laravel.layouti.com/api/frontend/resources/pages?${`search=${subCategoryName.split("-").join(" ")}`}${filter.map((tag, i) => `&tags[${i}]=${tag}`).join("")}`
+        `https://www.resourchub-laravel.layouti.com/api/frontend/resources/pages/favourite?${filter.map((tag, i) => `&tags[${i}]=${tag}`).join("")}`
       ).then((res) => {
         setData(res?.data?.data?.pages);
         setTotal(res.data.data?.pagination?.total)
@@ -71,7 +71,7 @@ const Resources = ({
     if(filter.length == 0 && scroll <= 3){
       setShowLoading(true);
       axios.get(
-        `https://www.resourchub-laravel.layouti.com/api/frontend/resources/pages?search=${subCategoryName}&page=${scroll}`
+        `https://www.resourchub-laravel.layouti.com/api/frontend/resources/pages/favourite?page=${scroll}`
       ).then((res) => {
         setData((current) => [...current,...res?.data?.data?.pages]);
         setShowLoading(false);
@@ -79,7 +79,7 @@ const Resources = ({
     }else if(scroll <= 3){
       setShowLoading(true);
       axios.get(
-        `$https://www.resourchub-laravel.layouti.com/api/frontend/resources/pages?${`search=${subCategoryName}&page=${scroll}`
+        `https://www.resourchub-laravel.layouti.com/api/frontend/resources/pages/favourite?${`page=${scroll}`
         }${filter.map((tag, i) => `&tags[${i}]=${tag}`).join("")}`
       ).then((res) => {
         setShowLoading(false);

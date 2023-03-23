@@ -13,7 +13,9 @@ import {
 import { useRouter } from "next/router";
 import { navLinks } from "@/data/static-data";
 import Image from "next/image";
-
+import { useSession, signIn, signOut } from "next-auth/react"
+import axios from "axios";
+import User from "../User/User";
 const NavLink = ({ url, text, whiteActive }) => {
   const router = useRouter();
   return (
@@ -30,10 +32,29 @@ const NavLink = ({ url, text, whiteActive }) => {
 
 const HeaderTest = ({data, color, type}) => {
   const [whiteActive, setWhiteActive] = useState(true);
+  const { data: session } = useSession()
   const router = useRouter()
+  const [active, setActive] = useState(false)
+  
   function sideToggle() {
     document?.querySelector(".sidebar").classList.toggle("active");
   }
+
+
+
+  useEffect(() => {
+    if(session) {
+      axios.post('https://www.resourchub-laravel.layouti.com/api/frontend/login', session.user)
+      .then(res => {
+        console.log(res.data.data);
+      })
+    }
+  }, [session])
+
+
+
+
+
 
   useEffect(() => {
     if(router.asPath.split('/')[1] === 'articles') {
@@ -44,9 +65,8 @@ const HeaderTest = ({data, color, type}) => {
 
   useEffect(() => {
     let offset = 0;
-   
-
     let scrollFunction = (e) => {
+      setActive(false)
       if (window.scrollY > offset) {
         document.querySelector(".header_layouti").classList.add("active");
         document.querySelector("#tabs_fixed")?.classList.add("active");
@@ -205,6 +225,10 @@ const HeaderTest = ({data, color, type}) => {
                   Reach out
                 </Link>
               </li>
+                <li className="nav_item nav_item_btn">
+                    <User whiteActive={whiteActive} session={session} signIn={signIn} signOut={signOut} active={active} setActive={setActive}/>
+                </li>
+                  
                 <li className={`nav_item nav_item_btn d-md-block d-none`}>
                   <button className="toggle-btn" onClick={sideToggle}>
                     {!whiteActive ? <MenuDarkIcon /> : <MenuWhiteIcon />}

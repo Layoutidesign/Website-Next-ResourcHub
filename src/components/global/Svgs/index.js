@@ -29,3 +29,5 @@ export { default as SuccessForMobileIcon } from "./SuccessForMobile.svg";
 export { default as SearchIcon } from "./search-normal.svg";
 export { default as TestIcon } from "./TestIcon.svg";
 export { default as EmptyIcon } from "./empty.svg";
+export { default as HeartNewIcon } from "./HeartNew.svg";
+export { default as LogoutIcon } from "./logout.svg";

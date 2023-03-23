@@ -13,9 +13,10 @@ import { useRouter } from "next/router";
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import { useEffect } from "react";
+import { SessionProvider } from "next-auth/react"
 config.autoAddCss = false;
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps, session }) {
   const router = useRouter()
 
   useEffect(() => {
@@ -38,5 +39,9 @@ export default function App({ Component, pageProps }) {
       router.events.off('routeChangeError', handleStop)
     }
   }, [router])
-  return <Component {...pageProps} />;
+  return (
+      <SessionProvider session={session}>
+        <Component {...pageProps} />
+      </SessionProvider>
+    )
 }

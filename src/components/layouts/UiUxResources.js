@@ -9,10 +9,11 @@ import WorkTogetherSection from "../resources/WorkTogetherSection/WorkTogetherSe
 import WorkTogetherPopup from "../global/Popups/WorkTogetherPopup/WorkTogetherPopup";
 import SuccessPopup from "../global/Popups/SuccessPopup/SuccessPopup";
 
+
 const UiUxResources = ({ children, footerContent, footer, footerData }) => {
+  
   const [showPopup, setShowPopup] = useState(false);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
-  console.log(footerContent);
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
