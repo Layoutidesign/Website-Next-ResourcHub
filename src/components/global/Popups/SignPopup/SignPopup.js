@@ -6,9 +6,20 @@ import styles from "./SuccessPopup.module.scss";
 
 import { CloseIcon, SuccessIcon, SuccessForMobileIcon } from "../../Svgs";
 import { signIn } from "next-auth/react";
-
-const SignPopup = ({ setShowSignPopup, showSignPopup, text }) => {
+import { useEffect } from "react";
+import axios from "axios";
+const SignPopup = ({ setShowSignPopup, showSignPopup, session }) => {
   const handleClose = () => setShowSignPopup(false);
+
+
+  // useEffect(() => {
+  //   if(session) {
+  //     axios.post('https://www.resourchub-laravel.layouti.com/api/frontend/login', session.user)
+  //     .then(res => {
+  //     })
+  //   }
+  // }, [session])
+
   return (
     <div
       className={`${styles["popupOverlay"]} ${

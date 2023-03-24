@@ -30,7 +30,7 @@ const UiUxResources = ({ children, footerContent, footer, footerData, session,se
         setShowPopup={setShowPopup}
         setShowSuccessPopup={setShowSuccessPopup}
       />
-      <SignPopup setShowSignPopup={setShowSignPopup} showSignPopup={showSignPopup}/>
+      <SignPopup setShowSignPopup={setShowSignPopup} showSignPopup={showSignPopup} session={session}/>
       <SuccessPopup
         showSuccessPopup={showSuccessPopup}
         setShowSuccessPopup={setShowSuccessPopup}
