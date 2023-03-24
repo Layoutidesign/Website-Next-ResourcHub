@@ -6,7 +6,7 @@ import LatestResources from "@/components/resources/LatestResources/LatestResour
 import UiUxResourcesServices from "@/services/uiUxResources.services";
 import FirstContentSectionHome from "@/components/resources/FirstContentSectionHome/FirstContentSectionHome";
 import { getSession } from "next-auth/react";
-
+import { useState } from "react";
 function Resources({
   pages,
   categories,
@@ -16,6 +16,7 @@ function Resources({
   footerData,
   session
 }) {
+  const [showSignPopup, setShowSignPopup] = useState(false);
  
   return (
     <>
@@ -28,7 +29,7 @@ function Resources({
         ogDescription={seoData?.facebookDescriptionEn}
         favicon={footerContent?.navbar?.favIcon}
       />
-        <UiUxResources footerContent={footerContent} footerData={footerData} session={session}>
+        <UiUxResources footerContent={footerContent} footerData={footerData} session={session} showSignPopup={showSignPopup} setShowSignPopup={setShowSignPopup}>
         <FirstContentSectionHome
           title={headerContent?.title}
           description={headerContent?.description}
@@ -38,7 +39,7 @@ function Resources({
           subDescription={headerContent?.subDescription}
         />
         <Categories categories={categories ? categories : []} />
-        <LatestResources resources={pages || []} session={session}/>
+        <LatestResources resources={pages || []} session={session} showSignPopup={showSignPopup} setShowSignPopup={setShowSignPopup}/>
       </UiUxResources>
     </>
   );

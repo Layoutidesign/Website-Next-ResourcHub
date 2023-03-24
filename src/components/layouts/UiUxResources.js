@@ -7,10 +7,11 @@ import Sidebar from "@/components/global/SidebarTest/Sidebar";
 import ScrollTop from "@/components/global/ScrollTop";
 import WorkTogetherSection from "../resources/WorkTogetherSection/WorkTogetherSection";
 import WorkTogetherPopup from "../global/Popups/WorkTogetherPopup/WorkTogetherPopup";
-import SuccessPopup from "../global/Popups/SuccessPopup/SuccessPopup";
+import SuccessPopup from "../global/Popups/SignPopup/SignPopup";
+import SignPopup from "../global/Popups/SignPopup/SignPopup";
 
 
-const UiUxResources = ({ children, footerContent, footer, footerData, session}) => {
+const UiUxResources = ({ children, footerContent, footer, footerData, session,setShowSignPopup,showSignPopup}) => {
   
   const [showPopup, setShowPopup] = useState(false);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
@@ -29,6 +30,7 @@ const UiUxResources = ({ children, footerContent, footer, footerData, session}) 
         setShowPopup={setShowPopup}
         setShowSuccessPopup={setShowSuccessPopup}
       />
+      <SignPopup setShowSignPopup={setShowSignPopup} showSignPopup={showSignPopup}/>
       <SuccessPopup
         showSuccessPopup={showSuccessPopup}
         setShowSuccessPopup={setShowSuccessPopup}

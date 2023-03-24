@@ -42,12 +42,12 @@ const HeaderTest = ({data, color, session}) => {
 
 
   useEffect(() => {
-    if(session) {
-      axios.post('https://www.resourchub-laravel.layouti.com/api/frontend/login', session.user)
-      .then(res => {
-        console.log(res.data.data);
-      })
-    }
+    // if(session) {
+    //   axios.post('https://www.resourchub-laravel.layouti.com/api/frontend/login', session.user)
+    //   .then(res => {
+    //     console.log(res.data.data);
+    //   })
+    // }
   }, [session])
 
 

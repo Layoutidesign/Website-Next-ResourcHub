@@ -10,12 +10,12 @@ import styles from "./LatestResources.module.scss";
 import UiUxResourcesServices from "@/services/uiUxResources.services";
 import { useState } from "react";
 
-const LatestResources = ({ resources,session }) => {
+const LatestResources = ({ resources,session, showSignPopup, setShowSignPopup }) => {
   const [data, setData] = useState(resources) 
   
   const handleLike = (id) => {
     if (!session) {
-        console.log('please Login in First');
+      setShowSignPopup(true)
       return;
     }
     UiUxResourcesServices.likeResource({id, token: session.user.accessToken})
