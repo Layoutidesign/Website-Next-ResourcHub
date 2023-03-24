@@ -235,7 +235,8 @@ const HeaderTest = ({data, color, session}) => {
               </ul>
             </Row>
           </Col>
-          <Col className="toggle_mob p-0">
+          <Col className="toggle_mob p-0 ">
+            <User whiteActive={whiteActive} session={session} signIn={signIn} signOut={signOut} active={active} setActive={setActive}/>
             <button className="toggle-btn" onClick={sideToggle}>
               <svg
                 width="30"

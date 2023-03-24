@@ -8,17 +8,10 @@ import { CloseIcon, SuccessIcon, SuccessForMobileIcon } from "../../Svgs";
 import { signIn } from "next-auth/react";
 import { useEffect } from "react";
 import axios from "axios";
-const SignPopup = ({ setShowSignPopup, showSignPopup, session }) => {
+import Image from "next/image";
+const SignPopup = ({ setShowSignPopup, showSignPopup, session,data}) => {
   const handleClose = () => setShowSignPopup(false);
 
-
-  // useEffect(() => {
-  //   if(session) {
-  //     axios.post('https://www.resourchub-laravel.layouti.com/api/frontend/login', session.user)
-  //     .then(res => {
-  //     })
-  //   }
-  // }, [session])
 
   return (
     <div
@@ -33,10 +26,11 @@ const SignPopup = ({ setShowSignPopup, showSignPopup, session }) => {
           </button>
         </header>
         <main>
-          <SuccessIcon className="d-none d-md-block" />
-          <SuccessForMobileIcon className="d-md-none" />
+          {/* <SuccessIcon className="d-none d-md-block" /> */}
+          {/* <SuccessForMobileIcon className="d-md-none" /> */}
+          <Image src={data?.darkImage} width={90} height={90}/>
           <p>
-          Thank you for submitting this resource and assisting us. Gather these websites to assist other designers in their work.
+            You cannot add this resource to your favarites resources because you have not yet registered. Now is the time to sign up!
           </p>
           <button type="button" onClick={() => signIn('google')}>
             <span>
@@ -56,7 +50,7 @@ const SignPopup = ({ setShowSignPopup, showSignPopup, session }) => {
               </svg>
             </span>
             <span>
-                Login with Google
+                Sign up with Google
             </span>
           </button>
         </main>

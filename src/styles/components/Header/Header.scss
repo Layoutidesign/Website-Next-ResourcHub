@@ -147,7 +147,10 @@
   .toggle_mob {
     display: none;
     @media only screen and (max-width: 991px) {
-      display: block;
+      display: flex;
+      justify-content: end;
+      align-items: center;
+      gap: 20px;
     }
   }
 
@@ -158,8 +161,9 @@
     cursor: pointer;
     float: right;
     @media only screen and (max-width: 600px) {
-      display: block;
-      margin-left: 20px;
+      display: flex !important;
+      justify-content: end;
+      align-items: center;
     }
   }
 

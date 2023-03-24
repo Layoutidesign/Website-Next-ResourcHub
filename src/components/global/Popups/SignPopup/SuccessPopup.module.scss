@@ -7,7 +7,7 @@
   width: 100%;
   height: 100%;
   background-color: #00122fde;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
   z-index: 999;
 
   .successPopup {
@@ -21,7 +21,7 @@
     padding: 40px 0;
     background-color: #fff;
     border-radius: 10px;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
     z-index: 9999;
 
     header {
@@ -34,7 +34,6 @@
         outline: none;
       }
     }
-
     main {
       display: flex;
       flex-direction: column;
@@ -42,15 +41,13 @@
       align-items: center;
       height: 100%;
       text-align: center;
-    
       p {
         font-weight: 400;
         font-size: 24px;
         line-height: 33px;
-        width: 85%;
+        width: 80%;
         margin-bottom: 0;
       }
-
       button {
         width: 60%;
         padding: 10px 0;

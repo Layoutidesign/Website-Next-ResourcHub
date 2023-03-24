@@ -9,6 +9,16 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 20px;
+    @media (max-width: 480px) {
+        width: fit-content;
+        display: block;
+        width: 30px;
+        span {
+            &:last-of-type {
+                display: none !important;
+            }
+        }
+    }
 }
 
 .useProfile {
@@ -27,17 +37,35 @@
     p {
         margin-bottom: 0;
     }
+    @media (max-width: 480px) {
+        p {
+            display: none !important;
+        }
+        span {
+            &:last-of-type {
+                display: none !important;
+            }
+        }
+        img {
+            width: 35px;
+            height: 35px;
+        }
+    }
+
+
+
+
     .dropdown {
         position: absolute;
         width:181px;
         background-color: #192B49;
         top: 230%;
-        left: 0;
+        left: -24px;
         border-radius: 5px;
         &::after{
             content: "";
             position: absolute;
-            left: 7%;
+            left: 13%;
             top: -13px;
             width: 0;
             height: 0;
@@ -69,6 +97,14 @@
             &:hover {
                 background-color: #233A5F;
                 
+            }
+        }
+        @media (max-width: 480px) {
+            top: 188%;
+            left: -123px;
+            &::after{
+                left: 68%;
+                top: -13px;
             }
         }
     }
