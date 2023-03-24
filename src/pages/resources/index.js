@@ -29,7 +29,7 @@ function Resources({
         ogDescription={seoData?.facebookDescriptionEn}
         favicon={footerContent?.navbar?.favIcon}
       />
-        <UiUxResources footerContent={footerContent} footerData={footerData} session={session} showSignPopup={showSignPopup} setShowSignPopup={setShowSignPopup}>
+        <UiUxResources onClick={() => setShowSignPopup(false)} footerContent={footerContent} footerData={footerData} session={session} showSignPopup={showSignPopup} setShowSignPopup={setShowSignPopup}>
         <FirstContentSectionHome
           title={headerContent?.title}
           description={headerContent?.description}

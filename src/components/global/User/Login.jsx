@@ -22,7 +22,7 @@ const Login = ({whiteActive, signIn}) => {
         </svg>
         </span>
         <span>
-            Google
+            Login
         </span>
     </button>
   )
