@@ -25,8 +25,8 @@ const Resources = ({
     session,
     setShowSignPopup
   }) => {
-  const [innerPageNum, setInnerPageNum] = useState(30);
-  const [websites, setwebsites] = useState(30);
+  const [innerPageNum, setInnerPageNum] = useState(12);
+  const [websites, setwebsites] = useState(12);
   const [filter, setFilter] = useState([]);
   const [data, setData] = useState(null);
   const [getMore, setGetMore] = useState(null);
@@ -109,9 +109,9 @@ const Resources = ({
 
   const callback = () => {
     if(websites < 90){
-      if ((total - websites) > 30 ){
-          setInnerPageNum(websites + 30);
-          setwebsites( websites + 30);
+      if ((total - websites) > 12 ){
+          setInnerPageNum(websites + 12);
+          setwebsites( websites + 12);
           setScroll((scroll+1))
           getOtherData()
       }
