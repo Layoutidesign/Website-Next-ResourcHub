@@ -33,7 +33,7 @@ const ContainerLinksComponent = ({ title, links, type }) => {
                   {link.text}
                 </Link>
               ) : (
-                <a className="footer_navs_link" href={link.url} target="_blank">
+                <a className="footer_navs_link" href={link.url} >
                   {link.text}
                 </a>
               )}
@@ -75,7 +75,7 @@ const LinkComponent = ({ image, text, url, type }) => {
             <TopRightArrowIcon />
           </Link>
         ) : (
-          <a href={url} target="blank" className="external__link">
+          <a href={url}  className="external__link" >
             <TopRightArrowIcon />
           </a>
         )}
@@ -233,7 +233,7 @@ const SidebarTest = ({data}) => {
               <ul className={`footer_navs`}>
                 {mainMenuLinks.map((link, i) => (
                   <li key={i} className={"mb-4"} >
-                      <Link className="footer_navs_link fs-3 fw-bold" href={link.url}>
+                      <Link className="footer_navs_link fs-3 fw-bold" href={link.url} onClick={sideToggle}>
                         {link.text}
                       </Link>
                   </li>

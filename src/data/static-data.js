@@ -31,10 +31,10 @@ export const navLinks = [
 export const mainMenuLinks = [
   {
     text: "Home",
-    url: "/",
+    url: "/resources",
   },
   {
-    url: "/resource",
+    url: "/resources",
     text: "Resources",
   },
   // {
