@@ -22,10 +22,12 @@ const Resources = ({
     setShowLoading, 
     categoryName, 
     subCategoryName ,
-    session
+    session,
+    setShowSignPopup
+
   }) => {
-  const [innerPageNum, setInnerPageNum] = useState(30);
-  const [websites, setwebsites] = useState(30);
+  const [innerPageNum, setInnerPageNum] = useState(12);
+  const [websites, setwebsites] = useState(12);
   const [filter, setFilter] = useState([]);
   const [data, setData] = useState(null);
   const [getMore, setGetMore] = useState(null);
@@ -44,7 +46,7 @@ const Resources = ({
 
   const handleLike = (id) => {
     if (!session) {
-        console.log('please Login in First');
+      setShowSignPopup(true)
       return;
     }
     UiUxResourcesServices.likeResource({id, token: session.user.accessToken})
@@ -63,7 +65,11 @@ const Resources = ({
     } else {
       axios.get(
         `https://www.resourchub-laravel.layouti.com/api/frontend/resources/pages?${`search=${subCategoryName.split("-").join(" ")}`}${filter.map((tag, i) => `&tags[${i}]=${tag}`).join("")}`
-      ).then((res) => {
+        ,{
+          headers: session.user.accessToken !== undefined?{ 
+            'Authorization': `Bearer ${session.user.accessToken}`
+          }:{'language': 'en', }
+        }).then((res) => {
         setData(res?.data?.data?.pages);
         setTotal(res.data.data?.pagination?.total)
         setShowLoading(false);
@@ -77,7 +83,11 @@ const Resources = ({
       setShowLoading(true);
       axios.get(
         `https://www.resourchub-laravel.layouti.com/api/frontend/resources/pages?search=${subCategoryName}&page=${scroll}`
-      ).then((res) => {
+        ,{
+          headers: session.user.accessToken !== undefined?{ 
+            'Authorization': `Bearer ${session.user.accessToken}`
+          }:{'language': 'en', }
+        }).then((res) => {
         setData((current) => [...current,...res?.data?.data?.pages]);
         setShowLoading(false);
       });
@@ -86,7 +96,11 @@ const Resources = ({
       axios.get(
         `$https://www.resourchub-laravel.layouti.com/api/frontend/resources/pages?${`search=${subCategoryName}&page=${scroll}`
         }${filter.map((tag, i) => `&tags[${i}]=${tag}`).join("")}`
-      ).then((res) => {
+        ,{
+          headers: session.user.accessToken !== undefined?{ 
+            'Authorization': `Bearer ${session.user.accessToken}`
+          }:{'language': 'en', }
+        }).then((res) => {
         setShowLoading(false);
         setData((current) => [...current,...res?.data?.data?.pages]);
       });
@@ -95,9 +109,9 @@ const Resources = ({
 
   const callback = () => {
     if(websites < 90){
-      if ((total - websites) > 30 ){
-          setInnerPageNum(websites + 30);
-          setwebsites( websites + 30);
+      if ((total - websites) > 12 ){
+          setInnerPageNum(websites + 12);
+          setwebsites( websites + 12);
           setScroll((scroll+1))
           getOtherData()
       }

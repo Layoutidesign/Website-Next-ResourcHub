@@ -13,10 +13,19 @@ import {
   LinkIcon,
   LovelyIcon,
 } from "@/components/global/Svgs";
+import { favAction } from "@/store/favourite";
+import { useDispatch, useSelector } from "react-redux";
 
 const InnerPageCard = ({ innerPage, handleLike,reference, handleView,categoryName }) => {
-  
-
+  const count = useSelector(state => state.fav.count)
+  const dispatch = useDispatch()
+  const changeLike = () => {
+    if(innerPage.ip) {
+      dispatch(favAction.changeFavCount(count-1))
+    }else {
+      dispatch(favAction.changeFavCount(count+1))
+    }
+  }
   
   return (
     <div className={styles["innerPageCard"]} ref={reference}>
@@ -65,7 +74,7 @@ const InnerPageCard = ({ innerPage, handleLike,reference, handleView,categoryNam
             <EyeIcon />
             <p>{innerPage.viwers}</p>
           </li>
-          <li onClick={() => handleLike(innerPage?.id)}>
+          <li onClick={() => (handleLike(innerPage?.id),changeLike())}>
             {innerPage.ip ? <GreenHeartIcon /> : <HeartIcon />}
             <p>{innerPage.likes}</p>
           </li>

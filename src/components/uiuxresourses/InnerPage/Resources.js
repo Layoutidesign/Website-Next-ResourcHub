@@ -15,14 +15,15 @@ import DesktopSearch from "@/components/global/Search/DesktopSearch/DesktopSearc
 
 const Resources = ({ 
     innerPages, 
-    tags, 
+    tags,  
     total, 
     setTotal,
     showLoading, 
     setShowLoading, 
     categoryName, 
     subCategoryName,
-    session
+    session,
+    setShowSignPopup
   }) => {
   const [innerPageNum, setInnerPageNum] = useState(30);
   const [websites, setwebsites] = useState(30);
@@ -44,7 +45,7 @@ const Resources = ({
 
   const handleLike = (id) => {
     if (!session) {
-        console.log('please Login in First');
+      setShowSignPopup(true)
       return;
     }
     UiUxResourcesServices.likeResource({id, token: session.user.accessToken})
@@ -64,7 +65,11 @@ const Resources = ({
       axios.get(
         `https://www.resourchub-laravel.layouti.com/api/frontend/resources/pages?${`category=${subCategoryName.split("-").join(" ")}&status=SubCategory`
         }${filter.map((tag, i) => `&tags[${i}]=${tag}`).join("")}`
-      ).then((res) => {
+        ,{
+          headers: session.user.accessToken !== undefined?{ 
+            'Authorization': `Bearer ${session.user.accessToken}`
+          }:{'language': 'en', }
+        }).then((res) => {
         setData(res?.data?.data?.pages);
         setTotal(res.data.data?.pagination?.total)
         setShowLoading(false);
@@ -78,7 +83,11 @@ const Resources = ({
       setShowLoading(true);
       axios.get(
         `https://www.resourchub-laravel.layouti.com/api/frontend/resources/pages?category=${subCategoryName}&status=SubCategory&page=${scroll}`
-      ).then((res) => {
+        ,{
+          headers: session.user.accessToken !== undefined?{ 
+            'Authorization': `Bearer ${session.user.accessToken}`
+          }:{'language': 'en', }
+        }).then((res) => {
         setData((current) => [...current,...res?.data?.data?.pages]);
         setShowLoading(false);
       });
@@ -87,7 +96,11 @@ const Resources = ({
       axios.get(
         `$https://www.resourchub-laravel.layouti.com/api/frontend/resources/pages?${`category=${subCategoryName}&status=SubCategory&page=${scroll}`
         }${filter.map((tag, i) => `&tags[${i}]=${tag}`).join("")}`
-      ).then((res) => {
+        ,{
+          headers: session.user.accessToken !== undefined?{ 
+            'Authorization': `Bearer ${session.user.accessToken}`
+          }:{'language': 'en', }
+        }).then((res) => {
         setShowLoading(false);
         setData((current) => [...current,...res?.data?.data?.pages]);
       });

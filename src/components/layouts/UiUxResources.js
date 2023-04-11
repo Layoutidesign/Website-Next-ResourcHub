@@ -9,14 +9,18 @@ import WorkTogetherSection from "../resources/WorkTogetherSection/WorkTogetherSe
 import WorkTogetherPopup from "../global/Popups/WorkTogetherPopup/WorkTogetherPopup";
 import SuccessPopup from "../global/Popups/SignPopup/SignPopup";
 import SignPopup from "../global/Popups/SignPopup/SignPopup";
+import { ToastContainer } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { favAction } from "@/store/favourite";
 
 
 const UiUxResources = ({ children, footerContent, footer, footerData, session,setShowSignPopup,showSignPopup}) => {
-  
   const [showPopup, setShowPopup] = useState(false);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const dispatch = useDispatch();
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+    dispatch(favAction.changeFavCount(footerContent?.navbar?.dotCount))
   }, []);
 
   return (
@@ -24,6 +28,20 @@ const UiUxResources = ({ children, footerContent, footer, footerData, session,se
       <Header  data={footerContent?.navbar} session={session}/>
       {footerData&&<Sidebar data={footerData}/>}
       <main>{children}</main>
+      <ToastContainer
+        position="top-center"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        />
+    
+        <ToastContainer />
       <ScrollTop />
       <WorkTogetherPopup
         showPopup={showPopup}

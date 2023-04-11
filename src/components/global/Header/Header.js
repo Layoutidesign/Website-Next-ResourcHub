@@ -11,6 +11,7 @@ import {
   MenuWhiteIcon,
   MenuDarkIcon,
 } from "@/components/global/Svgs";
+import { useSelector } from "react-redux";
 
 const NavLink = ({ url, text, whiteActive }) => {
   return (
@@ -56,7 +57,7 @@ const navLinks = [
 
 const Header = () => {
   const [whiteActive, setWhiteActive] = useState(true);
-
+  
   function sideToggle() {
     document?.querySelector(".sidebar").classList.toggle("active");
   }
@@ -85,12 +86,6 @@ const Header = () => {
       } else {
         document.querySelector(".header_layouti").classList.remove("white");
       }
-
-      // if (window.scrollY > 200) {
-      //   document.querySelector(".scroll_top").style.display = "flex";
-      // } else {
-      //   document.querySelector(".scroll_top").style.display = "none";
-      // }
       offset = window.scrollY;
     };
 

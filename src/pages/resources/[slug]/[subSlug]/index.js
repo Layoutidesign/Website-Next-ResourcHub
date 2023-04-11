@@ -13,7 +13,8 @@ import { useState } from "react";
 const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData, footer,footerData, session }) => {
   const [showLoading, setShowLoading] = useState(false);
   const [total, setTotal] = useState(null);
-  console.log(footer);
+  const [showSignPopup, setShowSignPopup] = useState(false);
+
   return (
     <>
      <SEOHead
@@ -26,7 +27,7 @@ const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData, footer,fo
         ogDescription={seoData?.facebookDescriptionEn}
         favicon={footer?.navbar?.favIcon}
       />
-      <UiUxResources footerContent={footer} footerData={footerData} session={session}>
+      <UiUxResources footerContent={footer} footerData={footerData} session={session} showSignPopup={showSignPopup} setShowSignPopup={setShowSignPopup}>
         {data && (
           <>
             <ContentHeader
@@ -45,6 +46,8 @@ const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData, footer,fo
               categoryName={categoryName?.split("-").join(" ")}
               subCategoryName={subCategoryName?.split("-").join(" ")}
               session={session}
+              showSignPopup={showSignPopup} 
+              setShowSignPopup={setShowSignPopup}
             />
           </>
         )}
@@ -58,11 +61,11 @@ export async function getServerSideProps(ctx) {
     const session = await getSession(ctx)
     const { slug, subSlug } = ctx.params;
     const subCategoryReq = await UiUxResourcesServices.getPages(
-      subSlug.split("-").join(" ")
+      subSlug.split("-").join(" "), session?.user?.accessToken
     );
     const tagsReq = await UiUxResourcesServices.getResourcesTags();
-    const SeoData = await UiUxResourcesServices.getResourcesDetailsSeo();
-    const footer = await UiUxResourcesServices.getFooter();
+    const SeoData = await UiUxResourcesServices.getResourcesDetailsSeo(session?.user?.accessToken);
+    const footer = await UiUxResourcesServices.getUiUxResourcesFooter(session?.user?.accessToken);
     const FooterLinksData = await UiUxResourcesServices.getLayoutiFooter();
     return {
       props: {

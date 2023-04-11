@@ -43,7 +43,7 @@ export async function getServerSideProps(context) {
     const session = await getSession(context)
     const uiUxReq = await UiUxResourcesServices.getUiUxResources();
     const category = await UiUxResourcesServices.getSubCategoryByName(context?.params?.slug.split("-").join(" "), "category");
-    const footer = await UiUxResourcesServices.getFooter();
+    const footer = await UiUxResourcesServices.getUiUxResourcesFooter(session?.user?.accessToken);
     const FooterLinksData = await UiUxResourcesServices.getLayoutiFooter();
     return {
       props: {

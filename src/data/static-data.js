@@ -87,10 +87,10 @@ export const otherLinks = [
     text: "Products",
     url: "#",
   },
-  {
-    text: "CV 2022",
-    url: "#",
-  },
+  // {
+  //   text: "CV 2022",
+  //   url: "#",
+  // },
 ];
 
 export const helpLinks = [

@@ -22,7 +22,9 @@ const Resources = ({
     setShowLoading, 
     categoryName, 
     subCategoryName,
-    session
+    session,
+    setShowSignPopup
+
   }) => {
   const [innerPageNum, setInnerPageNum] = useState(30);
   const [websites, setwebsites] = useState(30);
@@ -44,11 +46,11 @@ const Resources = ({
 
   const handleLike = (id) => {
     if (!session) {
-        console.log('please Login in First');
+        setShowSignPopup(true)
       return;
     }
     UiUxResourcesServices.likeResource({id, token: session.user.accessToken})
-    setData(cards => cards.map(card => card.id === id?{...card, ip: !card.ip, likes: card.ip?card.likes-1:card.likes+1}:card))
+    setData(cards => cards.filter(card => card.id !== id))
   };
 
   function handleView (id) { 
@@ -61,9 +63,13 @@ const Resources = ({
     if (filter.length == 0) {
       return ;
     } else {
-      axios.get(
-        `https://www.resourchub-laravel.layouti.com/api/frontend/resources/pages/favourite?${filter.map((tag, i) => `&tags[${i}]=${tag}`).join("")}`
-      ).then((res) => {
+      axios.get(`https://www.resourchub-laravel.layouti.com/api/frontend/resources/pages/favourite?${filter.map((tag, i) => `&tags[${i}]=${tag}`).join("")}`,
+      {
+        headers: { 
+          'language': 'en', 
+          'Authorization': `Bearer ${session.user.accessToken}`
+        }
+      }).then((res) => {
         setData(res?.data?.data?.pages);
         setTotal(res.data.data?.pagination?.total)
         setShowLoading(false);
@@ -77,7 +83,12 @@ const Resources = ({
       setShowLoading(true);
       axios.get(
         `https://www.resourchub-laravel.layouti.com/api/frontend/resources/pages/favourite?page=${scroll}`
-      ).then((res) => {
+      ,{
+        headers: { 
+          'language': 'en', 
+          'Authorization': `Bearer ${session.user.accessToken}`
+        }
+      }).then((res) => {
         setData((current) => [...current,...res?.data?.data?.pages]);
         setShowLoading(false);
       });
@@ -86,7 +97,12 @@ const Resources = ({
       axios.get(
         `https://www.resourchub-laravel.layouti.com/api/frontend/resources/pages/favourite?${`page=${scroll}`
         }${filter.map((tag, i) => `&tags[${i}]=${tag}`).join("")}`
-      ).then((res) => {
+      ,{
+        headers: { 
+          'language': 'en', 
+          'Authorization': `Bearer ${session.user.accessToken}`
+        }
+      }).then((res) => {
         setShowLoading(false);
         setData((current) => [...current,...res?.data?.data?.pages]);
       });
@@ -162,9 +178,6 @@ const Resources = ({
         </Masonry>
         {data&&data.length > 0 && total > websites ? (
           <div className={styles["loadMore"]}>
-            {/* <button type="button" className="loadbtn" onClick={GetMoreData}>
-              Load More
-            </button> */}
           </div>
         ) :data&&data.length > 0 && total <= websites ? (
           <div className={styles["loadMore"]}>

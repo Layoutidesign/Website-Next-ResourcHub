@@ -17,7 +17,7 @@ function Resources({
   session
 }) {
   const [showSignPopup, setShowSignPopup] = useState(false);
- 
+  
   return (
     <>
       <SEOHead
@@ -29,7 +29,7 @@ function Resources({
         ogDescription={seoData?.facebookDescriptionEn}
         favicon={footerContent?.navbar?.favIcon}
       />
-        <UiUxResources onClick={() => setShowSignPopup(false)} footerContent={footerContent} footerData={footerData} session={session} showSignPopup={showSignPopup} setShowSignPopup={setShowSignPopup}>
+        <UiUxResources onClick={() => setShowSignPopup(false)} footerContent={footerContent} footerData={footerData} session={session} showSignPopup={showSignPopup} setShowSignPopup={setShowSignPopup} >
         <FirstContentSectionHome
           title={headerContent?.title}
           description={headerContent?.description}
@@ -48,8 +48,8 @@ function Resources({
 export async function getServerSideProps(context) {
   try {
     const session = await getSession(context)
-    const uiUxReq = await UiUxResourcesServices.getUiUxResourcesHomePage();
-    const uiUxFooterReq = await UiUxResourcesServices.getUiUxResourcesFooter();
+    const uiUxReq = await UiUxResourcesServices.getUiUxResourcesHomePage(session?.user?.accessToken);
+    const uiUxFooterReq = await UiUxResourcesServices.getUiUxResourcesFooter(session?.user?.accessToken);
     const FooterLinksData = await UiUxResourcesServices.getLayoutiFooter();
     return {
       props: {

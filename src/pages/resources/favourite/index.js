@@ -13,7 +13,7 @@ import { useState } from "react";
 const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData, footer, footerData, session }) => {
   const [showLoading, setShowLoading] = useState(false);
   const [total, setTotal] = useState(null);
-  console.log(session);
+  const [showSignPopup, setShowSignPopup] = useState(false);
   return (
     <>
      <SEOHead
@@ -25,9 +25,8 @@ const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData, footer, f
         ogTitle={seoData?.facebookTitleEn}
         ogDescription={seoData?.facebookDescriptionEn}
         favicon={footer?.navbar?.favIcon}
-
       />
-      <UiUxResources footerContent={footer} footerData={footerData} session={session}>
+      <UiUxResources footerContent={footer} footerData={footerData} session={session} showSignPopup={showSignPopup} setShowSignPopup={setShowSignPopup}>
         {data && (
           <>
             <ContentHeader
@@ -46,6 +45,8 @@ const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData, footer, f
               categoryName={categoryName?.split("-").join(" ")}
               subCategoryName={subCategoryName?.split("-").join(" ")}
               session={session}
+              showSignPopup={showSignPopup} 
+              setShowSignPopup={setShowSignPopup}
             />
           </>
         )}

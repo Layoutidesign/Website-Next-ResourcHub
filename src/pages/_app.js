@@ -14,6 +14,8 @@ import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import { useEffect } from "react";
 import { SessionProvider } from "next-auth/react"
+import { Provider } from "react-redux";
+import store from "@/store/favourite";
 config.autoAddCss = false;
 
 export default function App({ Component, pageProps, session }) {
@@ -41,7 +43,9 @@ export default function App({ Component, pageProps, session }) {
   }, [router])
   return (
       <SessionProvider session={session}>
-        <Component {...pageProps} />
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
       </SessionProvider>
     )
 }

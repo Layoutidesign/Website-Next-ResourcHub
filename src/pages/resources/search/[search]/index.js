@@ -13,6 +13,7 @@ import { useState } from "react";
 const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData, footer , footerData,session}) => {
   const [showLoading, setShowLoading] = useState(false);
   const [total, setTotal] = useState(null);
+  const [showSignPopup, setShowSignPopup] = useState(false);
 
   return (
     <>
@@ -25,9 +26,8 @@ const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData, footer , 
         ogTitle={seoData?.facebookTitleEn}
         ogDescription={seoData?.facebookDescriptionEn}
         favicon={footer?.navbar?.favIcon}
-
       />
-      <UiUxResources footerContent={footer} footerData={footerData} session={session}>
+      <UiUxResources footerContent={footer} footerData={footerData} session={session} showSignPopup={showSignPopup} setShowSignPopup={setShowSignPopup}>
         {data && (
           <>
             <ContentHeader
@@ -46,6 +46,8 @@ const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData, footer , 
               categoryName={categoryName?.split("-").join(" ")}
               subCategoryName={subCategoryName?.split("-").join(" ")}
               session={session}
+              showSignPopup={showSignPopup} 
+              setShowSignPopup={setShowSignPopup}
             />
           </>
         )}
@@ -58,10 +60,10 @@ export async function getServerSideProps(ctx) {
   try {
     const session = await getSession(ctx)
     const { search } = ctx.params;
-    const subCategoryReq = await UiUxResourcesServices.getSearch(search);
+    const subCategoryReq = await UiUxResourcesServices.getSearch(search, session?.user?.accessToken);
     const tagsReq = await UiUxResourcesServices.getResourcesTags();
     const SeoData = await UiUxResourcesServices.getResourcesDetailsSeo();
-    const footer = await UiUxResourcesServices.getFooter();
+    const footer = await UiUxResourcesServices.getUiUxResourcesFooter(session?.user?.accessToken);
     const FooterLinksData = await UiUxResourcesServices.getLayoutiFooter();
     return {
       props: {

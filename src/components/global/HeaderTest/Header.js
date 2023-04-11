@@ -16,6 +16,7 @@ import Image from "next/image";
 import { useSession, signIn, signOut } from "next-auth/react"
 import axios from "axios";
 import User from "../User/User";
+import { useSelector } from "react-redux";
 const NavLink = ({ url, text, whiteActive }) => {
   const router = useRouter();
   return (
@@ -34,6 +35,11 @@ const HeaderTest = ({data, color, session}) => {
   const [whiteActive, setWhiteActive] = useState(true);
   const router = useRouter()
   const [active, setActive] = useState(false)
+  const favCount = useSelector(state => state.fav.count)
+ 
+  
+  
+  
   
   function sideToggle() {
     document?.querySelector(".sidebar").classList.toggle("active");
@@ -224,7 +230,7 @@ const HeaderTest = ({data, color, session}) => {
                 </Link>
               </li>
                 <li className="nav_item nav_item_btn">
-                    <User whiteActive={whiteActive} session={session} signIn={signIn} signOut={signOut} active={active} setActive={setActive}/>
+                    <User whiteActive={whiteActive} session={session} signIn={signIn} signOut={signOut} active={active} setActive={setActive} count={favCount}/>
                 </li>
                   
                 <li className={`nav_item nav_item_btn d-md-block d-none`}>
@@ -236,7 +242,7 @@ const HeaderTest = ({data, color, session}) => {
             </Row>
           </Col>
           <Col className="toggle_mob p-0 ">
-            <User whiteActive={whiteActive} session={session} signIn={signIn} signOut={signOut} active={active} setActive={setActive}/>
+            <User whiteActive={whiteActive} session={session} signIn={signIn} signOut={signOut} active={active} setActive={setActive} count={favCount}/>
             <button className="toggle-btn" onClick={sideToggle}>
               <svg
                 width="30"
