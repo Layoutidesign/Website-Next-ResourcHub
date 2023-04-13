@@ -17,10 +17,14 @@ export const globalMeta = {
 };
 
 export const navLinks = [
-  // {
-  //   url: "/",
-  //   text: "Home",
-  // },
+  {
+    url: "/news/all",
+    text: "News",
+  },
+  {
+    url: "/channels",
+    text: "Channels",
+  },
   {
     url: "/resources",
     text: "Resources",
@@ -116,9 +120,6 @@ export const layoutiLinks = [
   },{
     text: "About",
     url: "https://layouti.com/about",
-  },{
-    text: "Blog",
-    url: "https://layouti.com/blog",
   },{
     text: "Contact Us",
     url: "https://layouti.com/contact-us?scroll=true",

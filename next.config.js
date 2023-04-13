@@ -1,5 +1,4 @@
 /** @format */
-
 module.exports = {
   async redirects() {
     return [
@@ -10,7 +9,7 @@ module.exports = {
       },
     ]
   },
-  images: { domains: ["resourchub-laravel.layouti.com", 'lh3.googleusercontent.com'] },
+  images: { domains: ["resourchub-laravel.layouti.com", 'lh3.googleusercontent.com','laravel.layouti.com'] },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,

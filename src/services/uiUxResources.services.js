@@ -114,6 +114,28 @@ const getFav = async (token) => {
 };
 
 
+
+
+//news
+const getNewsCategory = async (category) => {
+  return await axios.get(`https://www.resourchub-laravel.layouti.com/api/frontend/blogs/categories`);
+};
+//news
+const getNews = async (category) => {
+  return await axios.get(`https://www.resourchub-laravel.layouti.com/api/frontend/blogs?category=${category=="all"?"":category}`);
+};
+//news
+const getNewsLatest = async () => {
+  return await axios.get(`https://www.resourchub-laravel.layouti.com/api/frontend/blogs/resources`);
+};
+
+
+//channels
+const getChannels = async () => {
+  return await axios.get(`https://www.resourchub-laravel.layouti.com/api/frontend/channels`);
+};
+
+//?category=${category=="all"?"":category}
 const UiUxResourcesServices = {
   getUiUxResources,
   getSubCategoryByName,
@@ -128,7 +150,11 @@ const UiUxResourcesServices = {
   getFooter,
   getSearch,
   getLayoutiFooter,
-  getFav
+  getFav,
+  getNewsCategory,
+  getNews,
+  getNewsLatest,
+  getChannels
 };
 
 export default UiUxResourcesServices;

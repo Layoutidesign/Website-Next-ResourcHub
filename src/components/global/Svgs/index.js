@@ -31,3 +31,4 @@ export { default as TestIcon } from "./TestIcon.svg";
 export { default as EmptyIcon } from "./empty.svg";
 export { default as HeartNewIcon } from "./HeartNew.svg";
 export { default as LogoutIcon } from "./logout.svg";
+export { default as Arrow } from "./Arrow.svg";
