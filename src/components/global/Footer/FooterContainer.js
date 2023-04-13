@@ -124,7 +124,7 @@ const FooterContainer = ({data}) => {
             <Row className="align-items-center flex-nowrap m-0">
               <Col lg={2} xs={3} className="p-0 ">
                 <a href="https://www.layouti.com/" target="_blank">
-                  <Image src={data?.FooterContent?.logo} width={200} height={75} alt='asd'/>
+                  <Image src={data?.FooterContent?.logo} width={130} height={45} alt='asd'/>
                 </a>
               </Col>
               {/* <Col lg={10} xs={9} className="p-0">

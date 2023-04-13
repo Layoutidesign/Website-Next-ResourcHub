@@ -213,7 +213,7 @@ const SidebarTest = ({data}) => {
             <Row className="align-items-center flex-nowrap gap-2 m-0">
               <Col  className="">
                 <a href="https://www.layouti.com/" target="_blank">
-                <Image src={data.FooterContent.logo} width={200} height={75} alt=''/>{" "}
+                <Image src={data.FooterContent.logo} width={130} height={45} alt=''/>{" "}
                 </a>
               </Col>
             </Row>
