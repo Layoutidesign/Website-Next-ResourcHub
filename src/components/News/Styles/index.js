@@ -57,6 +57,7 @@ export const NewsCards = styled.a`
     }
     p {
         margin: 0;
+        margin-top: 10px;
     }
     &:hover {
         border: 1px solid ${props => props.color};

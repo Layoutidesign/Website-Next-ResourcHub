@@ -25,7 +25,7 @@ const ContentHeader = ({
           <span className={styles["numberOfPages"]}>
               ({count})
           </span> */}
-          Latest News
+           Latest News for Designers
           </h2>
         </div>
         <p>{subCategoryDescription && subCategoryDescription}</p>

@@ -15,9 +15,9 @@ const Content = ({data, color, latest,session,setShowSignPopup}) => {
     // setData(cards => cards.map(card => card.id === id?{...card, ip: !card.ip, likes: card.ip?card.likes-1:card.likes+1}:card))
   };
   return (
-    <Container>
-        <Row>
-          <Col md={9}>
+    <Container style={{paddingBottom: "100px"} }>
+        <Row >
+          <Col md={9} style={{paddingRight: "40px"} } >
             {data?.map((item,i) => <NewsCards href={item.link} target='_blank' color={color} key={i}>
                 <h2>{item.title}</h2>
                 <p>{item.author}</p>
@@ -25,7 +25,7 @@ const Content = ({data, color, latest,session,setShowSignPopup}) => {
             </NewsCards>)}
           </Col>
           <Col>
-            <h2 className='text-white mb-5'>Latest Resources</h2>
+            <h2 className='text-white mb-3'>Latest Resources</h2>
             {latest.map((item, i)=> <div key={i} className='mb-4'><InnerPageCard handleLike={handleLike} innerPage={item}/></div>)}
           </Col>
         </Row>
