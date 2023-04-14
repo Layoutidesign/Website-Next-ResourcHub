@@ -19,12 +19,13 @@ const ContentHeader = ({
           <Col>
           <div className={styles["title"]}>
           <h2>
-            <Link href={'/resources'}><span><u>Home</u>{" "} . {" "}</span></Link>
+            {/* <Link href={'/resources'}><span><u>Home</u>{" "} . {" "}</span></Link>
             {categoryName&&<Link href={`/news`}><span><u>{categoryName && categoryName}</u>{" "} . {" "}</span></Link>}
             {subCategoryName && subCategoryName}
           <span className={styles["numberOfPages"]}>
               ({count})
-          </span>
+          </span> */}
+          Latest News
           </h2>
         </div>
         <p>{subCategoryDescription && subCategoryDescription}</p>

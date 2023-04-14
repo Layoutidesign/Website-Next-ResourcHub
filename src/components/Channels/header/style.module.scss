@@ -29,7 +29,14 @@
         width: 100%;
         display: block;
         position: unset !important;
+        object-fit: cover;
     }
+}
+.text_sub {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 34px;
+    color: #939CAB !important;
 }
 
 .channel_info {

@@ -135,6 +135,15 @@ const getChannels = async () => {
   return await axios.get(`https://www.resourchub-laravel.layouti.com/api/frontend/channels`);
 };
 
+//channel
+const getChannel = async (name) => {
+  return await axios.get(`https://www.resourchub-laravel.layouti.com/api/frontend/channels/getChannel?channel=${name}`);
+};
+//channel
+const getChannelVideos = async (name) => {
+  return await axios.get(`https://www.resourchub-laravel.layouti.com/api/frontend/channels/vedios?channel=${name}`);
+};
+
 //?category=${category=="all"?"":category}
 const UiUxResourcesServices = {
   getUiUxResources,
@@ -154,7 +163,9 @@ const UiUxResourcesServices = {
   getNewsCategory,
   getNews,
   getNewsLatest,
-  getChannels
+  getChannels,
+  getChannel,
+  getChannelVideos
 };
 
 export default UiUxResourcesServices;

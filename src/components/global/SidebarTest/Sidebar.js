@@ -65,7 +65,7 @@ const LinkComponent = ({ image, text, url, type }) => {
     <Row className="m-0 mb-4">
       <Col className="p-0">
         <div className={`footer__link__row d-flex align-items-center gap-4`}>
-          <Image src={image} width={40} height={40} alt='sad'/>
+          <Image src={image} width={45} height={45} alt='sad'/>
           <h3 className="m-0">{text}</h3>
         </div>
       </Col>

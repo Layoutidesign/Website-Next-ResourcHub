@@ -76,7 +76,7 @@ export const otherLinks = [
     url: "#",
   },
   {
-    text: "UI Generator",
+    text: "UI Avatar",
     url: "#",
   },
   {
@@ -99,8 +99,8 @@ export const otherLinks = [
 
 export const helpLinks = [
   {
-    text: "Term & Condition",
-    url: "#",
+    text: "Terms & Conditions",
+    url: "https://layouti.com/term&condition",
   },
   {
     text: "Sitemap",
@@ -110,6 +110,10 @@ export const helpLinks = [
 
 
 export const layoutiLinks = [
+  {
+    text: "Home",
+    url: "https://layouti.com",
+  },
   {
     text: "Services",
     url: "https://layouti.com/services",

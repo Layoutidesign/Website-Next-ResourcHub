@@ -68,3 +68,27 @@ export const NewsCards = styled.a`
         }
     }
 `
+
+export const VideoCard = styled.a`
+    cursor: pointer;
+    margin-bottom: 30px;
+    display:block;
+   img { 
+    border-radius: 15px;
+    width: 100%;
+    margin-bottom: 10px;
+    object-fit: cover;
+   }
+   p {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        color: #ffffff;
+        width: 70%;
+   }
+   @media (max-width: 480px) {
+    p { 
+        width: 100% 
+    }
+   }
+`

@@ -127,14 +127,6 @@ const FooterContainer = ({data}) => {
                   <Image src={data?.FooterContent?.logo} width={130} height={45} alt='asd'/>
                 </a>
               </Col>
-              {/* <Col lg={10} xs={9} className="p-0">
-                <h2 className={`${styles["footer_brand"]} m-0 fs-3`}>
-                  {data.FooterContent.name}
-                </h2>
-                <p className={`${styles["footer_slug"]} m-0 fs-6 fw-lighter`}>
-                  {data.FooterContent.slogan}
-                </p>
-              </Col> */}
             </Row>
             <Row className="mt-3 m-0 ">
               <p className={`${styles["footer_desc"]} p-0 fs-6 fw-bold`}>

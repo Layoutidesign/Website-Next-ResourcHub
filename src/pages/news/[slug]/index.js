@@ -47,7 +47,7 @@ export async function getServerSideProps(context) {
   try {
     const session = await getSession(context)
     let category = context.params.slug
-    const news = await UiUxResourcesServices.getNews(category);
+    const news = await UiUxResourcesServices.getNews(category.split("-").join(" "));
     const latest = await UiUxResourcesServices.getNewsLatest();
     const categories = await UiUxResourcesServices.getNewsCategory();
     const uiUxFooterReq = await UiUxResourcesServices.getUiUxResourcesFooter(session?.user?.accessToken);
