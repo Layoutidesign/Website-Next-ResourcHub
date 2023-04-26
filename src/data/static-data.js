@@ -40,7 +40,14 @@ export const mainMenuLinks = [
   {
     url: "/resources",
     text: "Resources",
+  }, {
+    url: "/news/all",
+    text: "News",
   },
+  {
+    url: "/channels",
+    text: "Channels",
+  }
   // {
   //   url: "/ux-process",
   //   text: "Desgin Process",
