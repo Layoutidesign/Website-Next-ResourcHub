@@ -11,7 +11,7 @@ const ChannelHeader = ({channel}) => {
         </div>
         <Container className={styles['channel_info']}>
             <Row className='position-relative'>
-                <Col md={1} className='p-0'>
+                <Col md={1} xs={12} className='p-2 p-sm-0 text-center'>
                     <Image  
                         src={channel?.profileImage} 
                         width={130} 
@@ -21,10 +21,10 @@ const ChannelHeader = ({channel}) => {
                         placeholder='blur'
                     />
                 </Col>
-                <Col className='px-5 py-4'>
+                <Col className={`${styles['channel_info_name']} px-5 py-4`} md={5} xs={12}>
                     <h3 className='text-white fs-4 fw-bolder'>{channel.name}</h3>
                 </Col>
-                <Col className='text-end py-4'>
+                <Col className={`${styles['channel_info_name']} text-end py-4`} md={6} xs={12}>
                     <p className={styles['text_sub']}>{channel.subscribers} Subscribers</p>
                 </Col>
             </Row>
