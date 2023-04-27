@@ -68,6 +68,14 @@ export const NewsCards = styled.a`
             }
         }
     }
+    @media (max-width: 600px) {
+        width: 100%;
+        h2  {
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 30px;
+        }
+    }
 `
 
 export const VideoCard = styled.a`
