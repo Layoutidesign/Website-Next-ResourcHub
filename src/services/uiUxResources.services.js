@@ -144,7 +144,24 @@ const getChannelVideos = async (name) => {
   return await axios.get(`https://www.resourchub-laravel.layouti.com/api/frontend/channels/vedios?channel=${name}`);
 };
 
-//?category=${category=="all"?"":category}
+
+//SOCIAL POSTS
+
+//channel
+const getSocialHeader = async () => {
+  return await axios.get(`https://www.resourchub-laravel.layouti.com/api/frontend/socialPost/headerContent`);
+};
+const getSocialDesighners = async () => {
+  return await axios.get(`https://www.resourchub-laravel.layouti.com/api/frontend/socialPost/designers`);
+};
+const getSocialDesigns = async () => {
+  return await axios.get(`https://www.resourchub-laravel.layouti.com/api/frontend/socialPost/designs`);
+};
+
+const getSocialCategories = async () => {
+  return await axios.get(`https://www.resourchub-laravel.layouti.com/api/frontend/socialPost/categories`);
+};
+
 const UiUxResourcesServices = {
   getUiUxResources,
   getSubCategoryByName,
@@ -165,7 +182,11 @@ const UiUxResourcesServices = {
   getNewsLatest,
   getChannels,
   getChannel,
-  getChannelVideos
+  getChannelVideos,
+  getSocialHeader,
+  getSocialDesighners,
+  getSocialDesigns, 
+  getSocialCategories
 };
 
 export default UiUxResourcesServices;

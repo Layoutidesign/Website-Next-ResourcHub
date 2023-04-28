@@ -9,7 +9,7 @@ module.exports = {
       },
     ]
   },
-  images: { domains: ["resourchub-laravel.layouti.com", 'lh3.googleusercontent.com','laravel.layouti.com', 'img.youtube.com'] },
+  images: { domains: ["img.freepik.com","resourchub-laravel.layouti.com", 'lh3.googleusercontent.com','laravel.layouti.com', 'img.youtube.com'] },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
