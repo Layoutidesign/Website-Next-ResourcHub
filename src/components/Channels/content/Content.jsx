@@ -32,7 +32,14 @@ const Content = ({data}) => {
     <>
       <Container className={styles['channel']}>
           {items?.map((item, i) => <div onClick={() => item.profileImage&&router.push(`/channels/${item.name.split(" ").join('-').toLowerCase()}`)} key={i} className={styles['channel_author']}>
-              <Image src={item.profileImage||item.image} width={"200"} height={"200"} className='rounded-circle'/>
+              <Image 
+                src={item.profileImage||item.image} 
+                width={"200"} 
+                height={"200"} 
+                className='rounded-circle'
+                placeholder="blur"
+                blurDataURL={item.profileImage||item.image}  
+              />
               <h3 className='text-center mt-3'>{item.name}</h3>
               <p className=' text-center'>{item.subscribers} Subscribers</p>
           </div>)}       

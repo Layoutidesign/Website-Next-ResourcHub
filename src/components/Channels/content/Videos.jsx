@@ -39,8 +39,12 @@ const Videos = ({channel, videos, color}) => {
             <Row>
                {items?.map((item,i) => <Col md={4} key={i}>
                     <VideoCard href={item.link} target='_blank'>
-                        <Image       placeholder="blur" blurDataURL={`https://img.youtube.com/vi/${item.link.split("=")[1]}/0.jpg`}
-                         src={`https://img.youtube.com/vi/${item.link.split("=")[1]}/0.jpg`} width={379.83} height={250}/>
+                        <Image      
+                          src={`https://img.youtube.com/vi/${item.link.split("=")[1]}/0.jpg`} width={379.83} height={250}
+                          placeholder="blur" 
+                          blurDataURL={`https://img.youtube.com/vi/${item.link.split("=")[1]}/0.jpg`
+                            }
+                         />
                         <p>
                             {item.title}
                         </p>

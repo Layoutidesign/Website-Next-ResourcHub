@@ -10,7 +10,14 @@ const SocialPostsCard = ({data}) => {
         <Image src={data.Images[0].image} width={380} height={380}/>
         <Row className={style['person_container']}>
           <Col md={6}  className='d-flex align-items-center gap-3'>
-              <Image className={"rounded-circle"} src={data.Designer.image} width={35} height={35} />
+              <Image 
+                className={"rounded-circle"} 
+                src={data.Designer.image} 
+                width={35} 
+                height={35} 
+                placeholder="blur"
+                blurDataURL={data.Designer.image}
+              />
               <p className='m-0 text-white'>{data.Designer.name}</p>
           </Col>
           <Col md={6} className='text-end d-flex align-items-center justify-content-end text-white '>

@@ -7,7 +7,12 @@ const ChannelHeader = ({channel}) => {
   return (
     <>
         <div className={styles['header_channel']}>
-            <Image  src={channel?.slideImage}  fill/>
+            <Image  
+                src={channel?.slideImage}  
+                fill
+                placeholder="blur"
+                blurDataURL={channel?.slideImage}  
+            />
         </div>
         <Container className={styles['channel_info']}>
             <Row className='position-relative'>
@@ -16,9 +21,9 @@ const ChannelHeader = ({channel}) => {
                         src={channel?.profileImage} 
                         width={130} 
                         height={130} 
-                        blurDataURL={channel?.profileImage} 
                         className='rounded-circle'
                         placeholder='blur'
+                        blurDataURL={channel?.profileImage} 
                     />
                 </Col>
                 <Col className={`${styles['channel_info_name']} px-5 py-4`} md={5} xs={12}>
