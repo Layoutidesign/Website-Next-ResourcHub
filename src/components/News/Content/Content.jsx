@@ -12,7 +12,9 @@ const Content = ({data, color, latest,session,setShowSignPopup,category}) => {
 
   const [items, setItems] = useState([])
   const [page, setPage] = useState(2);
-    const [next,b 
+    const [next, setNext] = useState(false)
+
+
   const handleLike = (id) => {
     if (!session) {
       setShowSignPopup(true)
