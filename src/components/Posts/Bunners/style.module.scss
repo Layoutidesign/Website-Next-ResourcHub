@@ -1,0 +1,11 @@
+.bunner {
+     display: flex;
+     gap: 40px;
+     margin-bottom: 50px;
+     img {
+        width: 100% !important;
+        border-radius: 15px;
+        height: 330px !important;
+        position: unset !important;
+     }
+}

@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import axios from 'axios'
 import { LoadMoreBtn } from '@/components/Posts/styles'
 
-const Content = ({data}) => {
+const Content = ({data, type}) => {
   const [items, setItems] = useState([])
   const [page, setPage] = useState(1)
   const [next, setNext] = useState(true)
@@ -20,9 +20,14 @@ const Content = ({data}) => {
   }, [data])
 
   let getData = () => {
-    axios.get(`https://www.resourchub-laravel.layouti.com/api/frontend/channels?page=${page}`)
+    type !== "designers"?axios.get(`https://www.resourchub-laravel.layouti.com/api/frontend/channels?page=${page}`)
     .then((res) => {
       setItems(data => data.concat(res.data.data.Channels))
+      setPage(page => page+1)
+      !res.data.data.pagination.nexrPage&&setNext(false)
+    }):axios.get(`https://www.resourchub-laravel.layouti.com/api/socialPost/designers?page=${page}`)
+    .then((res) => {
+      setItems(data => data.concat(res.data.data.Designers))
       setPage(page => page+1)
       !res.data.data.pagination.nexrPage&&setNext(false)
     })
@@ -31,7 +36,7 @@ const Content = ({data}) => {
   return (
     <>
       <Container className={styles['channel']}>
-          {items?.map((item, i) => <div onClick={() => item.profileImage&&router.push(`/channels/${item.name.split(" ").join('-').toLowerCase()}`)} key={i} className={styles['channel_author']}>
+          {items?.map((item, i) => <div onClick={() => item.profileImage?router.push(`/channels/${item.name.split(" ").join('-').toLowerCase()}`):router.push(`/social-posts/designer/${item.name.split(" ").join('-').toLowerCase()}`)} key={i} className={styles['channel_author']}>
               <Image 
                 src={item.profileImage||item.image} 
                 width={"200"} 
@@ -44,7 +49,7 @@ const Content = ({data}) => {
               <p className=' text-center'>{item.subscribers} Subscribers</p>
           </div>)}       
       </Container>
-      <Row className='mb-5 '>
+      <Row className='mb-5'>
           <Col className='d-flex justify-content-center'>
             {next?<LoadMoreBtn onClick={getData}>
               Load More
