@@ -28,15 +28,15 @@ function News({
 
   return (
     <>
-      {/* <SEOHead
-        title={seoData?.titleEn}
-        description={seoData?.descriptionEn}
-        ogImgUrl={seoData?.facebookImage}
-        keywords={seoData?.keywordsEn}
-        ogTitle={seoData?.facebookTitleEn}
-        ogDescription={seoData?.facebookDescriptionEn}
+      <SEOHead
+        // title={seoData?.titleEn}
+        // description={seoData?.descriptionEn}
+        // ogImgUrl={seoData?.facebookImage}
+        // keywords={seoData?.keywordsEn}
+        // ogTitle={seoData?.facebookTitleEn}
+        // ogDescription={seoData?.facebookDescriptionEn}
         favicon={footerContent?.navbar?.favIcon}
-      /> */}
+      />
       <UiUxResources footer={true} onClick={() => setShowSignPopup(false)} footerContent={footerContent} footerData={footerData} session={session} showSignPopup={showSignPopup} setShowSignPopup={setShowSignPopup} >
         <DesignersHeader  designer={Design.Designer} deisgn={Design}/>
         {/* <Bunners data={Designer?.Profiles}/> */}
