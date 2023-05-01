@@ -20,7 +20,7 @@ const SocialPostsCard = ({data, designer, nodir}) => {
           onClick={() => (data.Designer||designer)&&router.push(`/social-posts/post/${data.title.split(" ").join("-").toLowerCase()}`)}
         />
         { (data.Designer||designer)&&<Row className={style['person_container']}>
-          <Col md={6}  className='d-flex align-items-center gap-3 cursor-pointer' role="button" onClick={() => !nodir&&router.push(`/social-posts/designer/${(data.Designer?.name||designer.name).split(" ").join("-").toLowerCase()}`)}>
+          {!nodir&&<Col   className='d-flex align-items-center gap-3 cursor-pointer' role="button" onClick={() => !nodir&&router.push(`/social-posts/designer/${(data.Designer?.name||designer.name).split(" ").join("-").toLowerCase()}`)}>
               <Image 
                 className={"rounded-circle"} 
                 src={data.Designer?.image||designer.image} 
@@ -31,10 +31,10 @@ const SocialPostsCard = ({data, designer, nodir}) => {
                 alt=''
               />
               <p className='m-0 text-white'>{data.Designer?.name||designer.name}</p>
-          </Col>
-          <Col md={6} className='text-end d-flex align-items-center justify-content-end text-white '>
-            <p className='m-0'>Category Name</p>
-          </Col>
+          </Col>}
+          {!nodir&&<Col  className='text-end d-flex align-items-center justify-content-end text-white '>
+            <p className='m-0'>{data.Designer.expertise}</p>
+          </Col>}
         </Row>}
     </div>
   )

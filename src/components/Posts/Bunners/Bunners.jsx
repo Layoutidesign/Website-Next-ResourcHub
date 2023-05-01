@@ -10,7 +10,7 @@ const Bunners = ({data}) => {
     <div className={style['bunner']}>
       <Container>
         <Row>
-            {data.map(image =>  <Col>
+            {data.map(image =>  <Col md={6} xs={12}>
             <a href={image.link} target='_blank'>
                 <Image 
                     src={image.image} 

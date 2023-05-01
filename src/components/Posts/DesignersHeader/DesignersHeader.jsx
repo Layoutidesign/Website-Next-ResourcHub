@@ -3,6 +3,8 @@ import style from './style.module.scss'
 import { Col, Container, Row } from 'reactstrap'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import { InstagramIcon } from '@/components/global/Svgs/InstagramIcon'
+import Link from 'next/link'
 
 
 const DesignersHeader = ({designer, deisgn}) => {
@@ -12,7 +14,7 @@ const DesignersHeader = ({designer, deisgn}) => {
         <Container>
             <Row>
                 <Col>
-                    <h1><u role="button" onClick={() => router.back()}>Designer</u>  .  <span>{designer.name} {designer.DesignsCount&&`( ${designer.DesignsCount} )`}</span></h1>
+                    <h1><u role="button" onClick={() => router.push('/social-posts')}>Designer</u>  .  <span>{designer.name} {designer.DesignsCount || designer.DesignsCount == 0&&`( ${designer.DesignsCount} )`}</span></h1>
                 </Col>
             </Row>
             <Row> 
@@ -31,10 +33,15 @@ const DesignersHeader = ({designer, deisgn}) => {
                         className='rounded-circle'
                     />
                     <div>
-                        <h3>{designer.name}</h3>
+                        <h3>{designer.name} - {designer.expertise}</h3>
                         <p>{designer.description}</p>
-                        <div className={style['designers_cat']}>
-                            {deisgn?.Categories.map((cat, i) => <span>{cat.name}</span>)}
+                        <div className={style['designers_social']}>
+                            <div className={style['designers_cat']}>
+                                {designer?.Links?designer.Links.map((cat, i) => <a href={cat?.link} target='_blank'><span className='d-flex justify-content-center align-items-center gap-2'><InstagramIcon /> Instagram</span></a>):<a href={deisgn?.link} target='_blank'><span className='d-flex justify-content-center align-items-center gap-2'><InstagramIcon /> Instagram</span></a>}
+                            </div>
+                            <div className={style['designers_cat']}>
+                                {deisgn?.Categories.map((cat, i) => <Link href={`/social-posts?name=${cat.name.split(' ').join("-")}`}><span># {cat.name}</span></Link>)}
+                            </div>
                         </div>
                     </div>
                 </Col>

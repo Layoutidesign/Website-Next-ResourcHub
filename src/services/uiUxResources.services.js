@@ -154,8 +154,9 @@ const getSocialHeader = async () => {
 const getSocialDesighners = async () => {
   return await axios.get(`https://www.resourchub-laravel.layouti.com/api/frontend/socialPost/designers`);
 };
-const getSocialDesigns = async () => {
-  return await axios.get(`https://www.resourchub-laravel.layouti.com/api/frontend/socialPost/designs`);
+const getSocialDesigns = async (name) => {
+  console.log(name);
+  return await axios.get(`https://www.resourchub-laravel.layouti.com/api/frontend/socialPost/designs?category=${name}`);
 };
 
 const getSocialCategories = async () => {

@@ -20,14 +20,17 @@ function News({
   headerContent,
   Designers,
   Designs,
-  Categories
+  Categories,
+  name
 }) {
   const [showSignPopup, setShowSignPopup] = useState(false);
   const [type, setType] = useState(1);
   const [designsItems, setDesignsItems] = useState([])
-  const [catName, setCatName] = useState('')
+  const [catName, setCatName] = useState(name?name:"")
   const [page, setPage] = useState(1)
   const [next, setNext] = useState(false)
+  const [first, setFirst] = useState(true)
+
   useEffect(() => {
     setDesignsItems(Designs)
     Designs.length >= 25&&setNext(true)
@@ -44,9 +47,9 @@ function News({
 
 
   useEffect(() => {
-    getDesigns(catName, 1)
+    !first?getDesigns(catName, 1):setFirst(false)
   }, [catName])
-
+  
   return (
     <>
       {/* <SEOHead
@@ -90,9 +93,10 @@ function News({
 export async function getServerSideProps(context) {
   try {
     const session = await getSession(context)
+    const name = context?.query?.name
     const Categories = await UiUxResourcesServices.getSocialCategories();
     const Designers = await UiUxResourcesServices.getSocialDesighners();
-    const Designs = await UiUxResourcesServices.getSocialDesigns();
+    const Designs = await UiUxResourcesServices.getSocialDesigns(name !== undefined?name.split("-").join(" "):"");
     const headerContent = await UiUxResourcesServices.getSocialHeader();
     const uiUxFooterReq = await UiUxResourcesServices.getUiUxResourcesFooter(session?.user?.accessToken);
     const FooterLinksData = await UiUxResourcesServices.getLayoutiFooter();
@@ -104,7 +108,8 @@ export async function getServerSideProps(context) {
         headerContent: headerContent?.data?.data,
         Designers: Designers?.data?.data?.Designers,
         Designs: Designs?.data?.data?.Designs,
-        Categories:Categories?.data?.data
+        Categories:Categories?.data?.data,
+        name:name !== undefined&&name.split("-").join(" ")
       },
     };
   } catch (error) {

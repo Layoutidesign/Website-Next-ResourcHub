@@ -8,4 +8,11 @@
         height: 330px !important;
         position: unset !important;
      }
+     @media (max-width: 600px) {
+      img {
+         margin-bottom: 20px;
+         aspect-ratio: 1/1;
+         height: unset;
+      }
+     }
 }

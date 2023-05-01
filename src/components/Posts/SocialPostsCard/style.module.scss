@@ -1,11 +1,13 @@
 .post {
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     >img {
         display: block;
         width: 100%;
         border-radius: 15px;
-        // aspect-ratio: 1/1;
+        aspect-ratio: 1/1;
+        height: unset;
+        object-fit: cover;
     }
     .row {
         .col {

@@ -24,7 +24,7 @@ function News({
 }) {
   const [showSignPopup, setShowSignPopup] = useState(false);
 
-
+  
 
   return (
     <>
@@ -40,8 +40,8 @@ function News({
       <UiUxResources onClick={() => setShowSignPopup(false)} footerContent={footerContent} footerData={footerData} session={session} showSignPopup={showSignPopup} setShowSignPopup={setShowSignPopup} >
         <DesignersHeader  designer={Design.Designer} deisgn={Design}/>
         {/* <Bunners data={Designer?.Profiles}/> */}
-        <Container>
-          <Row>
+        <Container style={{marginBottom: "100px", marginTop: "40px"}}>
+          <Row >
               {Design?.Images.map((item, i) => <Col md={4}>
                 <SocialPostsCard key={i} data={item}  nodir={true}/>
               </Col>)}  

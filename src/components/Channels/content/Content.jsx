@@ -46,7 +46,7 @@ const Content = ({data, type}) => {
                 blurDataURL={item.profileImage||item.image}  
               />
               <h3 className='text-center mt-3'>{item.name}</h3>
-              <p className=' text-center'>{item.subscribers} Subscribers</p>
+              {type=="designers"?<p className=' text-center'>{item.followers&&`${item.followers} Followers`}</p>:<p className=' text-center'>{item.subscribers} Subscribers</p>}
           </div>)}       
       </Container>
       <Row className='mb-5'>
