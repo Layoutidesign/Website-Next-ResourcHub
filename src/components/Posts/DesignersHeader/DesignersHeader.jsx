@@ -34,7 +34,7 @@ const DesignersHeader = ({designer, deisgn}) => {
                     />
                     <div>
                         <h3>{designer.name} - {designer.expertise}</h3>
-                        <p>{designer.description}</p>
+                        {designer.description.split("|").map((item, i) => <p key={i}>{item}</p>)}
                         <div className={style['designers_social']}>
                             <div className={style['designers_cat']}>
                                 {designer?.Links?designer.Links.map((cat, i) => <a href={cat?.link} target='_blank'><span className='d-flex justify-content-center align-items-center gap-2'><InstagramIcon /> Instagram</span></a>):<a href={deisgn?.link} target='_blank'><span className='d-flex justify-content-center align-items-center gap-2'><InstagramIcon /> Instagram</span></a>}
