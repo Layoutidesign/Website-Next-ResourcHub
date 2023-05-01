@@ -14,7 +14,7 @@ const DesignersHeader = ({designer, deisgn}) => {
         <Container>
             <Row>
                 <Col>
-                    <h1><u role="button" onClick={() => router.push('/social-posts')}>Designer</u>  .  <span>{designer.name} {designer.DesignsCount || designer.DesignsCount == 0&&`( ${designer.DesignsCount} )`}</span></h1>
+                    <h1><u role="button" onClick={() => router.push('/social-posts')}>Designer</u>  .  <span>{designer.name} {(designer.DesignsCount || designer.DesignsCount == 0)&&`( ${designer.DesignsCount} )`}</span></h1>
                 </Col>
             </Row>
             <Row> 

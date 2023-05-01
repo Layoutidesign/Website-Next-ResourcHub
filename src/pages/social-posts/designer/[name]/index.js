@@ -36,7 +36,7 @@ function News({
         ogDescription={seoData?.facebookDescriptionEn}
         favicon={footerContent?.navbar?.favIcon}
       /> */}
-      <UiUxResources onClick={() => setShowSignPopup(false)} footerContent={footerContent} footerData={footerData} session={session} showSignPopup={showSignPopup} setShowSignPopup={setShowSignPopup} >
+      <UiUxResources footer={true} onClick={() => setShowSignPopup(false)} footerContent={footerContent} footerData={footerData} session={session} showSignPopup={showSignPopup} setShowSignPopup={setShowSignPopup} >
         <DesignersHeader  designer={Designer}/>
         <Bunners data={Designer?.Profiles}/>
         <Container style={{marginBottom: "100px", marginTop: "50px"}}>

@@ -14,7 +14,7 @@ import { useDispatch } from "react-redux";
 import { favAction } from "@/store/favourite";
 
 
-const UiUxResources = ({ children, footerContent, footer, footerData, session,setShowSignPopup,showSignPopup}) => {
+const UiUxResources = ({ children, footerContent, noTop,footer, footerData, session,setShowSignPopup,showSignPopup}) => {
   const [showPopup, setShowPopup] = useState(false);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const dispatch = useDispatch();
