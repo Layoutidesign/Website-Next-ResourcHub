@@ -154,12 +154,21 @@ const getSocialHeader = async () => {
 const getSocialDesighners = async () => {
   return await axios.get(`https://www.resourchub-laravel.layouti.com/api/frontend/socialPost/designers`);
 };
-const getSocialDesigns = async () => {
-  return await axios.get(`https://www.resourchub-laravel.layouti.com/api/frontend/socialPost/designs`);
+const getSocialDesigns = async (name) => {
+  console.log(name);
+  return await axios.get(`https://www.resourchub-laravel.layouti.com/api/frontend/socialPost/designs?category=${name}`);
 };
 
 const getSocialCategories = async () => {
   return await axios.get(`https://www.resourchub-laravel.layouti.com/api/frontend/socialPost/categories`);
+};
+
+
+const getDesignerData = async (name) => {
+  return await axios.get(`https://www.resourchub-laravel.layouti.com/api/frontend/socialPost/designers/find?designer=${name.split("-").join(" ")}`);
+};
+const getDesignData = async (name) => {
+  return await axios.get(`https://www.resourchub-laravel.layouti.com/api/frontend/socialPost/designs/find?design=${name.split("-").join(" ")}`);
 };
 
 const UiUxResourcesServices = {
@@ -186,7 +195,9 @@ const UiUxResourcesServices = {
   getSocialHeader,
   getSocialDesighners,
   getSocialDesigns, 
-  getSocialCategories
+  getSocialCategories,
+  getDesignerData,
+  getDesignData
 };
 
 export default UiUxResourcesServices;

@@ -17,10 +17,10 @@ export const globalMeta = {
 };
 
 export const navLinks = [
-  // {
-  //   url: "/social-posts",
-  //   text: "Social Posts",
-  // },
+  {
+    url: "/social-posts",
+    text: "Social Posts",
+  },
   {
     url: "/news/all",
     text: "News",
