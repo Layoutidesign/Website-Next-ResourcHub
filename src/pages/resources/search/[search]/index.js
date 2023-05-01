@@ -1,6 +1,7 @@
 /** @format */
 
 import SEOHead from "@/components/global/SEOHead/SEOHead";
+import DesktopSearch from "@/components/global/Search/DesktopSearch/DesktopSearch";
 
 import UiUxResources from "@/components/layouts/UiUxResources";
 import ContentHeader from "@/components/uiuxresourses/SearchPage/ContentHeader";
@@ -9,6 +10,7 @@ import Resources from "@/components/uiuxresourses/SearchPage/Resources";
 import UiUxResourcesServices from "@/services/uiUxResources.services";
 import { getSession } from "next-auth/react";
 import { useState } from "react";
+import { Container } from "reactstrap";
 
 const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData, footer , footerData,session}) => {
   const [showLoading, setShowLoading] = useState(false);
@@ -36,6 +38,9 @@ const SubSlug = ({ data, tags, categoryName, subCategoryName, seoData, footer , 
               subCategoryDescription={""}
               numberOfPages={data?.pagination?.total}
             />
+            <Container>
+              <DesktopSearch /> 
+            </Container>
             <Resources
               innerPages={data.pages}
               tags={tags ? tags : []}
