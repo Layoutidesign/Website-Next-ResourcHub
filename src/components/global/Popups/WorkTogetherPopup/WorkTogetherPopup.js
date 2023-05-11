@@ -24,6 +24,7 @@ const WorkTogetherPopup = ({
     setLoading(true)
     UiUxResourcesServices.addResource(resourceName, resourceLink)
       .then((res) => {
+        console.log('sdsds');
         setResourceName("");
         setResourceLink("");
         setShowPopup(false);

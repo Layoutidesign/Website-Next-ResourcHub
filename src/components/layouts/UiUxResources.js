@@ -7,11 +7,11 @@ import Sidebar from "@/components/global/SidebarTest/Sidebar";
 import ScrollTop from "@/components/global/ScrollTop";
 import WorkTogetherSection from "../resources/WorkTogetherSection/WorkTogetherSection";
 import WorkTogetherPopup from "../global/Popups/WorkTogetherPopup/WorkTogetherPopup";
-import SuccessPopup from "../global/Popups/SignPopup/SignPopup";
 import SignPopup from "../global/Popups/SignPopup/SignPopup";
 import { ToastContainer } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { favAction } from "@/store/favourite";
+import SuccessPopup from "../global/Popups/SuccessPopup copy/SuccessPopup";
 
 
 const UiUxResources = ({ children, footerContent, noTop,footer, footerData, session,setShowSignPopup,showSignPopup}) => {
@@ -49,6 +49,7 @@ const UiUxResources = ({ children, footerContent, noTop,footer, footerData, sess
         setShowSuccessPopup={setShowSuccessPopup}
       />
       <SignPopup setShowSignPopup={setShowSignPopup} showSignPopup={showSignPopup} session={session} data={footerContent?.navbar}/>
+      
       <SuccessPopup
         showSuccessPopup={showSuccessPopup}
         setShowSuccessPopup={setShowSuccessPopup}
